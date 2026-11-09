@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Install Python test dependency
+        run: python -m pip install -r desktop/冻结原始代码/原始源码与测试证据/算法一V0.1/requirements-dev.txt
+      - name: Run matcher and evidence export tests
+        run: python -m pytest -q desktop/冻结原始代码/原始源码与测试证据/算法一V0.1/tests desktop/test_evidence_export.py
+
+  desktop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+      - name: Install locked dependencies
+        working-directory: desktop
+        run: npm ci
+      - name: Run UI rule tests
+        working-directory: desktop
+        run: node --test tests/analysis.test.mjs
+      - name: Build UI
+        working-directory: desktop
+        run: npm run build

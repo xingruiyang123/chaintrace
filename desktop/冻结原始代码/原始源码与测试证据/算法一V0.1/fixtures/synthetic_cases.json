@@ -1,0 +1,769 @@
+{
+  "name": "ChainTrace-A01-A10-offline-synthetic-v0.1",
+  "is_simulated": true,
+  "notice": "全量模拟。地址、编号、金额和时间均为实验构造，不对应真实案件。",
+  "records": [
+    {
+      "id": "src-A01-event",
+      "case_id": "e19f866e-80e3-5f61-80c0-94138702c9b3",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A01-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "7e6dfd3fdca9cd576509bfae95201824ef1e40a0046d7ca2392d23a3186135c0"
+    },
+    {
+      "id": "src-A01-claim",
+      "case_id": "e19f866e-80e3-5f61-80c0-94138702c9b3",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A01-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "d478fa381b3c3d3d6e63465b1f7f9e986b7d3b1e245b9ec1dd68a5b637b1269a"
+    },
+    {
+      "id": "src-A02-event",
+      "case_id": "3a3598e4-664d-5220-b19e-5f15b14c7a7f",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A02-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "542edd6aeb7b77b8e67e28854675d317fd1177809b4c7c05374eb4027cfce016"
+    },
+    {
+      "id": "src-A02-claim",
+      "case_id": "3a3598e4-664d-5220-b19e-5f15b14c7a7f",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A02-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "dd8319101d77f3f7218030d52651bcde8cc8b527e65b5e16a4430a258357af8a"
+    },
+    {
+      "id": "src-A03-event",
+      "case_id": "0702fb57-2ec0-525d-bcd7-b8f9a5f7d2c6",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A03-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "30faad22e7bf1d887fd4d2cdfd1a4251ecce43da375541c2cb610b0d1b759518"
+    },
+    {
+      "id": "src-A03-claim",
+      "case_id": "0702fb57-2ec0-525d-bcd7-b8f9a5f7d2c6",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A03-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "e3659df05027bd0a7c340d497ba77d4139156bb0d23e39a2aaf45f2359e8b783"
+    },
+    {
+      "id": "src-A04-event",
+      "case_id": "fb3c5afc-f562-5aa7-9dcc-fdf05862a442",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A04-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "de814a1d304255a6b96806eef2976679e3ff257869e9fad0f4cae8d2829ba159"
+    },
+    {
+      "id": "src-A04-claim",
+      "case_id": "fb3c5afc-f562-5aa7-9dcc-fdf05862a442",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A04-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "c2d2cbfdcad560925432050c8d9defc7caab017a5d41d855a3bfbedfdb25b592"
+    },
+    {
+      "id": "src-A05-chain-event",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A05-chain-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "874e51287980abf8e65e74ae457f50612c703923d3c9c99e21265489ee4d3101"
+    },
+    {
+      "id": "src-A05-deposit-event",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A05-deposit-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "3c0ba80237aa72e31e908c2e03a3e2999635606a51f8416d61897aa793653192"
+    },
+    {
+      "id": "src-A05-claim",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A05-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "0f632356873f7328e2063774f6b085565d2c7994e797ad54eacbd9ebfaabf208"
+    },
+    {
+      "id": "src-A06-chain",
+      "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A06-chain",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "e50b27b38e7b4545a9ea781bcc2bcaa71d0d4fbf80db37a47ae311652a8d6d77"
+    },
+    {
+      "id": "src-A06-secondary",
+      "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A06-secondary",
+        "origin": "NODE_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "904752f07f4b47c6ed6070b74c242c49cd2a848e86e3e40b23f4d6c12140288b"
+    },
+    {
+      "id": "src-A06-claim",
+      "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A06-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "7622ee8276fb98f7a1242654d0d58c62534f32821c52cbc2de14ccd65d54374f"
+    },
+    {
+      "id": "src-A07-event",
+      "case_id": "080c6d3b-7dba-5f64-9c30-bd6a53373a9c",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A07-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "fc3014d1aa10054030f0f2dfa5b572cdd35b858a76e86c56716aa6b7d309058b"
+    },
+    {
+      "id": "src-A07-claim",
+      "case_id": "080c6d3b-7dba-5f64-9c30-bd6a53373a9c",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A07-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "02d3f4f2c47d774508b876e94bfe2ad5205500f15290e42b6125d50e991cfd74"
+    },
+    {
+      "id": "src-A08-event",
+      "case_id": "dc5b9479-b6f5-546c-b661-c0f3c7292554",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A08-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "5f5a255c2dbc8666747806a0b467c432c5ac812cc9e039a3981f91ee3b9dc5a0"
+    },
+    {
+      "id": "src-A08-claim",
+      "case_id": "dc5b9479-b6f5-546c-b661-c0f3c7292554",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A08-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "0fdca63ba56124b83ef26b63ae411192c67ac184c38880e21586f1a888ccd94b"
+    },
+    {
+      "id": "src-A09-event",
+      "case_id": "91bea533-9c22-5f33-adb2-6791aca74399",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A09-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "4d68e7e9f59eff4cad2a024ba68846b00907253c0c50c3adcd689e9f6c7e0def"
+    },
+    {
+      "id": "src-A09-claim",
+      "case_id": "91bea533-9c22-5f33-adb2-6791aca74399",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A09-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "3d6b00934819578cd8c7fd0268ab7b9ac1547f8720981473c9aeefe3ca113813"
+    },
+    {
+      "id": "src-A10-event",
+      "case_id": "a15bdfcf-7336-5351-ad38-a228f0a2b5fd",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A10-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "4d60662ea0a5b685f2d621a79d6753ed4ae460ddb46a561bc7fdf23ba2385330"
+    },
+    {
+      "id": "src-A10-claim",
+      "case_id": "a15bdfcf-7336-5351-ad38-a228f0a2b5fd",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A10-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "f8c0009f5711dceab61fd5115b0efdbe5f69168eae742948722e2cab8d430b2d"
+    },
+    {
+      "id": "src-A11-event",
+      "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A11-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "c3d27b0162a269a1cb774e1c2847abf0f2e9cc8c177b5003020b071adf28e2ff"
+    },
+    {
+      "id": "src-A11-claim",
+      "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A11-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "c0d7e61f59955d3040915d17473e3bd60d3ac557a55173c56a21f78edf6c12b4"
+    },
+    {
+      "id": "src-A12-event",
+      "case_id": "7194c932-af29-513f-91aa-6223db22bfbc",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A12-event",
+        "origin": "BLOCKCHAIN_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "a0eef1dee5f686388a4fed8d580f77872b30e6ba0e0f8c50bc693b173fb249d8"
+    },
+    {
+      "id": "src-A12-claim",
+      "case_id": "7194c932-af29-513f-91aa-6223db22bfbc",
+      "is_simulated": true,
+      "payload": {
+        "tag": "A12-claim",
+        "origin": "TESTIMONY_FAKE",
+        "simulated": true
+      },
+      "raw_sha256": "38de00217f2a820beca4e199063d5745d68c760e0a6ef1207c980ae950e6d7ad"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-A01",
+      "case_id": "e19f866e-80e3-5f61-80c0-94138702c9b3",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A01",
+      "fee": "0",
+      "source_ids": [
+        "src-A01-event"
+      ]
+    },
+    {
+      "id": "evt-A02",
+      "case_id": "3a3598e4-664d-5220-b19e-5f15b14c7a7f",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": null,
+      "external_id": null,
+      "fee": "0.1",
+      "source_ids": [
+        "src-A02-event"
+      ]
+    },
+    {
+      "id": "evt-A03",
+      "case_id": "0702fb57-2ec0-525d-bcd7-b8f9a5f7d2c6",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": null,
+      "external_id": null,
+      "fee": "0",
+      "source_ids": [
+        "src-A03-event"
+      ]
+    },
+    {
+      "id": "evt-A04",
+      "case_id": "fb3c5afc-f562-5aa7-9dcc-fdf05862a442",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A04",
+      "fee": "0",
+      "source_ids": [
+        "src-A04-event"
+      ]
+    },
+    {
+      "id": "evt-A05-chain",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "platform_deposit_address",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A05",
+      "fee": "0",
+      "source_ids": [
+        "src-A05-chain-event"
+      ]
+    },
+    {
+      "id": "evt-A05-deposit",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "event_type": "EXCHANGE_DEPOSIT",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:03Z",
+      "from_account": "platform_deposit_address",
+      "to_account": "platform_internal_uid",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A05",
+      "fee": "0",
+      "source_ids": [
+        "src-A05-deposit-event"
+      ]
+    },
+    {
+      "id": "evt-A06",
+      "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": null,
+      "external_id": null,
+      "fee": "0",
+      "source_ids": [
+        "src-A06-chain",
+        "src-A06-secondary"
+      ]
+    },
+    {
+      "id": "evt-A07",
+      "case_id": "080c6d3b-7dba-5f64-9c30-bd6a53373a9c",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A07",
+      "fee": "0",
+      "source_ids": [
+        "src-A07-event"
+      ]
+    },
+    {
+      "id": "evt-A08",
+      "case_id": "dc5b9479-b6f5-546c-b661-c0f3c7292554",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": null,
+      "external_id": null,
+      "fee": "0",
+      "source_ids": [
+        "src-A08-event"
+      ]
+    },
+    {
+      "id": "evt-A09",
+      "case_id": "91bea533-9c22-5f33-adb2-6791aca74399",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A09",
+      "fee": "0",
+      "source_ids": [
+        "src-A09-event"
+      ]
+    },
+    {
+      "id": "evt-A10",
+      "case_id": "a15bdfcf-7336-5351-ad38-a228f0a2b5fd",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A10",
+      "fee": "0",
+      "source_ids": [
+        "src-A10-event"
+      ]
+    },
+    {
+      "id": "evt-A11",
+      "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": null,
+      "external_id": null,
+      "fee": "0",
+      "source_ids": [
+        "src-A11-event"
+      ]
+    },
+    {
+      "id": "evt-A12",
+      "case_id": "7194c932-af29-513f-91aa-6223db22bfbc",
+      "event_type": "ONCHAIN_TRANSFER",
+      "network_id": "TRON",
+      "asset_id": "TRON:USDT",
+      "amount": "100",
+      "event_time": "2026-10-01T12:00:00Z",
+      "from_account": "wallet_A",
+      "to_account": "wallet_B",
+      "external_id_type": null,
+      "external_id": null,
+      "fee": "0",
+      "source_ids": [
+        "src-A12-event"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-A01",
+      "case_id": "e19f866e-80e3-5f61-80c0-94138702c9b3",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A01",
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A01-claim"
+      ]
+    },
+    {
+      "id": "claim-A02",
+      "case_id": "3a3598e4-664d-5220-b19e-5f15b14c7a7f",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "99.9",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": null,
+      "external_id": null,
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A02-claim"
+      ]
+    },
+    {
+      "id": "claim-A03",
+      "case_id": "0702fb57-2ec0-525d-bcd7-b8f9a5f7d2c6",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T13:00:00Z",
+      "time_to": "2026-10-01T13:00:00Z",
+      "external_id_type": null,
+      "external_id": null,
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A03-claim"
+      ]
+    },
+    {
+      "id": "claim-A04",
+      "case_id": "fb3c5afc-f562-5aa7-9dcc-fdf05862a442",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "ETH:USDT",
+      "network_id": "ETHEREUM",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A04",
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A04-claim"
+      ]
+    },
+    {
+      "id": "claim-A05",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "platform_deposit_address",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A05",
+      "expected_event_type": "ONCHAIN_TRANSFER",
+      "source_ids": [
+        "src-A05-claim"
+      ]
+    },
+    {
+      "id": "claim-A06",
+      "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": null,
+      "external_id": null,
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A06-claim"
+      ]
+    },
+    {
+      "id": "claim-A07",
+      "case_id": "080c6d3b-7dba-5f64-9c30-bd6a53373a9c",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A07",
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A07-claim"
+      ]
+    },
+    {
+      "id": "claim-A08",
+      "case_id": "dc5b9479-b6f5-546c-b661-c0f3c7292554",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": null,
+      "object_type": "ACCOUNT",
+      "object_id": null,
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": null,
+      "time_to": null,
+      "external_id_type": null,
+      "external_id": null,
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A08-claim"
+      ]
+    },
+    {
+      "id": "claim-A09",
+      "case_id": "91bea533-9c22-5f33-adb2-6791aca74399",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_B",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_A",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A09",
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A09-claim"
+      ]
+    },
+    {
+      "id": "claim-A10",
+      "case_id": "a15bdfcf-7336-5351-ad38-a228f0a2b5fd",
+      "predicate": "PAID_TO",
+      "subject_type": "ACCOUNT",
+      "subject_id": "wallet_A",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": "TX_HASH",
+      "external_id": "FAKE-TX-A10",
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A10-claim"
+      ]
+    },
+    {
+      "id": "claim-A11",
+      "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+      "predicate": "PAID_TO",
+      "subject_type": "PERSON",
+      "subject_id": "person_X",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": null,
+      "external_id": null,
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A11-claim"
+      ]
+    },
+    {
+      "id": "claim-A12",
+      "case_id": "7194c932-af29-513f-91aa-6223db22bfbc",
+      "predicate": "PAID_TO",
+      "subject_type": "PERSON",
+      "subject_id": "person_unverified",
+      "object_type": "ACCOUNT",
+      "object_id": "wallet_B",
+      "asset_id": "TRON:USDT",
+      "network_id": "TRON",
+      "amount": "100",
+      "time_from": "2026-10-01T12:00:00Z",
+      "time_to": "2026-10-01T12:00:00Z",
+      "external_id_type": null,
+      "external_id": null,
+      "expected_event_type": null,
+      "source_ids": [
+        "src-A12-claim"
+      ]
+    }
+  ],
+  "verified_person_accounts": [
+    {
+      "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+      "person_id": "person_X",
+      "account_id": "wallet_A",
+      "reviewed": true,
+      "supporting_evidence_id": "synthetic-evidence-A11",
+      "disputed": false
+    }
+  ]
+}

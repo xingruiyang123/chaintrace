@@ -1,0 +1,48 @@
+# Secrets and local settings
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+*.keystore
+secrets.*
+credentials.*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.coverage
+htmlcov/
+
+# Node / Electron / generated builds
+node_modules/
+**/dist/
+**/build/
+**/out/
+**/release/
+**/bridge_dist/
+*.asar
+*.exe
+
+# Generated experiment/export artifacts
+**/outputs/
+**/验收导出/
+**/桥接程序实测导出_模拟数据/
+**/证据/
+*.log
+*.tmp
+
+# Local editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+nul

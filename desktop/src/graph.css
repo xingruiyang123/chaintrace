@@ -1,0 +1,27 @@
+.gc-root{width:100%;height:100%;min-height:320px;position:relative;background:#f8fafc;overflow:hidden;isolation:isolate}
+.gc-flow{width:100%;height:100%}
+.gc-root .react-flow{--xy-background-color:#f8fafc;--xy-node-border:none;--xy-node-boxshadow-hover:none;--xy-node-boxshadow-selected:none}
+.gc-object{position:relative;height:100%;width:100%;background:#fff;border:1px solid #d3dde8;border-radius:12px;padding:17px 18px 15px;color:#19324f;box-shadow:0 3px 9px #243b5309,0 1px 2px #243b5308;transition:border-color 160ms,box-shadow 160ms,opacity 160ms;outline:none;cursor:grab}
+.gc-object:active{cursor:grabbing}.gc-object:focus-visible{outline:3px solid #6e91bc;outline-offset:4px}
+.gc-claim{border-radius:24px;background:#f3f7fd;border-color:#bbcce1;padding:15px 20px}
+.gc-object:hover{border-color:#9bafd1;box-shadow:0 5px 16px #243b5315,0 1px 3px #243b5310}
+.gc-object.is-focused{border-color:#596ab0;box-shadow:0 0 0 3px #596ab01f,0 5px 18px #243b5310}
+.gc-object.is-dimmed{opacity:.84}.gc-object.is-dimmed:hover{opacity:1}
+.gc-node-heading{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#586d85;line-height:20px}
+.gc-node-icon{display:grid;place-items:center;width:23px;height:23px;flex:none;color:var(--object-accent)}
+.gc-node-id{font-family:'Segoe UI','Microsoft YaHei',sans-serif;font-size:18px;font-weight:650;line-height:23px;letter-spacing:-.2px;margin:9px 0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gc-node-meta{display:flex;align-items:center;gap:6px;font-size:13px;line-height:18px;color:#5d7188;font-weight:500}
+.gc-mini-dot{width:5px;height:5px;flex:none;border-radius:50%;background:currentColor}
+.gc-root .react-flow__handle{width:8px;height:8px;border:2px solid #fff;background:var(--object-accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--object-accent) 50%,white)}
+.gc-edge-label{position:absolute;pointer-events:all;border:1px solid #dde5ec;border-radius:6px;padding:5px 9px;background:#fff;color:#546b85;font-family:inherit;font-size:13px;font-weight:500;line-height:17px;cursor:pointer;white-space:nowrap;box-shadow:0 1px 4px #243b5306;transition:opacity 160ms,border-color 160ms,box-shadow 160ms}
+.gc-edge-label.exact{color:#238a78}.gc-edge-label.strong{color:#5576b8}.gc-edge-label.review{color:#a87325}.gc-edge-label.conflict{color:#b7534e}.gc-edge-label.missing{color:#708194}
+.gc-edge-label.is-active{border-color:#596ab0;box-shadow:0 0 0 2px #596ab015}.gc-edge-label.is-dimmed{opacity:.8}.gc-edge-label:hover{opacity:1;background:#fcfdff;border-color:currentColor;box-shadow:0 3px 10px #243b531a}.gc-edge-label:focus-visible{outline:3px solid #87a5cc;outline-offset:3px}
+.gc-root .react-flow__edge{cursor:pointer}.gc-root .react-flow__edge:hover .react-flow__edge-path{stroke-width:3;opacity:1!important}
+.gc-controls{display:flex;align-items:center;gap:2px;background:#fff;border:1px solid #dce4ed;border-radius:8px;box-shadow:0 3px 12px #293b4c0c;padding:4px;margin:18px!important;pointer-events:all}
+.gc-controls button{width:30px;height:30px;display:grid;place-items:center;background:transparent;border:0;border-radius:5px;color:#52667c;cursor:pointer;transition:background 160ms,transform 100ms}
+.gc-controls button:hover{background:#edf2f8;color:#24486f}.gc-controls button:active{transform:scale(.94)}.gc-controls button:focus-visible{outline:2px solid #7e9bbc;outline-offset:1px}
+.gc-controls span{width:42px;text-align:center;font-size:12px;font-variant-numeric:tabular-nums;color:#6c7c8e}.gc-controls i{height:17px;width:1px;background:#e5eaf0;margin:0 2px}
+.gc-gesture{display:flex;align-items:center;gap:6px;font-size:12px;color:#6a7d94;margin:24px 20px!important;padding-right:4px;background:#f8fafce8}
+.gc-root .react-flow__attribution{font-size:9px;background:transparent;opacity:.6;bottom:4px;right:6px}
+.gc-empty{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#8796a8;gap:10px;background:#f8fafc;padding:30px;text-align:center}.gc-empty strong{font-size:15px;font-weight:600;color:#5a6e86}.gc-empty span{font-size:13px;line-height:1.7}
+@media(prefers-reduced-motion:reduce){.gc-object,.gc-edge-label,.gc-controls button{transition:none}}
