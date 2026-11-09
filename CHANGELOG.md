@@ -5,7 +5,7 @@
 ## Unreleased
 
 - 初始化单体仓库候选，纳入算法、Electron/React 桌面端、Python 桥接、合成 fixture、SQL Schema、测试和技术文档。
-- 添加 Python、Node UI 与 Vite 构建的 GitHub Actions 工作流；首次远程运行结果待确认。
+- 添加 Python、Node UI 与 Vite 构建的 GitHub Actions 工作流；私有仓库已建立并推送。首次运行失败：Python 测试收集找不到冻结算法模块，Node UI 测试引用未纳入仓库的本地生成结果，导致 UI 构建被跳过。
 - 添加 PR 模板、协作规则、`.gitignore` 和项目状态/技术决策记录。
 - 未修改算法语义；本仓库快照未在迁移阶段重跑全部测试或 Windows 打包。
 
