@@ -1,0 +1,676 @@
+{
+  "name": "混币—法币出口识别 虚拟样例",
+  "schema_version": "mixer_offramp/v1",
+  "is_simulated": true,
+  "notice": "虚构模拟数据；不含任何真实地址、实体或案件信息。",
+  "cases": [
+    {
+      "case_id": "SIM-MIX-01",
+      "title": "虚拟链路一：涉案资金经混币服务等额拆分后由交易所出金",
+      "network": "BTC",
+      "asset": "BTC",
+      "window": {
+        "from": "2026-08-01T00:00:00Z",
+        "to": "2026-08-20T00:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "addr-src-01",
+          "label": "涉案起始地址（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_SOURCE"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "资金归集后准备转移"
+        },
+        {
+          "id": "addr-split-01",
+          "label": "拆分地址 1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_SPLIT"
+          ],
+          "first_seen": "2026-08-04T09:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-split-02",
+          "label": "拆分地址 2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_SPLIT"
+          ],
+          "first_seen": "2026-08-04T09:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-split-03",
+          "label": "拆分地址 3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_SPLIT"
+          ],
+          "first_seen": "2026-08-04T09:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-cj-a",
+          "label": "虚拟 CoinJoin 池 A",
+          "type": "mixer",
+          "entity": "SIM_COINJOIN_A",
+          "risk": "high",
+          "tags": [
+            "SIM_MIXER"
+          ],
+          "first_seen": "2026-08-02T00:00:00Z",
+          "note": "等额输出、批处理、地址一次性"
+        },
+        {
+          "id": "pool-cj-x",
+          "label": "虚拟 CoinJoin 池 X（干扰）",
+          "type": "mixer",
+          "entity": "SIM_COINJOIN_X",
+          "risk": "medium",
+          "tags": [
+            "SIM_NOISE"
+          ],
+          "first_seen": "2026-08-02T00:00:00Z",
+          "note": "外部用户流量，仅 2 笔入金"
+        },
+        {
+          "id": "addr-mid-01",
+          "label": "混币后中转 1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_POSTMIX"
+          ],
+          "first_seen": "2026-08-07T03:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-mid-02",
+          "label": "混币后中转 2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_POSTMIX"
+          ],
+          "first_seen": "2026-08-07T03:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-mid-03",
+          "label": "混币后中转 3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_POSTMIX"
+          ],
+          "first_seen": "2026-08-07T03:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-change-01",
+          "label": "找零地址（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_CHANGE"
+          ],
+          "first_seen": "2026-08-07T03:00:00Z",
+          "note": "混币池找零输出"
+        },
+        {
+          "id": "ex-a-sim",
+          "label": "虚拟交易所 A",
+          "type": "exchange",
+          "entity": "SIM_EX_A",
+          "risk": "medium",
+          "tags": [
+            "SIM_OFFRAMP"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "合规交易所，具执法协作通道"
+        },
+        {
+          "id": "otc-b-sim",
+          "label": "虚拟承兑商 B",
+          "type": "otc",
+          "entity": "SIM_OTC_B",
+          "risk": "high",
+          "tags": [
+            "SIM_OFFRAMP"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "未持牌场外承兑"
+        },
+        {
+          "id": "pg-c-sim",
+          "label": "虚拟支付网关 C",
+          "type": "payment_gateway",
+          "entity": "SIM_PG_C",
+          "risk": "medium",
+          "tags": [
+            "SIM_OFFRAMP"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "跨境收单结算"
+        },
+        {
+          "id": "addr-noise-01",
+          "label": "外部用户地址 1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_NOISE"
+          ],
+          "first_seen": "2026-08-02T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-noise-02",
+          "label": "外部用户地址 2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_NOISE"
+          ],
+          "first_seen": "2026-08-02T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "tx-0001",
+          "from": "addr-src-01",
+          "to": "addr-split-01",
+          "amount": "4.00000000",
+          "time": "2026-08-04T09:15:00Z",
+          "txid": "SIMTX00000001",
+          "pattern": "split",
+          "fee": "0.00011000"
+        },
+        {
+          "id": "tx-0002",
+          "from": "addr-src-01",
+          "to": "addr-split-02",
+          "amount": "4.00000000",
+          "time": "2026-08-04T09:17:00Z",
+          "txid": "SIMTX00000002",
+          "pattern": "split",
+          "fee": "0.00011000"
+        },
+        {
+          "id": "tx-0003",
+          "from": "addr-src-01",
+          "to": "addr-split-03",
+          "amount": "4.00000000",
+          "time": "2026-08-04T09:19:00Z",
+          "txid": "SIMTX00000003",
+          "pattern": "split",
+          "fee": "0.00011000"
+        },
+        {
+          "id": "tx-0011",
+          "from": "addr-split-01",
+          "to": "pool-cj-a",
+          "amount": "3.99000000",
+          "time": "2026-08-05T02:05:00Z",
+          "txid": "SIMTX00000011",
+          "pattern": "mixer_in",
+          "fee": "0.00021000"
+        },
+        {
+          "id": "tx-0012",
+          "from": "addr-split-02",
+          "to": "pool-cj-a",
+          "amount": "3.99000000",
+          "time": "2026-08-05T02:07:00Z",
+          "txid": "SIMTX00000012",
+          "pattern": "mixer_in",
+          "fee": "0.00021000"
+        },
+        {
+          "id": "tx-0013",
+          "from": "addr-split-03",
+          "to": "pool-cj-a",
+          "amount": "3.99000000",
+          "time": "2026-08-05T02:09:00Z",
+          "txid": "SIMTX00000013",
+          "pattern": "mixer_in",
+          "fee": "0.00021000"
+        },
+        {
+          "id": "tx-0021",
+          "from": "addr-noise-01",
+          "to": "pool-cj-x",
+          "amount": "3.20000000",
+          "time": "2026-08-05T06:00:00Z",
+          "txid": "SIMTX00000021",
+          "pattern": "mixer_in",
+          "fee": "0.00018000"
+        },
+        {
+          "id": "tx-0022",
+          "from": "addr-noise-02",
+          "to": "pool-cj-x",
+          "amount": "4.10000000",
+          "time": "2026-08-05T06:04:00Z",
+          "txid": "SIMTX00000022",
+          "pattern": "mixer_in",
+          "fee": "0.00019000"
+        },
+        {
+          "id": "tx-0041",
+          "from": "pool-cj-a",
+          "to": "addr-mid-01",
+          "amount": "3.98000000",
+          "time": "2026-08-07T03:12:00Z",
+          "txid": "SIMTX00000041",
+          "pattern": "mixer_out",
+          "fee": "0.00030000"
+        },
+        {
+          "id": "tx-0042",
+          "from": "pool-cj-a",
+          "to": "addr-mid-02",
+          "amount": "3.98000000",
+          "time": "2026-08-07T03:14:00Z",
+          "txid": "SIMTX00000042",
+          "pattern": "mixer_out",
+          "fee": "0.00030000"
+        },
+        {
+          "id": "tx-0043",
+          "from": "pool-cj-a",
+          "to": "addr-mid-03",
+          "amount": "3.98000000",
+          "time": "2026-08-07T03:16:00Z",
+          "txid": "SIMTX00000043",
+          "pattern": "mixer_out",
+          "fee": "0.00030000"
+        },
+        {
+          "id": "tx-0044",
+          "from": "pool-cj-a",
+          "to": "addr-noise-01",
+          "amount": "3.98000000",
+          "time": "2026-08-07T03:18:00Z",
+          "txid": "SIMTX00000044",
+          "pattern": "mixer_out",
+          "fee": "0.00030000"
+        },
+        {
+          "id": "tx-0045",
+          "from": "pool-cj-a",
+          "to": "addr-change-01",
+          "amount": "0.03000000",
+          "time": "2026-08-07T03:20:00Z",
+          "txid": "SIMTX00000045",
+          "pattern": "mixer_out",
+          "fee": "0.00002000"
+        },
+        {
+          "id": "tx-0046",
+          "from": "pool-cj-x",
+          "to": "addr-noise-02",
+          "amount": "3.18000000",
+          "time": "2026-08-08T03:10:00Z",
+          "txid": "SIMTX00000046",
+          "pattern": "mixer_out",
+          "fee": "0.00025000"
+        },
+        {
+          "id": "tx-0051",
+          "from": "addr-mid-01",
+          "to": "ex-a-sim",
+          "amount": "3.96000000",
+          "time": "2026-08-09T10:00:00Z",
+          "txid": "SIMTX00000051",
+          "pattern": "to_fiat",
+          "fee": "0.00040000"
+        },
+        {
+          "id": "tx-0052",
+          "from": "addr-mid-02",
+          "to": "ex-a-sim",
+          "amount": "3.96000000",
+          "time": "2026-08-09T10:06:00Z",
+          "txid": "SIMTX00000052",
+          "pattern": "to_fiat",
+          "fee": "0.00040000"
+        },
+        {
+          "id": "tx-0053",
+          "from": "addr-mid-03",
+          "to": "pg-c-sim",
+          "amount": "3.00000000",
+          "time": "2026-08-09T22:00:00Z",
+          "txid": "SIMTX00000053",
+          "pattern": "to_fiat",
+          "fee": "0.00030000"
+        },
+        {
+          "id": "tx-0054",
+          "from": "addr-mid-03",
+          "to": "otc-b-sim",
+          "amount": "0.90000000",
+          "time": "2026-08-10T20:00:00Z",
+          "txid": "SIMTX00000054",
+          "pattern": "to_fiat",
+          "fee": "0.00012000"
+        },
+        {
+          "id": "tx-0055",
+          "from": "addr-noise-02",
+          "to": "pg-c-sim",
+          "amount": "2.00000000",
+          "time": "2026-08-12T09:00:00Z",
+          "txid": "SIMTX00000055",
+          "pattern": "to_fiat",
+          "fee": "0.00020000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性；不代表真实案件。",
+        "links": [
+          {
+            "deposit_edge": "tx-0011",
+            "withdrawal_edge": "tx-0041"
+          },
+          {
+            "deposit_edge": "tx-0012",
+            "withdrawal_edge": "tx-0042"
+          },
+          {
+            "deposit_edge": "tx-0013",
+            "withdrawal_edge": "tx-0043"
+          }
+        ],
+        "offramp_nodes": [
+          "ex-a-sim",
+          "otc-b-sim",
+          "pg-c-sim"
+        ],
+        "noise_edges": [
+          "tx-0021",
+          "tx-0022",
+          "tx-0044",
+          "tx-0046",
+          "tx-0055"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-MIX-02",
+      "title": "虚拟链路二：稳定币固定面额存提后经承兑商对敲落地",
+      "network": "TRON",
+      "asset": "TRON:USDT",
+      "window": {
+        "from": "2026-08-01T00:00:00Z",
+        "to": "2026-08-17T00:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "addr-src-11",
+          "label": "涉案归集地址（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_SOURCE"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "电诈资金归集"
+        },
+        {
+          "id": "pool-tb",
+          "label": "虚拟固定面额混币池 B",
+          "type": "mixer",
+          "entity": "SIM_TORNADO_B",
+          "risk": "high",
+          "tags": [
+            "SIM_MIXER"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "固定面额 100000 存提、延迟提现"
+        },
+        {
+          "id": "addr-mid-11",
+          "label": "混币后中转 11（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_POSTMIX"
+          ],
+          "first_seen": "2026-08-06T21:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-mid-12",
+          "label": "混币后中转 12（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_POSTMIX"
+          ],
+          "first_seen": "2026-08-06T21:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "addr-mid-13",
+          "label": "混币后中转 13（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_POSTMIX"
+          ],
+          "first_seen": "2026-08-06T21:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "otc-b2-sim",
+          "label": "虚拟承兑商 B2",
+          "type": "otc",
+          "entity": "SIM_OTC_B2",
+          "risk": "high",
+          "tags": [
+            "SIM_OFFRAMP"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "微信群承兑，无固定 KYC"
+        },
+        {
+          "id": "ub-1-sim",
+          "label": "虚拟地下钱庄 D",
+          "type": "underground_bank",
+          "entity": "SIM_UB_D",
+          "risk": "high",
+          "tags": [
+            "SIM_OFFRAMP"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": "对敲结算"
+        },
+        {
+          "id": "addr-noise-11",
+          "label": "外部用户地址 11（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_NOISE"
+          ],
+          "first_seen": "2026-08-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "tx-1001",
+          "from": "addr-src-11",
+          "to": "pool-tb",
+          "amount": "100000.00000000",
+          "time": "2026-08-03T03:00:00Z",
+          "txid": "SIMTX00001001",
+          "pattern": "mixer_in",
+          "fee": "3.00000000"
+        },
+        {
+          "id": "tx-1002",
+          "from": "addr-src-11",
+          "to": "pool-tb",
+          "amount": "100000.00000000",
+          "time": "2026-08-03T03:04:00Z",
+          "txid": "SIMTX00001002",
+          "pattern": "mixer_in",
+          "fee": "3.00000000"
+        },
+        {
+          "id": "tx-1003",
+          "from": "addr-src-11",
+          "to": "pool-tb",
+          "amount": "100000.00000000",
+          "time": "2026-08-03T03:09:00Z",
+          "txid": "SIMTX00001003",
+          "pattern": "mixer_in",
+          "fee": "3.00000000"
+        },
+        {
+          "id": "tx-1011",
+          "from": "addr-noise-11",
+          "to": "pool-tb",
+          "amount": "100000.00000000",
+          "time": "2026-08-03T05:00:00Z",
+          "txid": "SIMTX00001011",
+          "pattern": "mixer_in",
+          "fee": "3.00000000"
+        },
+        {
+          "id": "tx-1021",
+          "from": "pool-tb",
+          "to": "addr-mid-11",
+          "amount": "99980.00000000",
+          "time": "2026-08-06T21:00:00Z",
+          "txid": "SIMTX00001021",
+          "pattern": "mixer_out",
+          "fee": "1.50000000"
+        },
+        {
+          "id": "tx-1022",
+          "from": "pool-tb",
+          "to": "addr-mid-12",
+          "amount": "99980.00000000",
+          "time": "2026-08-06T21:06:00Z",
+          "txid": "SIMTX00001022",
+          "pattern": "mixer_out",
+          "fee": "1.50000000"
+        },
+        {
+          "id": "tx-1023",
+          "from": "pool-tb",
+          "to": "addr-mid-13",
+          "amount": "99980.00000000",
+          "time": "2026-08-06T21:12:00Z",
+          "txid": "SIMTX00001023",
+          "pattern": "mixer_out",
+          "fee": "1.50000000"
+        },
+        {
+          "id": "tx-1024",
+          "from": "pool-tb",
+          "to": "addr-noise-11",
+          "amount": "99980.00000000",
+          "time": "2026-08-06T21:18:00Z",
+          "txid": "SIMTX00001024",
+          "pattern": "mixer_out",
+          "fee": "1.50000000"
+        },
+        {
+          "id": "tx-1031",
+          "from": "addr-mid-11",
+          "to": "otc-b2-sim",
+          "amount": "99900.00000000",
+          "time": "2026-08-08T11:00:00Z",
+          "txid": "SIMTX00001031",
+          "pattern": "to_fiat",
+          "fee": "1.00000000"
+        },
+        {
+          "id": "tx-1032",
+          "from": "addr-mid-12",
+          "to": "otc-b2-sim",
+          "amount": "99850.00000000",
+          "time": "2026-08-08T11:08:00Z",
+          "txid": "SIMTX00001032",
+          "pattern": "to_fiat",
+          "fee": "1.00000000"
+        },
+        {
+          "id": "tx-1033",
+          "from": "addr-mid-13",
+          "to": "otc-b2-sim",
+          "amount": "99800.00000000",
+          "time": "2026-08-08T12:00:00Z",
+          "txid": "SIMTX00001033",
+          "pattern": "to_fiat",
+          "fee": "1.00000000"
+        },
+        {
+          "id": "tx-1041",
+          "from": "otc-b2-sim",
+          "to": "ub-1-sim",
+          "amount": "299000.00000000",
+          "time": "2026-08-09T14:00:00Z",
+          "txid": "SIMTX00001041",
+          "pattern": "to_fiat",
+          "fee": "2.00000000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性；不代表真实案件。",
+        "links": [
+          {
+            "deposit_edge": "tx-1001",
+            "withdrawal_edge": "tx-1021"
+          },
+          {
+            "deposit_edge": "tx-1002",
+            "withdrawal_edge": "tx-1022"
+          },
+          {
+            "deposit_edge": "tx-1003",
+            "withdrawal_edge": "tx-1023"
+          }
+        ],
+        "offramp_nodes": [
+          "otc-b2-sim",
+          "ub-1-sim"
+        ],
+        "noise_edges": [
+          "tx-1011",
+          "tx-1024"
+        ]
+      }
+    }
+  ]
+}

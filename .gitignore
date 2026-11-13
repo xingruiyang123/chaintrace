@@ -37,6 +37,11 @@ node_modules/
 **/桥接程序实测导出_模拟数据/
 **/证据/
 *.log
+
+# 例外：混币模块的基准结果是可复核证据，随源码入库（2026-11-13）
+!desktop/algo2/outputs/
+!desktop/algo2/outputs/benchmark.json
+
 *.tmp
 
 # Local editor / OS files

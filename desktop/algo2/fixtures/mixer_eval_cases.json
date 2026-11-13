@@ -1,0 +1,5656 @@
+{
+  "name": "混币—法币出口识别 合成评估集",
+  "schema_version": "mixer_offramp/v1",
+  "is_simulated": true,
+  "notice": "全部为程序生成的虚构数据；不含任何真实地址、实体或案件信息。",
+  "generator": "algo2/generate_fixture.py",
+  "ground_truth_note": "ground_truth 由构造过程直接写出，仅用于评估归因一致性，不参与任何打分。",
+  "cases": [
+    {
+      "case_id": "SIM-EVAL-01",
+      "title": "虚拟评估一：CoinJoin 池等额输出，存在等额外部用户出金",
+      "network": "BTC",
+      "asset": "BTC",
+      "window": {
+        "from": "2026-08-31T01:00:00Z",
+        "to": "2026-09-05T09:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-1",
+          "label": "涉案归集地址 1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "归集后准备转移"
+        },
+        {
+          "id": "split-1",
+          "label": "拆分地址 1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_SPLIT"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-1",
+          "label": "虚拟 CoinJoin 池 E1",
+          "type": "mixer",
+          "entity": "SIM_POOL_1",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_MIXER"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "多输入聚合、等额输出、批处理"
+        },
+        {
+          "id": "exchange-1",
+          "label": "虚拟交易所 1",
+          "type": "exchange",
+          "entity": "SIM_EXCHANGE_1",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "合规交易所，具执法协作通道"
+        },
+        {
+          "id": "otc-1",
+          "label": "虚拟承兑商 1",
+          "type": "otc",
+          "entity": "SIM_OTC_1",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "未持牌场外承兑"
+        },
+        {
+          "id": "postmix-1-1",
+          "label": "混币后中转 1-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-1-1",
+          "label": "落地中转 1-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-1-1",
+          "label": "零散地址 1-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "divert-1",
+          "label": "分流中转 1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-1-2",
+          "label": "混币后中转 1-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-1-2",
+          "label": "落地中转 1-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-1-2",
+          "label": "零散地址 1-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-1-3",
+          "label": "混币后中转 1-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-1-3",
+          "label": "落地中转 1-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-1-3",
+          "label": "零散地址 1-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-1-4",
+          "label": "混币后中转 1-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-1-4",
+          "label": "落地中转 1-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-1-4",
+          "label": "零散地址 1-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-1-5",
+          "label": "混币后中转 1-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-1-5",
+          "label": "落地中转 1-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-1-5",
+          "label": "零散地址 1-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "deadend-1-1",
+          "label": "外部用户地址 1-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "deadend-1-2",
+          "label": "外部用户地址 1-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "change-1",
+          "label": "找零地址 1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_01_CHANGE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-1-1",
+          "label": "外部用户地址 1-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-1-2",
+          "label": "外部用户地址 1-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-1-1",
+          "label": "无关兑现用户 1-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-1-2",
+          "label": "无关兑现用户 1-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-1-3",
+          "label": "无关兑现用户 1-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-1-4",
+          "label": "无关兑现用户 1-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-1-5",
+          "label": "无关兑现用户 1-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-1-6",
+          "label": "无关兑现用户 1-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_01_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-01-tx-001",
+          "from": "src-1",
+          "to": "split-1",
+          "amount": "500.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T01:00:00Z",
+          "txid": "SIM01000001",
+          "pattern": "split",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-002",
+          "from": "split-1",
+          "to": "pool-1",
+          "amount": "5.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T10:00:00Z",
+          "txid": "SIM01000002",
+          "pattern": "mixer_in",
+          "fee": "0.00020000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-003",
+          "from": "pool-1",
+          "to": "postmix-1-1",
+          "amount": "4.97500000",
+          "asset": "BTC",
+          "time": "2026-09-03T08:00:00Z",
+          "txid": "SIM01000003",
+          "pattern": "mixer_out",
+          "fee": "0.00024875"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-004",
+          "from": "postmix-1-1",
+          "to": "mid-1-1",
+          "amount": "4.97500000",
+          "asset": "BTC",
+          "time": "2026-09-03T10:00:00Z",
+          "txid": "SIM01000004",
+          "pattern": "normal",
+          "fee": "0.00014925"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-005",
+          "from": "mid-1-1",
+          "to": "otc-1",
+          "amount": "4.97002500",
+          "asset": "BTC",
+          "time": "2026-09-03T16:00:00Z",
+          "txid": "SIM01000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-006",
+          "from": "postmix-1-1",
+          "to": "spare-1-1",
+          "amount": "0.01990000",
+          "asset": "BTC",
+          "time": "2026-09-03T09:00:00Z",
+          "txid": "SIM01000006",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-007",
+          "from": "postmix-1-1",
+          "to": "divert-1",
+          "amount": "0.09950000",
+          "asset": "BTC",
+          "time": "2026-09-03T12:00:00Z",
+          "txid": "SIM01000007",
+          "pattern": "normal",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-008",
+          "from": "divert-1",
+          "to": "otc-1",
+          "amount": "0.09950000",
+          "asset": "BTC",
+          "time": "2026-09-03T19:00:00Z",
+          "txid": "SIM01000008",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-009",
+          "from": "split-1",
+          "to": "pool-1",
+          "amount": "8.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T12:00:00Z",
+          "txid": "SIM01000009",
+          "pattern": "mixer_in",
+          "fee": "0.00032000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-010",
+          "from": "pool-1",
+          "to": "postmix-1-2",
+          "amount": "7.96000000",
+          "asset": "BTC",
+          "time": "2026-09-03T16:00:00Z",
+          "txid": "SIM01000010",
+          "pattern": "mixer_out",
+          "fee": "0.00039800"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-011",
+          "from": "postmix-1-2",
+          "to": "mid-1-2",
+          "amount": "7.96000000",
+          "asset": "BTC",
+          "time": "2026-09-03T18:00:00Z",
+          "txid": "SIM01000011",
+          "pattern": "normal",
+          "fee": "0.00023880"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-012",
+          "from": "mid-1-2",
+          "to": "exchange-1",
+          "amount": "7.95204000",
+          "asset": "BTC",
+          "time": "2026-09-04T00:00:00Z",
+          "txid": "SIM01000012",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-013",
+          "from": "postmix-1-2",
+          "to": "spare-1-2",
+          "amount": "0.03184000",
+          "asset": "BTC",
+          "time": "2026-09-03T17:00:00Z",
+          "txid": "SIM01000013",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-014",
+          "from": "split-1",
+          "to": "pool-1",
+          "amount": "12.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T14:00:00Z",
+          "txid": "SIM01000014",
+          "pattern": "mixer_in",
+          "fee": "0.00048000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-015",
+          "from": "pool-1",
+          "to": "postmix-1-3",
+          "amount": "11.94000000",
+          "asset": "BTC",
+          "time": "2026-09-03T10:00:00Z",
+          "txid": "SIM01000015",
+          "pattern": "mixer_out",
+          "fee": "0.00059700"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-016",
+          "from": "postmix-1-3",
+          "to": "mid-1-3",
+          "amount": "11.94000000",
+          "asset": "BTC",
+          "time": "2026-09-03T12:00:00Z",
+          "txid": "SIM01000016",
+          "pattern": "normal",
+          "fee": "0.00035820"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-017",
+          "from": "mid-1-3",
+          "to": "otc-1",
+          "amount": "11.92806000",
+          "asset": "BTC",
+          "time": "2026-09-03T18:00:00Z",
+          "txid": "SIM01000017",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-018",
+          "from": "postmix-1-3",
+          "to": "spare-1-3",
+          "amount": "0.04776000",
+          "asset": "BTC",
+          "time": "2026-09-03T11:00:00Z",
+          "txid": "SIM01000018",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-019",
+          "from": "split-1",
+          "to": "pool-1",
+          "amount": "6.50000000",
+          "asset": "BTC",
+          "time": "2026-09-01T16:00:00Z",
+          "txid": "SIM01000019",
+          "pattern": "mixer_in",
+          "fee": "0.00026000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-020",
+          "from": "pool-1",
+          "to": "postmix-1-4",
+          "amount": "6.46750000",
+          "asset": "BTC",
+          "time": "2026-09-03T17:00:00Z",
+          "txid": "SIM01000020",
+          "pattern": "mixer_out",
+          "fee": "0.00032338"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-021",
+          "from": "postmix-1-4",
+          "to": "mid-1-4",
+          "amount": "6.46750000",
+          "asset": "BTC",
+          "time": "2026-09-03T19:00:00Z",
+          "txid": "SIM01000021",
+          "pattern": "normal",
+          "fee": "0.00019402"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-022",
+          "from": "mid-1-4",
+          "to": "exchange-1",
+          "amount": "6.46103250",
+          "asset": "BTC",
+          "time": "2026-09-04T01:00:00Z",
+          "txid": "SIM01000022",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-023",
+          "from": "postmix-1-4",
+          "to": "spare-1-4",
+          "amount": "0.02587000",
+          "asset": "BTC",
+          "time": "2026-09-03T18:00:00Z",
+          "txid": "SIM01000023",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-024",
+          "from": "split-1",
+          "to": "pool-1",
+          "amount": "15.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T18:00:00Z",
+          "txid": "SIM01000024",
+          "pattern": "mixer_in",
+          "fee": "0.00060000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-025",
+          "from": "pool-1",
+          "to": "postmix-1-5",
+          "amount": "14.92500000",
+          "asset": "BTC",
+          "time": "2026-09-04T01:00:00Z",
+          "txid": "SIM01000025",
+          "pattern": "mixer_out",
+          "fee": "0.00074625"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-026",
+          "from": "postmix-1-5",
+          "to": "mid-1-5",
+          "amount": "14.92500000",
+          "asset": "BTC",
+          "time": "2026-09-04T03:00:00Z",
+          "txid": "SIM01000026",
+          "pattern": "normal",
+          "fee": "0.00044775"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-027",
+          "from": "mid-1-5",
+          "to": "otc-1",
+          "amount": "14.91007500",
+          "asset": "BTC",
+          "time": "2026-09-04T09:00:00Z",
+          "txid": "SIM01000027",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-028",
+          "from": "postmix-1-5",
+          "to": "spare-1-5",
+          "amount": "0.05970000",
+          "asset": "BTC",
+          "time": "2026-09-04T02:00:00Z",
+          "txid": "SIM01000028",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-029",
+          "from": "pool-1",
+          "to": "deadend-1-1",
+          "amount": "4.97500000",
+          "asset": "BTC",
+          "time": "2026-09-03T02:00:00Z",
+          "txid": "SIM01000029",
+          "pattern": "mixer_out",
+          "fee": "0.00024875"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-030",
+          "from": "pool-1",
+          "to": "deadend-1-2",
+          "amount": "11.94000000",
+          "asset": "BTC",
+          "time": "2026-09-03T04:00:00Z",
+          "txid": "SIM01000030",
+          "pattern": "mixer_out",
+          "fee": "0.00059700"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-031",
+          "from": "pool-1",
+          "to": "change-1",
+          "amount": "0.03000000",
+          "asset": "BTC",
+          "time": "2026-09-04T01:12:00Z",
+          "txid": "SIM01000031",
+          "pattern": "mixer_out",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-032",
+          "from": "change-1",
+          "to": "exchange-1",
+          "amount": "0.03000000",
+          "asset": "BTC",
+          "time": "2026-09-04T07:00:00Z",
+          "txid": "SIM01000032",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-01-tx-033",
+          "from": "ext-1-1",
+          "to": "pool-1",
+          "amount": "3.50000000",
+          "asset": "BTC",
+          "time": "2026-09-01T11:00:00Z",
+          "txid": "SIM01000033",
+          "pattern": "mixer_in",
+          "fee": "0.00014000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-034",
+          "from": "ext-1-2",
+          "to": "pool-1",
+          "amount": "6.20000000",
+          "asset": "BTC",
+          "time": "2026-09-01T13:00:00Z",
+          "txid": "SIM01000034",
+          "pattern": "mixer_in",
+          "fee": "0.00024800"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-035",
+          "from": "bg-1-1",
+          "to": "otc-1",
+          "amount": "1.70000000",
+          "asset": "BTC",
+          "time": "2026-09-01T23:00:00Z",
+          "txid": "SIM01000035",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-036",
+          "from": "bg-1-2",
+          "to": "exchange-1",
+          "amount": "2.93000000",
+          "asset": "BTC",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM01000036",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-037",
+          "from": "bg-1-3",
+          "to": "otc-1",
+          "amount": "4.16000000",
+          "asset": "BTC",
+          "time": "2026-09-02T05:00:00Z",
+          "txid": "SIM01000037",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-038",
+          "from": "bg-1-4",
+          "to": "exchange-1",
+          "amount": "5.39000000",
+          "asset": "BTC",
+          "time": "2026-09-02T08:00:00Z",
+          "txid": "SIM01000038",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-039",
+          "from": "bg-1-5",
+          "to": "otc-1",
+          "amount": "6.62000000",
+          "asset": "BTC",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM01000039",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-01-tx-040",
+          "from": "bg-1-6",
+          "to": "exchange-1",
+          "amount": "7.85000000",
+          "asset": "BTC",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM01000040",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [
+          {
+            "deposit_edge": "SIM-EVAL-01-tx-002",
+            "withdrawal_edge": "SIM-EVAL-01-tx-003"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-01-tx-009",
+            "withdrawal_edge": "SIM-EVAL-01-tx-010"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-01-tx-014",
+            "withdrawal_edge": "SIM-EVAL-01-tx-015"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-01-tx-019",
+            "withdrawal_edge": "SIM-EVAL-01-tx-020"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-01-tx-024",
+            "withdrawal_edge": "SIM-EVAL-01-tx-025"
+          }
+        ],
+        "offramp_nodes": [
+          "exchange-1",
+          "otc-1"
+        ],
+        "noise_edges": [
+          "SIM-EVAL-01-tx-029",
+          "SIM-EVAL-01-tx-030",
+          "SIM-EVAL-01-tx-031",
+          "SIM-EVAL-01-tx-033",
+          "SIM-EVAL-01-tx-034"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-EVAL-02",
+      "title": "虚拟评估二：固定面额池，多笔同面额提现无法唯一对应",
+      "network": "TRON",
+      "asset": "TRON:USDT",
+      "window": {
+        "from": "2026-08-31T01:00:00Z",
+        "to": "2026-09-06T09:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-2",
+          "label": "涉案归集地址 2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "归集后准备转移"
+        },
+        {
+          "id": "split-2",
+          "label": "拆分地址 2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_SPLIT"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-2",
+          "label": "虚拟固定面额池 E2",
+          "type": "mixer",
+          "entity": "SIM_POOL_2",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_MIXER"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "固定面额 100000 存提，延迟提现"
+        },
+        {
+          "id": "otc-2",
+          "label": "虚拟承兑商 2",
+          "type": "otc",
+          "entity": "SIM_OTC_2",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "未持牌场外承兑"
+        },
+        {
+          "id": "underground_bank-2",
+          "label": "虚拟地下钱庄 2",
+          "type": "underground_bank",
+          "entity": "SIM_UNDERGROUND_BANK_2",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "对敲结算"
+        },
+        {
+          "id": "postmix-2-1",
+          "label": "混币后中转 2-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-2-1",
+          "label": "落地中转 2-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-2-1",
+          "label": "零散地址 2-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "divert-2",
+          "label": "分流中转 2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-2-2",
+          "label": "混币后中转 2-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-2-2",
+          "label": "落地中转 2-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-2-2",
+          "label": "零散地址 2-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-2-3",
+          "label": "混币后中转 2-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-2-3",
+          "label": "落地中转 2-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-2-3",
+          "label": "零散地址 2-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-2-4",
+          "label": "混币后中转 2-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-2-4",
+          "label": "落地中转 2-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-2-4",
+          "label": "零散地址 2-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-2-5",
+          "label": "混币后中转 2-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-2-5",
+          "label": "落地中转 2-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-2-5",
+          "label": "零散地址 2-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-2-1",
+          "label": "外部用户地址 2-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-2-1",
+          "label": "无关兑现用户 2-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-2-2",
+          "label": "无关兑现用户 2-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-2-3",
+          "label": "无关兑现用户 2-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-2-4",
+          "label": "无关兑现用户 2-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-2-5",
+          "label": "无关兑现用户 2-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-2-6",
+          "label": "无关兑现用户 2-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_02_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-02-tx-001",
+          "from": "src-2",
+          "to": "split-2",
+          "amount": "500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T01:00:00Z",
+          "txid": "SIM02000001",
+          "pattern": "split",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-002",
+          "from": "split-2",
+          "to": "pool-2",
+          "amount": "100000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T05:00:00Z",
+          "txid": "SIM02000002",
+          "pattern": "mixer_in",
+          "fee": "4.00000000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-003",
+          "from": "pool-2",
+          "to": "postmix-2-1",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T03:00:00Z",
+          "txid": "SIM02000003",
+          "pattern": "mixer_out",
+          "fee": "4.97500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-004",
+          "from": "postmix-2-1",
+          "to": "mid-2-1",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T05:00:00Z",
+          "txid": "SIM02000004",
+          "pattern": "normal",
+          "fee": "2.98500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-005",
+          "from": "mid-2-1",
+          "to": "underground_bank-2",
+          "amount": "99400.50000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T11:00:00Z",
+          "txid": "SIM02000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-006",
+          "from": "postmix-2-1",
+          "to": "spare-2-1",
+          "amount": "398.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T04:00:00Z",
+          "txid": "SIM02000006",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-007",
+          "from": "postmix-2-1",
+          "to": "divert-2",
+          "amount": "1990.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T07:00:00Z",
+          "txid": "SIM02000007",
+          "pattern": "normal",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-008",
+          "from": "divert-2",
+          "to": "underground_bank-2",
+          "amount": "1990.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T14:00:00Z",
+          "txid": "SIM02000008",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-009",
+          "from": "split-2",
+          "to": "pool-2",
+          "amount": "100000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T15:00:00Z",
+          "txid": "SIM02000009",
+          "pattern": "mixer_in",
+          "fee": "4.00000000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-010",
+          "from": "pool-2",
+          "to": "postmix-2-2",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T22:00:00Z",
+          "txid": "SIM02000010",
+          "pattern": "mixer_out",
+          "fee": "4.97500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-011",
+          "from": "postmix-2-2",
+          "to": "mid-2-2",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T00:00:00Z",
+          "txid": "SIM02000011",
+          "pattern": "normal",
+          "fee": "2.98500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-012",
+          "from": "mid-2-2",
+          "to": "otc-2",
+          "amount": "99400.50000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T06:00:00Z",
+          "txid": "SIM02000012",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-013",
+          "from": "postmix-2-2",
+          "to": "spare-2-2",
+          "amount": "398.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T23:00:00Z",
+          "txid": "SIM02000013",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-014",
+          "from": "split-2",
+          "to": "pool-2",
+          "amount": "100000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T01:00:00Z",
+          "txid": "SIM02000014",
+          "pattern": "mixer_in",
+          "fee": "4.00000000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-015",
+          "from": "pool-2",
+          "to": "postmix-2-3",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T17:00:00Z",
+          "txid": "SIM02000015",
+          "pattern": "mixer_out",
+          "fee": "4.97500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-016",
+          "from": "postmix-2-3",
+          "to": "mid-2-3",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T19:00:00Z",
+          "txid": "SIM02000016",
+          "pattern": "normal",
+          "fee": "2.98500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-017",
+          "from": "mid-2-3",
+          "to": "underground_bank-2",
+          "amount": "99400.50000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T01:00:00Z",
+          "txid": "SIM02000017",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-018",
+          "from": "postmix-2-3",
+          "to": "spare-2-3",
+          "amount": "398.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T18:00:00Z",
+          "txid": "SIM02000018",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-019",
+          "from": "split-2",
+          "to": "pool-2",
+          "amount": "100000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM02000019",
+          "pattern": "mixer_in",
+          "fee": "4.00000000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-020",
+          "from": "pool-2",
+          "to": "postmix-2-4",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-05T01:00:00Z",
+          "txid": "SIM02000020",
+          "pattern": "mixer_out",
+          "fee": "4.97500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-021",
+          "from": "postmix-2-4",
+          "to": "mid-2-4",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-05T03:00:00Z",
+          "txid": "SIM02000021",
+          "pattern": "normal",
+          "fee": "2.98500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-022",
+          "from": "mid-2-4",
+          "to": "otc-2",
+          "amount": "99400.50000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-05T09:00:00Z",
+          "txid": "SIM02000022",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-023",
+          "from": "postmix-2-4",
+          "to": "spare-2-4",
+          "amount": "398.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-05T02:00:00Z",
+          "txid": "SIM02000023",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-024",
+          "from": "split-2",
+          "to": "pool-2",
+          "amount": "100000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T21:00:00Z",
+          "txid": "SIM02000024",
+          "pattern": "mixer_in",
+          "fee": "4.00000000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-025",
+          "from": "pool-2",
+          "to": "postmix-2-5",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T20:00:00Z",
+          "txid": "SIM02000025",
+          "pattern": "mixer_out",
+          "fee": "4.97500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-026",
+          "from": "postmix-2-5",
+          "to": "mid-2-5",
+          "amount": "99500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T22:00:00Z",
+          "txid": "SIM02000026",
+          "pattern": "normal",
+          "fee": "2.98500000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-027",
+          "from": "mid-2-5",
+          "to": "underground_bank-2",
+          "amount": "99400.50000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-05T04:00:00Z",
+          "txid": "SIM02000027",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-028",
+          "from": "postmix-2-5",
+          "to": "spare-2-5",
+          "amount": "398.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-04T21:00:00Z",
+          "txid": "SIM02000028",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-02-tx-029",
+          "from": "ext-2-1",
+          "to": "pool-2",
+          "amount": "100000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T20:00:00Z",
+          "txid": "SIM02000029",
+          "pattern": "mixer_in",
+          "fee": "4.00000000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-030",
+          "from": "bg-2-1",
+          "to": "underground_bank-2",
+          "amount": "1.70000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T23:00:00Z",
+          "txid": "SIM02000030",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-031",
+          "from": "bg-2-2",
+          "to": "otc-2",
+          "amount": "2.93000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM02000031",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-032",
+          "from": "bg-2-3",
+          "to": "underground_bank-2",
+          "amount": "4.16000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T05:00:00Z",
+          "txid": "SIM02000032",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-033",
+          "from": "bg-2-4",
+          "to": "otc-2",
+          "amount": "5.39000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T08:00:00Z",
+          "txid": "SIM02000033",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-034",
+          "from": "bg-2-5",
+          "to": "underground_bank-2",
+          "amount": "6.62000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM02000034",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-02-tx-035",
+          "from": "bg-2-6",
+          "to": "otc-2",
+          "amount": "7.85000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM02000035",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [
+          {
+            "deposit_edge": "SIM-EVAL-02-tx-002",
+            "withdrawal_edge": "SIM-EVAL-02-tx-003"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-02-tx-009",
+            "withdrawal_edge": "SIM-EVAL-02-tx-010"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-02-tx-014",
+            "withdrawal_edge": "SIM-EVAL-02-tx-015"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-02-tx-019",
+            "withdrawal_edge": "SIM-EVAL-02-tx-020"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-02-tx-024",
+            "withdrawal_edge": "SIM-EVAL-02-tx-025"
+          }
+        ],
+        "offramp_nodes": [
+          "otc-2",
+          "underground_bank-2"
+        ],
+        "noise_edges": [
+          "SIM-EVAL-02-tx-029"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-EVAL-03",
+      "title": "虚拟评估三：混币出金经跨链桥落到交易所",
+      "network": "ETH",
+      "asset": "ETH",
+      "window": {
+        "from": "2026-08-31T01:00:00Z",
+        "to": "2026-09-05T06:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-3",
+          "label": "涉案归集地址 3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_03_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "归集后准备转移"
+        },
+        {
+          "id": "split-3",
+          "label": "拆分地址 3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_03_SPLIT"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-3",
+          "label": "虚拟 CoinJoin 池 E3",
+          "type": "mixer",
+          "entity": "SIM_POOL_3",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_03_MIXER"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "等额输出后跨链转出"
+        },
+        {
+          "id": "exchange-3",
+          "label": "虚拟交易所 3",
+          "type": "exchange",
+          "entity": "SIM_EXCHANGE_3",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_03_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "合规交易所，具执法协作通道"
+        },
+        {
+          "id": "bridge-3",
+          "label": "虚拟跨链桥 3",
+          "type": "bridge",
+          "entity": "SIM_BRIDGE_3",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_03_BRIDGE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "跨链资产转移"
+        },
+        {
+          "id": "postmix-3-1",
+          "label": "混币后中转 3-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-3-1",
+          "label": "落地中转 3-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-3-1",
+          "label": "零散地址 3-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-3-2",
+          "label": "混币后中转 3-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-3-2",
+          "label": "落地中转 3-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-3-2",
+          "label": "零散地址 3-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-3-3",
+          "label": "混币后中转 3-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-3-3",
+          "label": "落地中转 3-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-3-3",
+          "label": "零散地址 3-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "deadend-3-1",
+          "label": "外部用户地址 3-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "change-3",
+          "label": "找零地址 3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_03_CHANGE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-3-1",
+          "label": "外部用户地址 3-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-3-1",
+          "label": "无关兑现用户 3-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-3-2",
+          "label": "无关兑现用户 3-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-3-3",
+          "label": "无关兑现用户 3-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-3-4",
+          "label": "无关兑现用户 3-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-3-5",
+          "label": "无关兑现用户 3-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-3-6",
+          "label": "无关兑现用户 3-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_03_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-03-tx-001",
+          "from": "src-3",
+          "to": "split-3",
+          "amount": "500.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T01:00:00Z",
+          "txid": "SIM03000001",
+          "pattern": "split",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-002",
+          "from": "split-3",
+          "to": "pool-3",
+          "amount": "20.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T06:00:00Z",
+          "txid": "SIM03000002",
+          "pattern": "mixer_in",
+          "fee": "0.00080000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-003",
+          "from": "pool-3",
+          "to": "postmix-3-1",
+          "amount": "19.90000000",
+          "asset": "ETH",
+          "time": "2026-09-03T08:00:00Z",
+          "txid": "SIM03000003",
+          "pattern": "mixer_out",
+          "fee": "0.00099500"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-004",
+          "from": "postmix-3-1",
+          "to": "bridge-3",
+          "amount": "19.90000000",
+          "asset": "ETH",
+          "time": "2026-09-03T11:00:00Z",
+          "txid": "SIM03000004",
+          "pattern": "bridge_out",
+          "fee": "0.00039800"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-005",
+          "from": "bridge-3",
+          "to": "exchange-3",
+          "amount": "19.88010000",
+          "asset": "ETH",
+          "time": "2026-09-03T17:00:00Z",
+          "txid": "SIM03000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-006",
+          "from": "postmix-3-1",
+          "to": "spare-3-1",
+          "amount": "0.07960000",
+          "asset": "ETH",
+          "time": "2026-09-03T09:00:00Z",
+          "txid": "SIM03000006",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-007",
+          "from": "split-3",
+          "to": "pool-3",
+          "amount": "35.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T09:00:00Z",
+          "txid": "SIM03000007",
+          "pattern": "mixer_in",
+          "fee": "0.00140000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-008",
+          "from": "pool-3",
+          "to": "postmix-3-2",
+          "amount": "34.82500000",
+          "asset": "ETH",
+          "time": "2026-09-03T21:00:00Z",
+          "txid": "SIM03000008",
+          "pattern": "mixer_out",
+          "fee": "0.00174125"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-009",
+          "from": "postmix-3-2",
+          "to": "bridge-3",
+          "amount": "34.82500000",
+          "asset": "ETH",
+          "time": "2026-09-04T00:00:00Z",
+          "txid": "SIM03000009",
+          "pattern": "bridge_out",
+          "fee": "0.00069650"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-010",
+          "from": "bridge-3",
+          "to": "exchange-3",
+          "amount": "34.79017500",
+          "asset": "ETH",
+          "time": "2026-09-04T06:00:00Z",
+          "txid": "SIM03000010",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-011",
+          "from": "postmix-3-2",
+          "to": "spare-3-2",
+          "amount": "0.13930000",
+          "asset": "ETH",
+          "time": "2026-09-03T22:00:00Z",
+          "txid": "SIM03000011",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-012",
+          "from": "split-3",
+          "to": "pool-3",
+          "amount": "9.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T12:00:00Z",
+          "txid": "SIM03000012",
+          "pattern": "mixer_in",
+          "fee": "0.00036000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-013",
+          "from": "pool-3",
+          "to": "postmix-3-3",
+          "amount": "8.95500000",
+          "asset": "ETH",
+          "time": "2026-09-03T21:00:00Z",
+          "txid": "SIM03000013",
+          "pattern": "mixer_out",
+          "fee": "0.00044775"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-014",
+          "from": "postmix-3-3",
+          "to": "bridge-3",
+          "amount": "8.95500000",
+          "asset": "ETH",
+          "time": "2026-09-04T00:00:00Z",
+          "txid": "SIM03000014",
+          "pattern": "bridge_out",
+          "fee": "0.00017910"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-015",
+          "from": "bridge-3",
+          "to": "exchange-3",
+          "amount": "8.94604500",
+          "asset": "ETH",
+          "time": "2026-09-04T06:00:00Z",
+          "txid": "SIM03000015",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-016",
+          "from": "postmix-3-3",
+          "to": "spare-3-3",
+          "amount": "0.03582000",
+          "asset": "ETH",
+          "time": "2026-09-03T22:00:00Z",
+          "txid": "SIM03000016",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-017",
+          "from": "pool-3",
+          "to": "deadend-3-1",
+          "amount": "34.82500000",
+          "asset": "ETH",
+          "time": "2026-09-03T15:00:00Z",
+          "txid": "SIM03000017",
+          "pattern": "mixer_out",
+          "fee": "0.00174125"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-018",
+          "from": "pool-3",
+          "to": "change-3",
+          "amount": "0.12000000",
+          "asset": "ETH",
+          "time": "2026-09-03T21:12:00Z",
+          "txid": "SIM03000018",
+          "pattern": "mixer_out",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-019",
+          "from": "change-3",
+          "to": "exchange-3",
+          "amount": "0.12000000",
+          "asset": "ETH",
+          "time": "2026-09-04T03:00:00Z",
+          "txid": "SIM03000019",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-03-tx-020",
+          "from": "ext-3-1",
+          "to": "pool-3",
+          "amount": "12.50000000",
+          "asset": "ETH",
+          "time": "2026-09-01T08:00:00Z",
+          "txid": "SIM03000020",
+          "pattern": "mixer_in",
+          "fee": "0.00050000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-021",
+          "from": "bg-3-1",
+          "to": "exchange-3",
+          "amount": "1.70000000",
+          "asset": "ETH",
+          "time": "2026-09-01T23:00:00Z",
+          "txid": "SIM03000021",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-022",
+          "from": "bg-3-2",
+          "to": "exchange-3",
+          "amount": "2.93000000",
+          "asset": "ETH",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM03000022",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-023",
+          "from": "bg-3-3",
+          "to": "exchange-3",
+          "amount": "4.16000000",
+          "asset": "ETH",
+          "time": "2026-09-02T05:00:00Z",
+          "txid": "SIM03000023",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-024",
+          "from": "bg-3-4",
+          "to": "exchange-3",
+          "amount": "5.39000000",
+          "asset": "ETH",
+          "time": "2026-09-02T08:00:00Z",
+          "txid": "SIM03000024",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-025",
+          "from": "bg-3-5",
+          "to": "exchange-3",
+          "amount": "6.62000000",
+          "asset": "ETH",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM03000025",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-03-tx-026",
+          "from": "bg-3-6",
+          "to": "exchange-3",
+          "amount": "7.85000000",
+          "asset": "ETH",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM03000026",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [
+          {
+            "deposit_edge": "SIM-EVAL-03-tx-002",
+            "withdrawal_edge": "SIM-EVAL-03-tx-003"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-03-tx-007",
+            "withdrawal_edge": "SIM-EVAL-03-tx-008"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-03-tx-012",
+            "withdrawal_edge": "SIM-EVAL-03-tx-013"
+          }
+        ],
+        "offramp_nodes": [
+          "exchange-3"
+        ],
+        "noise_edges": [
+          "SIM-EVAL-03-tx-017",
+          "SIM-EVAL-03-tx-018",
+          "SIM-EVAL-03-tx-020"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-EVAL-04",
+      "title": "虚拟评估四：混币后经承兑商对敲至地下钱庄",
+      "network": "TRON",
+      "asset": "TRON:USDT",
+      "window": {
+        "from": "2026-08-31T01:00:00Z",
+        "to": "2026-09-04T19:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-4",
+          "label": "涉案归集地址 4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "归集后准备转移"
+        },
+        {
+          "id": "split-4",
+          "label": "拆分地址 4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_SPLIT"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-4",
+          "label": "虚拟固定面额池 E4",
+          "type": "mixer",
+          "entity": "SIM_POOL_4",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_MIXER"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "固定面额存提后经承兑商对敲"
+        },
+        {
+          "id": "otc-4",
+          "label": "虚拟承兑商 4",
+          "type": "otc",
+          "entity": "SIM_OTC_4",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "未持牌场外承兑"
+        },
+        {
+          "id": "underground_bank-4",
+          "label": "虚拟地下钱庄 4",
+          "type": "underground_bank",
+          "entity": "SIM_UNDERGROUND_BANK_4",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "对敲结算"
+        },
+        {
+          "id": "postmix-4-1",
+          "label": "混币后中转 4-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-4-1",
+          "label": "落地中转 4-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-4-1",
+          "label": "零散地址 4-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "divert-4",
+          "label": "分流中转 4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-4-2",
+          "label": "混币后中转 4-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-4-2",
+          "label": "落地中转 4-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-4-2",
+          "label": "零散地址 4-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-4-3",
+          "label": "混币后中转 4-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-4-3",
+          "label": "落地中转 4-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-4-3",
+          "label": "零散地址 4-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-4-4",
+          "label": "混币后中转 4-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-4-4",
+          "label": "落地中转 4-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-4-4",
+          "label": "零散地址 4-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "deadend-4-1",
+          "label": "外部用户地址 4-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "deadend-4-2",
+          "label": "外部用户地址 4-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "change-4",
+          "label": "找零地址 4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_04_CHANGE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-4-1",
+          "label": "外部用户地址 4-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-4-1",
+          "label": "无关兑现用户 4-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-4-2",
+          "label": "无关兑现用户 4-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-4-3",
+          "label": "无关兑现用户 4-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-4-4",
+          "label": "无关兑现用户 4-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-4-5",
+          "label": "无关兑现用户 4-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-4-6",
+          "label": "无关兑现用户 4-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_04_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-04-tx-001",
+          "from": "src-4",
+          "to": "split-4",
+          "amount": "500.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T01:00:00Z",
+          "txid": "SIM04000001",
+          "pattern": "split",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-002",
+          "from": "split-4",
+          "to": "pool-4",
+          "amount": "50000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T04:00:00Z",
+          "txid": "SIM04000002",
+          "pattern": "mixer_in",
+          "fee": "2.00000000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-003",
+          "from": "pool-4",
+          "to": "postmix-4-1",
+          "amount": "49750.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T16:00:00Z",
+          "txid": "SIM04000003",
+          "pattern": "mixer_out",
+          "fee": "2.48750000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-004",
+          "from": "postmix-4-1",
+          "to": "mid-4-1",
+          "amount": "49750.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T18:00:00Z",
+          "txid": "SIM04000004",
+          "pattern": "normal",
+          "fee": "1.49250000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-005",
+          "from": "mid-4-1",
+          "to": "underground_bank-4",
+          "amount": "49700.25000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T00:00:00Z",
+          "txid": "SIM04000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-006",
+          "from": "postmix-4-1",
+          "to": "spare-4-1",
+          "amount": "199.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T17:00:00Z",
+          "txid": "SIM04000006",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-007",
+          "from": "postmix-4-1",
+          "to": "divert-4",
+          "amount": "995.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T20:00:00Z",
+          "txid": "SIM04000007",
+          "pattern": "normal",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-008",
+          "from": "divert-4",
+          "to": "underground_bank-4",
+          "amount": "995.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T03:00:00Z",
+          "txid": "SIM04000008",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-009",
+          "from": "split-4",
+          "to": "pool-4",
+          "amount": "80000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T07:00:00Z",
+          "txid": "SIM04000009",
+          "pattern": "mixer_in",
+          "fee": "3.20000000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-010",
+          "from": "pool-4",
+          "to": "postmix-4-2",
+          "amount": "79600.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T07:00:00Z",
+          "txid": "SIM04000010",
+          "pattern": "mixer_out",
+          "fee": "3.98000000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-011",
+          "from": "postmix-4-2",
+          "to": "mid-4-2",
+          "amount": "79600.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T09:00:00Z",
+          "txid": "SIM04000011",
+          "pattern": "normal",
+          "fee": "2.38800000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-012",
+          "from": "mid-4-2",
+          "to": "otc-4",
+          "amount": "79520.40000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T15:00:00Z",
+          "txid": "SIM04000012",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-013",
+          "from": "postmix-4-2",
+          "to": "spare-4-2",
+          "amount": "318.40000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T08:00:00Z",
+          "txid": "SIM04000013",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-014",
+          "from": "split-4",
+          "to": "pool-4",
+          "amount": "120000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T11:00:00Z",
+          "txid": "SIM04000014",
+          "pattern": "mixer_in",
+          "fee": "4.80000000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-015",
+          "from": "pool-4",
+          "to": "postmix-4-3",
+          "amount": "119400.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T05:00:00Z",
+          "txid": "SIM04000015",
+          "pattern": "mixer_out",
+          "fee": "5.97000000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-016",
+          "from": "postmix-4-3",
+          "to": "mid-4-3",
+          "amount": "119400.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T07:00:00Z",
+          "txid": "SIM04000016",
+          "pattern": "normal",
+          "fee": "3.58200000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-017",
+          "from": "mid-4-3",
+          "to": "underground_bank-4",
+          "amount": "119280.60000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T13:00:00Z",
+          "txid": "SIM04000017",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-018",
+          "from": "postmix-4-3",
+          "to": "spare-4-3",
+          "amount": "477.60000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T06:00:00Z",
+          "txid": "SIM04000018",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-019",
+          "from": "split-4",
+          "to": "pool-4",
+          "amount": "60000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T14:00:00Z",
+          "txid": "SIM04000019",
+          "pattern": "mixer_in",
+          "fee": "2.40000000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-020",
+          "from": "pool-4",
+          "to": "postmix-4-4",
+          "amount": "59700.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T11:00:00Z",
+          "txid": "SIM04000020",
+          "pattern": "mixer_out",
+          "fee": "2.98500000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-021",
+          "from": "postmix-4-4",
+          "to": "mid-4-4",
+          "amount": "59700.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T13:00:00Z",
+          "txid": "SIM04000021",
+          "pattern": "normal",
+          "fee": "1.79100000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-022",
+          "from": "mid-4-4",
+          "to": "otc-4",
+          "amount": "59640.30000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T19:00:00Z",
+          "txid": "SIM04000022",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-023",
+          "from": "postmix-4-4",
+          "to": "spare-4-4",
+          "amount": "238.80000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T12:00:00Z",
+          "txid": "SIM04000023",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-024",
+          "from": "pool-4",
+          "to": "deadend-4-1",
+          "amount": "49750.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T10:00:00Z",
+          "txid": "SIM04000024",
+          "pattern": "mixer_out",
+          "fee": "2.48750000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-025",
+          "from": "pool-4",
+          "to": "deadend-4-2",
+          "amount": "59700.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T05:00:00Z",
+          "txid": "SIM04000025",
+          "pattern": "mixer_out",
+          "fee": "2.98500000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-026",
+          "from": "pool-4",
+          "to": "change-4",
+          "amount": "240.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T11:12:00Z",
+          "txid": "SIM04000026",
+          "pattern": "mixer_out",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-027",
+          "from": "change-4",
+          "to": "otc-4",
+          "amount": "240.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-03T17:00:00Z",
+          "txid": "SIM04000027",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-04-tx-028",
+          "from": "ext-4-1",
+          "to": "pool-4",
+          "amount": "30000.00000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T09:00:00Z",
+          "txid": "SIM04000028",
+          "pattern": "mixer_in",
+          "fee": "1.20000000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-029",
+          "from": "bg-4-1",
+          "to": "underground_bank-4",
+          "amount": "1.70000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-01T23:00:00Z",
+          "txid": "SIM04000029",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-030",
+          "from": "bg-4-2",
+          "to": "otc-4",
+          "amount": "2.93000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM04000030",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-031",
+          "from": "bg-4-3",
+          "to": "underground_bank-4",
+          "amount": "4.16000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T05:00:00Z",
+          "txid": "SIM04000031",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-032",
+          "from": "bg-4-4",
+          "to": "otc-4",
+          "amount": "5.39000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T08:00:00Z",
+          "txid": "SIM04000032",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-033",
+          "from": "bg-4-5",
+          "to": "underground_bank-4",
+          "amount": "6.62000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM04000033",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-04-tx-034",
+          "from": "bg-4-6",
+          "to": "otc-4",
+          "amount": "7.85000000",
+          "asset": "TRON:USDT",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM04000034",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [
+          {
+            "deposit_edge": "SIM-EVAL-04-tx-002",
+            "withdrawal_edge": "SIM-EVAL-04-tx-003"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-04-tx-009",
+            "withdrawal_edge": "SIM-EVAL-04-tx-010"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-04-tx-014",
+            "withdrawal_edge": "SIM-EVAL-04-tx-015"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-04-tx-019",
+            "withdrawal_edge": "SIM-EVAL-04-tx-020"
+          }
+        ],
+        "offramp_nodes": [
+          "otc-4",
+          "underground_bank-4"
+        ],
+        "noise_edges": [
+          "SIM-EVAL-04-tx-024",
+          "SIM-EVAL-04-tx-025",
+          "SIM-EVAL-04-tx-026",
+          "SIM-EVAL-04-tx-028"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-EVAL-05",
+      "title": "虚拟评估五：混币出金经支付网关跨境结算",
+      "network": "ETH",
+      "asset": "ETH",
+      "window": {
+        "from": "2026-08-31T01:00:00Z",
+        "to": "2026-09-04T13:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-5",
+          "label": "涉案归集地址 5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_05_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "归集后准备转移"
+        },
+        {
+          "id": "split-5",
+          "label": "拆分地址 5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_05_SPLIT"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-5",
+          "label": "虚拟 CoinJoin 池 E5",
+          "type": "mixer",
+          "entity": "SIM_POOL_5",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_05_MIXER"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "等额输出、批处理、下游集中"
+        },
+        {
+          "id": "payment_gateway-5",
+          "label": "虚拟支付网关 5",
+          "type": "payment_gateway",
+          "entity": "SIM_PAYMENT_GATEWAY_5",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_05_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "跨境收单结算"
+        },
+        {
+          "id": "exchange-5",
+          "label": "虚拟交易所 5",
+          "type": "exchange",
+          "entity": "SIM_EXCHANGE_5",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_05_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "合规交易所，具执法协作通道"
+        },
+        {
+          "id": "postmix-5-1",
+          "label": "混币后中转 5-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-5-1",
+          "label": "落地中转 5-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-5-1",
+          "label": "零散地址 5-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "divert-5",
+          "label": "分流中转 5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-5-2",
+          "label": "混币后中转 5-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-5-2",
+          "label": "落地中转 5-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-5-2",
+          "label": "零散地址 5-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-5-3",
+          "label": "混币后中转 5-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-5-3",
+          "label": "落地中转 5-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-5-3",
+          "label": "零散地址 5-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "deadend-5-1",
+          "label": "外部用户地址 5-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "deadend-5-2",
+          "label": "外部用户地址 5-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "ext-5-1",
+          "label": "外部用户地址 5-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-5-2",
+          "label": "外部用户地址 5-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-5-1",
+          "label": "无关兑现用户 5-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-5-2",
+          "label": "无关兑现用户 5-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-5-3",
+          "label": "无关兑现用户 5-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-5-4",
+          "label": "无关兑现用户 5-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-5-5",
+          "label": "无关兑现用户 5-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-5-6",
+          "label": "无关兑现用户 5-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_05_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-05-tx-001",
+          "from": "src-5",
+          "to": "split-5",
+          "amount": "500.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T01:00:00Z",
+          "txid": "SIM05000001",
+          "pattern": "split",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-002",
+          "from": "split-5",
+          "to": "pool-5",
+          "amount": "9.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T03:00:00Z",
+          "txid": "SIM05000002",
+          "pattern": "mixer_in",
+          "fee": "0.00036000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-003",
+          "from": "pool-5",
+          "to": "postmix-5-1",
+          "amount": "8.95500000",
+          "asset": "ETH",
+          "time": "2026-09-02T19:00:00Z",
+          "txid": "SIM05000003",
+          "pattern": "mixer_out",
+          "fee": "0.00044775"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-004",
+          "from": "postmix-5-1",
+          "to": "mid-5-1",
+          "amount": "8.95500000",
+          "asset": "ETH",
+          "time": "2026-09-02T21:00:00Z",
+          "txid": "SIM05000004",
+          "pattern": "normal",
+          "fee": "0.00026865"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-005",
+          "from": "mid-5-1",
+          "to": "exchange-5",
+          "amount": "8.94604500",
+          "asset": "ETH",
+          "time": "2026-09-03T03:00:00Z",
+          "txid": "SIM05000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-006",
+          "from": "postmix-5-1",
+          "to": "spare-5-1",
+          "amount": "0.03582000",
+          "asset": "ETH",
+          "time": "2026-09-02T20:00:00Z",
+          "txid": "SIM05000006",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-007",
+          "from": "postmix-5-1",
+          "to": "divert-5",
+          "amount": "0.17910000",
+          "asset": "ETH",
+          "time": "2026-09-02T23:00:00Z",
+          "txid": "SIM05000007",
+          "pattern": "normal",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-008",
+          "from": "divert-5",
+          "to": "exchange-5",
+          "amount": "0.17910000",
+          "asset": "ETH",
+          "time": "2026-09-03T06:00:00Z",
+          "txid": "SIM05000008",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-009",
+          "from": "split-5",
+          "to": "pool-5",
+          "amount": "15.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T06:00:00Z",
+          "txid": "SIM05000009",
+          "pattern": "mixer_in",
+          "fee": "0.00060000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-010",
+          "from": "pool-5",
+          "to": "postmix-5-2",
+          "amount": "14.92500000",
+          "asset": "ETH",
+          "time": "2026-09-03T05:00:00Z",
+          "txid": "SIM05000010",
+          "pattern": "mixer_out",
+          "fee": "0.00074625"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-011",
+          "from": "postmix-5-2",
+          "to": "mid-5-2",
+          "amount": "14.92500000",
+          "asset": "ETH",
+          "time": "2026-09-03T07:00:00Z",
+          "txid": "SIM05000011",
+          "pattern": "normal",
+          "fee": "0.00044775"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-012",
+          "from": "mid-5-2",
+          "to": "payment_gateway-5",
+          "amount": "14.91007500",
+          "asset": "ETH",
+          "time": "2026-09-03T13:00:00Z",
+          "txid": "SIM05000012",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-013",
+          "from": "postmix-5-2",
+          "to": "spare-5-2",
+          "amount": "0.05970000",
+          "asset": "ETH",
+          "time": "2026-09-03T06:00:00Z",
+          "txid": "SIM05000013",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-014",
+          "from": "split-5",
+          "to": "pool-5",
+          "amount": "22.00000000",
+          "asset": "ETH",
+          "time": "2026-09-01T09:00:00Z",
+          "txid": "SIM05000014",
+          "pattern": "mixer_in",
+          "fee": "0.00088000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-015",
+          "from": "pool-5",
+          "to": "postmix-5-3",
+          "amount": "21.89000000",
+          "asset": "ETH",
+          "time": "2026-09-03T05:00:00Z",
+          "txid": "SIM05000015",
+          "pattern": "mixer_out",
+          "fee": "0.00109450"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-016",
+          "from": "postmix-5-3",
+          "to": "mid-5-3",
+          "amount": "21.89000000",
+          "asset": "ETH",
+          "time": "2026-09-03T07:00:00Z",
+          "txid": "SIM05000016",
+          "pattern": "normal",
+          "fee": "0.00065670"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-017",
+          "from": "mid-5-3",
+          "to": "exchange-5",
+          "amount": "21.86811000",
+          "asset": "ETH",
+          "time": "2026-09-03T13:00:00Z",
+          "txid": "SIM05000017",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-018",
+          "from": "postmix-5-3",
+          "to": "spare-5-3",
+          "amount": "0.08756000",
+          "asset": "ETH",
+          "time": "2026-09-03T06:00:00Z",
+          "txid": "SIM05000018",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-05-tx-019",
+          "from": "pool-5",
+          "to": "deadend-5-1",
+          "amount": "8.95500000",
+          "asset": "ETH",
+          "time": "2026-09-02T13:00:00Z",
+          "txid": "SIM05000019",
+          "pattern": "mixer_out",
+          "fee": "0.00044775"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-020",
+          "from": "pool-5",
+          "to": "deadend-5-2",
+          "amount": "14.92500000",
+          "asset": "ETH",
+          "time": "2026-09-02T23:00:00Z",
+          "txid": "SIM05000020",
+          "pattern": "mixer_out",
+          "fee": "0.00074625"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-021",
+          "from": "ext-5-1",
+          "to": "pool-5",
+          "amount": "4.40000000",
+          "asset": "ETH",
+          "time": "2026-09-01T05:00:00Z",
+          "txid": "SIM05000021",
+          "pattern": "mixer_in",
+          "fee": "0.00017600"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-022",
+          "from": "ext-5-2",
+          "to": "pool-5",
+          "amount": "7.70000000",
+          "asset": "ETH",
+          "time": "2026-09-01T08:00:00Z",
+          "txid": "SIM05000022",
+          "pattern": "mixer_in",
+          "fee": "0.00030800"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-023",
+          "from": "bg-5-1",
+          "to": "exchange-5",
+          "amount": "1.70000000",
+          "asset": "ETH",
+          "time": "2026-09-01T23:00:00Z",
+          "txid": "SIM05000023",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-024",
+          "from": "bg-5-2",
+          "to": "payment_gateway-5",
+          "amount": "2.93000000",
+          "asset": "ETH",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM05000024",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-025",
+          "from": "bg-5-3",
+          "to": "exchange-5",
+          "amount": "4.16000000",
+          "asset": "ETH",
+          "time": "2026-09-02T05:00:00Z",
+          "txid": "SIM05000025",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-026",
+          "from": "bg-5-4",
+          "to": "payment_gateway-5",
+          "amount": "5.39000000",
+          "asset": "ETH",
+          "time": "2026-09-02T08:00:00Z",
+          "txid": "SIM05000026",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-027",
+          "from": "bg-5-5",
+          "to": "exchange-5",
+          "amount": "6.62000000",
+          "asset": "ETH",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM05000027",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-05-tx-028",
+          "from": "bg-5-6",
+          "to": "payment_gateway-5",
+          "amount": "7.85000000",
+          "asset": "ETH",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM05000028",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [
+          {
+            "deposit_edge": "SIM-EVAL-05-tx-002",
+            "withdrawal_edge": "SIM-EVAL-05-tx-003"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-05-tx-009",
+            "withdrawal_edge": "SIM-EVAL-05-tx-010"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-05-tx-014",
+            "withdrawal_edge": "SIM-EVAL-05-tx-015"
+          }
+        ],
+        "offramp_nodes": [
+          "payment_gateway-5",
+          "exchange-5"
+        ],
+        "noise_edges": [
+          "SIM-EVAL-05-tx-019",
+          "SIM-EVAL-05-tx-020",
+          "SIM-EVAL-05-tx-021",
+          "SIM-EVAL-05-tx-022"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-EVAL-06",
+      "title": "虚拟评估六：零竞争条件下的基线案件",
+      "network": "BTC",
+      "asset": "BTC",
+      "window": {
+        "from": "2026-08-31T01:00:00Z",
+        "to": "2026-09-04T16:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-6",
+          "label": "涉案归集地址 6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_06_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "归集后准备转移"
+        },
+        {
+          "id": "split-6",
+          "label": "拆分地址 6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_06_SPLIT"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-6",
+          "label": "虚拟 CoinJoin 池 E6",
+          "type": "mixer",
+          "entity": "SIM_POOL_6",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_06_MIXER"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "金额互不相同，无等额外流"
+        },
+        {
+          "id": "exchange-6",
+          "label": "虚拟交易所 6",
+          "type": "exchange",
+          "entity": "SIM_EXCHANGE_6",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_06_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "合规交易所，具执法协作通道"
+        },
+        {
+          "id": "payment_gateway-6",
+          "label": "虚拟支付网关 6",
+          "type": "payment_gateway",
+          "entity": "SIM_PAYMENT_GATEWAY_6",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_06_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "跨境收单结算"
+        },
+        {
+          "id": "postmix-6-1",
+          "label": "混币后中转 6-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-6-1",
+          "label": "落地中转 6-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-6-1",
+          "label": "零散地址 6-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "divert-6",
+          "label": "分流中转 6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-6-2",
+          "label": "混币后中转 6-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-6-2",
+          "label": "落地中转 6-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-6-2",
+          "label": "零散地址 6-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-6-3",
+          "label": "混币后中转 6-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-6-3",
+          "label": "落地中转 6-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-6-3",
+          "label": "零散地址 6-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-6-4",
+          "label": "混币后中转 6-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-6-4",
+          "label": "落地中转 6-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-6-4",
+          "label": "零散地址 6-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-6-1",
+          "label": "外部用户地址 6-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-6-1",
+          "label": "无关兑现用户 6-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-6-2",
+          "label": "无关兑现用户 6-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-6-3",
+          "label": "无关兑现用户 6-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-6-4",
+          "label": "无关兑现用户 6-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-6-5",
+          "label": "无关兑现用户 6-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-6-6",
+          "label": "无关兑现用户 6-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_06_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-06-tx-001",
+          "from": "src-6",
+          "to": "split-6",
+          "amount": "500.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T01:00:00Z",
+          "txid": "SIM06000001",
+          "pattern": "split",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-002",
+          "from": "split-6",
+          "to": "pool-6",
+          "amount": "2.30000000",
+          "asset": "BTC",
+          "time": "2026-09-01T04:00:00Z",
+          "txid": "SIM06000002",
+          "pattern": "mixer_in",
+          "fee": "0.00009200"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-003",
+          "from": "pool-6",
+          "to": "postmix-6-1",
+          "amount": "2.28850000",
+          "asset": "BTC",
+          "time": "2026-09-02T10:00:00Z",
+          "txid": "SIM06000003",
+          "pattern": "mixer_out",
+          "fee": "0.00011442"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-004",
+          "from": "postmix-6-1",
+          "to": "mid-6-1",
+          "amount": "2.28850000",
+          "asset": "BTC",
+          "time": "2026-09-02T12:00:00Z",
+          "txid": "SIM06000004",
+          "pattern": "normal",
+          "fee": "0.00006866"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-005",
+          "from": "mid-6-1",
+          "to": "payment_gateway-6",
+          "amount": "2.28621150",
+          "asset": "BTC",
+          "time": "2026-09-02T18:00:00Z",
+          "txid": "SIM06000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-006",
+          "from": "postmix-6-1",
+          "to": "spare-6-1",
+          "amount": "0.00915400",
+          "asset": "BTC",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM06000006",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-007",
+          "from": "postmix-6-1",
+          "to": "divert-6",
+          "amount": "0.04577000",
+          "asset": "BTC",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM06000007",
+          "pattern": "normal",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-008",
+          "from": "divert-6",
+          "to": "payment_gateway-6",
+          "amount": "0.04577000",
+          "asset": "BTC",
+          "time": "2026-09-02T21:00:00Z",
+          "txid": "SIM06000008",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-009",
+          "from": "split-6",
+          "to": "pool-6",
+          "amount": "7.70000000",
+          "asset": "BTC",
+          "time": "2026-09-01T08:00:00Z",
+          "txid": "SIM06000009",
+          "pattern": "mixer_in",
+          "fee": "0.00030800"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-010",
+          "from": "pool-6",
+          "to": "postmix-6-2",
+          "amount": "7.66150000",
+          "asset": "BTC",
+          "time": "2026-09-02T20:00:00Z",
+          "txid": "SIM06000010",
+          "pattern": "mixer_out",
+          "fee": "0.00038308"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-011",
+          "from": "postmix-6-2",
+          "to": "mid-6-2",
+          "amount": "7.66150000",
+          "asset": "BTC",
+          "time": "2026-09-02T22:00:00Z",
+          "txid": "SIM06000011",
+          "pattern": "normal",
+          "fee": "0.00022984"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-012",
+          "from": "mid-6-2",
+          "to": "exchange-6",
+          "amount": "7.65383850",
+          "asset": "BTC",
+          "time": "2026-09-03T04:00:00Z",
+          "txid": "SIM06000012",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-013",
+          "from": "postmix-6-2",
+          "to": "spare-6-2",
+          "amount": "0.03064600",
+          "asset": "BTC",
+          "time": "2026-09-02T21:00:00Z",
+          "txid": "SIM06000013",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-014",
+          "from": "split-6",
+          "to": "pool-6",
+          "amount": "19.10000000",
+          "asset": "BTC",
+          "time": "2026-09-01T12:00:00Z",
+          "txid": "SIM06000014",
+          "pattern": "mixer_in",
+          "fee": "0.00076400"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-015",
+          "from": "pool-6",
+          "to": "postmix-6-3",
+          "amount": "19.00450000",
+          "asset": "BTC",
+          "time": "2026-09-03T08:00:00Z",
+          "txid": "SIM06000015",
+          "pattern": "mixer_out",
+          "fee": "0.00095022"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-016",
+          "from": "postmix-6-3",
+          "to": "mid-6-3",
+          "amount": "19.00450000",
+          "asset": "BTC",
+          "time": "2026-09-03T10:00:00Z",
+          "txid": "SIM06000016",
+          "pattern": "normal",
+          "fee": "0.00057014"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-017",
+          "from": "mid-6-3",
+          "to": "payment_gateway-6",
+          "amount": "18.98549550",
+          "asset": "BTC",
+          "time": "2026-09-03T16:00:00Z",
+          "txid": "SIM06000017",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-018",
+          "from": "postmix-6-3",
+          "to": "spare-6-3",
+          "amount": "0.07601800",
+          "asset": "BTC",
+          "time": "2026-09-03T09:00:00Z",
+          "txid": "SIM06000018",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-019",
+          "from": "split-6",
+          "to": "pool-6",
+          "amount": "30.50000000",
+          "asset": "BTC",
+          "time": "2026-09-01T16:00:00Z",
+          "txid": "SIM06000019",
+          "pattern": "mixer_in",
+          "fee": "0.00122000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-020",
+          "from": "pool-6",
+          "to": "postmix-6-4",
+          "amount": "30.34750000",
+          "asset": "BTC",
+          "time": "2026-09-03T07:00:00Z",
+          "txid": "SIM06000020",
+          "pattern": "mixer_out",
+          "fee": "0.00151738"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-021",
+          "from": "postmix-6-4",
+          "to": "mid-6-4",
+          "amount": "30.34750000",
+          "asset": "BTC",
+          "time": "2026-09-03T09:00:00Z",
+          "txid": "SIM06000021",
+          "pattern": "normal",
+          "fee": "0.00091042"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-022",
+          "from": "mid-6-4",
+          "to": "exchange-6",
+          "amount": "30.31715250",
+          "asset": "BTC",
+          "time": "2026-09-03T15:00:00Z",
+          "txid": "SIM06000022",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-023",
+          "from": "postmix-6-4",
+          "to": "spare-6-4",
+          "amount": "0.12139000",
+          "asset": "BTC",
+          "time": "2026-09-03T08:00:00Z",
+          "txid": "SIM06000023",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-06-tx-024",
+          "from": "ext-6-1",
+          "to": "pool-6",
+          "amount": "5.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T06:00:00Z",
+          "txid": "SIM06000024",
+          "pattern": "mixer_in",
+          "fee": "0.00020000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-025",
+          "from": "bg-6-1",
+          "to": "payment_gateway-6",
+          "amount": "1.70000000",
+          "asset": "BTC",
+          "time": "2026-09-01T23:00:00Z",
+          "txid": "SIM06000025",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-026",
+          "from": "bg-6-2",
+          "to": "exchange-6",
+          "amount": "2.93000000",
+          "asset": "BTC",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM06000026",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-027",
+          "from": "bg-6-3",
+          "to": "payment_gateway-6",
+          "amount": "4.16000000",
+          "asset": "BTC",
+          "time": "2026-09-02T05:00:00Z",
+          "txid": "SIM06000027",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-028",
+          "from": "bg-6-4",
+          "to": "exchange-6",
+          "amount": "5.39000000",
+          "asset": "BTC",
+          "time": "2026-09-02T08:00:00Z",
+          "txid": "SIM06000028",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-029",
+          "from": "bg-6-5",
+          "to": "payment_gateway-6",
+          "amount": "6.62000000",
+          "asset": "BTC",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM06000029",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-06-tx-030",
+          "from": "bg-6-6",
+          "to": "exchange-6",
+          "amount": "7.85000000",
+          "asset": "BTC",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM06000030",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [
+          {
+            "deposit_edge": "SIM-EVAL-06-tx-002",
+            "withdrawal_edge": "SIM-EVAL-06-tx-003"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-06-tx-009",
+            "withdrawal_edge": "SIM-EVAL-06-tx-010"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-06-tx-014",
+            "withdrawal_edge": "SIM-EVAL-06-tx-015"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-06-tx-019",
+            "withdrawal_edge": "SIM-EVAL-06-tx-020"
+          }
+        ],
+        "offramp_nodes": [
+          "exchange-6",
+          "payment_gateway-6"
+        ],
+        "noise_edges": [
+          "SIM-EVAL-06-tx-024"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-EVAL-07",
+      "title": "虚拟评估七：多笔入金的等额竞争压力案",
+      "network": "BTC",
+      "asset": "BTC",
+      "window": {
+        "from": "2026-08-31T01:00:00Z",
+        "to": "2026-09-06T09:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-7",
+          "label": "涉案归集地址 7（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "归集后准备转移"
+        },
+        {
+          "id": "split-7",
+          "label": "拆分地址 7（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_SPLIT"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "pool-7",
+          "label": "虚拟 CoinJoin 池 E7",
+          "type": "mixer",
+          "entity": "SIM_POOL_7",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_MIXER"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "多输入、等额输出、多个外部用户噪声"
+        },
+        {
+          "id": "exchange-7",
+          "label": "虚拟交易所 7",
+          "type": "exchange",
+          "entity": "SIM_EXCHANGE_7",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "合规交易所，具执法协作通道"
+        },
+        {
+          "id": "otc-7",
+          "label": "虚拟承兑商 7",
+          "type": "otc",
+          "entity": "SIM_OTC_7",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "未持牌场外承兑"
+        },
+        {
+          "id": "postmix-7-1",
+          "label": "混币后中转 7-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-7-1",
+          "label": "落地中转 7-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-7-1",
+          "label": "零散地址 7-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "divert-7",
+          "label": "分流中转 7（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-7-2",
+          "label": "混币后中转 7-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-7-2",
+          "label": "落地中转 7-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-7-2",
+          "label": "零散地址 7-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-7-3",
+          "label": "混币后中转 7-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-7-3",
+          "label": "落地中转 7-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-7-3",
+          "label": "零散地址 7-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-7-4",
+          "label": "混币后中转 7-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-7-4",
+          "label": "落地中转 7-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-7-4",
+          "label": "零散地址 7-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-7-5",
+          "label": "混币后中转 7-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-7-5",
+          "label": "落地中转 7-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-7-5",
+          "label": "零散地址 7-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-7-6",
+          "label": "混币后中转 7-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-7-6",
+          "label": "落地中转 7-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-7-6",
+          "label": "零散地址 7-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "postmix-7-7",
+          "label": "混币后中转 7-7（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-7-7",
+          "label": "落地中转 7-7（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "spare-7-7",
+          "label": "零散地址 7-7（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_POSTMIX"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "deadend-7-1",
+          "label": "外部用户地址 7-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "deadend-7-2",
+          "label": "外部用户地址 7-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "deadend-7-3",
+          "label": "外部用户地址 7-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "仅收不转的地址"
+        },
+        {
+          "id": "change-7",
+          "label": "找零地址 7（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_07_CHANGE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-7-1",
+          "label": "外部用户地址 7-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-7-2",
+          "label": "外部用户地址 7-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "ext-7-3",
+          "label": "外部用户地址 7-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_NOISE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-7-1",
+          "label": "无关兑现用户 7-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-7-2",
+          "label": "无关兑现用户 7-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-7-3",
+          "label": "无关兑现用户 7-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-7-4",
+          "label": "无关兑现用户 7-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-7-5",
+          "label": "无关兑现用户 7-5（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-7-6",
+          "label": "无关兑现用户 7-6（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_07_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-07-tx-001",
+          "from": "src-7",
+          "to": "split-7",
+          "amount": "500.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T01:00:00Z",
+          "txid": "SIM07000001",
+          "pattern": "split",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-002",
+          "from": "split-7",
+          "to": "pool-7",
+          "amount": "10.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T02:00:00Z",
+          "txid": "SIM07000002",
+          "pattern": "mixer_in",
+          "fee": "0.00040000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-003",
+          "from": "pool-7",
+          "to": "postmix-7-1",
+          "amount": "9.95000000",
+          "asset": "BTC",
+          "time": "2026-09-02T16:00:00Z",
+          "txid": "SIM07000003",
+          "pattern": "mixer_out",
+          "fee": "0.00049750"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-004",
+          "from": "postmix-7-1",
+          "to": "mid-7-1",
+          "amount": "9.95000000",
+          "asset": "BTC",
+          "time": "2026-09-02T18:00:00Z",
+          "txid": "SIM07000004",
+          "pattern": "normal",
+          "fee": "0.00029850"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-005",
+          "from": "mid-7-1",
+          "to": "otc-7",
+          "amount": "9.94005000",
+          "asset": "BTC",
+          "time": "2026-09-03T00:00:00Z",
+          "txid": "SIM07000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-006",
+          "from": "postmix-7-1",
+          "to": "spare-7-1",
+          "amount": "0.03980000",
+          "asset": "BTC",
+          "time": "2026-09-02T17:00:00Z",
+          "txid": "SIM07000006",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-007",
+          "from": "postmix-7-1",
+          "to": "divert-7",
+          "amount": "0.19900000",
+          "asset": "BTC",
+          "time": "2026-09-02T20:00:00Z",
+          "txid": "SIM07000007",
+          "pattern": "normal",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-008",
+          "from": "divert-7",
+          "to": "otc-7",
+          "amount": "0.19900000",
+          "asset": "BTC",
+          "time": "2026-09-03T03:00:00Z",
+          "txid": "SIM07000008",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-009",
+          "from": "split-7",
+          "to": "pool-7",
+          "amount": "10.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T06:00:00Z",
+          "txid": "SIM07000009",
+          "pattern": "mixer_in",
+          "fee": "0.00040000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-010",
+          "from": "pool-7",
+          "to": "postmix-7-2",
+          "amount": "9.95000000",
+          "asset": "BTC",
+          "time": "2026-09-03T02:00:00Z",
+          "txid": "SIM07000010",
+          "pattern": "mixer_out",
+          "fee": "0.00049750"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-011",
+          "from": "postmix-7-2",
+          "to": "mid-7-2",
+          "amount": "9.95000000",
+          "asset": "BTC",
+          "time": "2026-09-03T04:00:00Z",
+          "txid": "SIM07000011",
+          "pattern": "normal",
+          "fee": "0.00029850"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-012",
+          "from": "mid-7-2",
+          "to": "exchange-7",
+          "amount": "9.94005000",
+          "asset": "BTC",
+          "time": "2026-09-03T10:00:00Z",
+          "txid": "SIM07000012",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-013",
+          "from": "postmix-7-2",
+          "to": "spare-7-2",
+          "amount": "0.03980000",
+          "asset": "BTC",
+          "time": "2026-09-03T03:00:00Z",
+          "txid": "SIM07000013",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-014",
+          "from": "split-7",
+          "to": "pool-7",
+          "amount": "25.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T10:00:00Z",
+          "txid": "SIM07000014",
+          "pattern": "mixer_in",
+          "fee": "0.00100000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-015",
+          "from": "pool-7",
+          "to": "postmix-7-3",
+          "amount": "24.87500000",
+          "asset": "BTC",
+          "time": "2026-09-03T14:00:00Z",
+          "txid": "SIM07000015",
+          "pattern": "mixer_out",
+          "fee": "0.00124375"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-016",
+          "from": "postmix-7-3",
+          "to": "mid-7-3",
+          "amount": "24.87500000",
+          "asset": "BTC",
+          "time": "2026-09-03T16:00:00Z",
+          "txid": "SIM07000016",
+          "pattern": "normal",
+          "fee": "0.00074625"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-017",
+          "from": "mid-7-3",
+          "to": "otc-7",
+          "amount": "24.85012500",
+          "asset": "BTC",
+          "time": "2026-09-03T22:00:00Z",
+          "txid": "SIM07000017",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-018",
+          "from": "postmix-7-3",
+          "to": "spare-7-3",
+          "amount": "0.09950000",
+          "asset": "BTC",
+          "time": "2026-09-03T15:00:00Z",
+          "txid": "SIM07000018",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-019",
+          "from": "split-7",
+          "to": "pool-7",
+          "amount": "40.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T14:00:00Z",
+          "txid": "SIM07000019",
+          "pattern": "mixer_in",
+          "fee": "0.00160000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-020",
+          "from": "pool-7",
+          "to": "postmix-7-4",
+          "amount": "39.80000000",
+          "asset": "BTC",
+          "time": "2026-09-04T00:00:00Z",
+          "txid": "SIM07000020",
+          "pattern": "mixer_out",
+          "fee": "0.00199000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-021",
+          "from": "postmix-7-4",
+          "to": "mid-7-4",
+          "amount": "39.80000000",
+          "asset": "BTC",
+          "time": "2026-09-04T02:00:00Z",
+          "txid": "SIM07000021",
+          "pattern": "normal",
+          "fee": "0.00119400"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-022",
+          "from": "mid-7-4",
+          "to": "exchange-7",
+          "amount": "39.76020000",
+          "asset": "BTC",
+          "time": "2026-09-04T08:00:00Z",
+          "txid": "SIM07000022",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-023",
+          "from": "postmix-7-4",
+          "to": "spare-7-4",
+          "amount": "0.15920000",
+          "asset": "BTC",
+          "time": "2026-09-04T01:00:00Z",
+          "txid": "SIM07000023",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-024",
+          "from": "split-7",
+          "to": "pool-7",
+          "amount": "55.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T18:00:00Z",
+          "txid": "SIM07000024",
+          "pattern": "mixer_in",
+          "fee": "0.00220000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-025",
+          "from": "pool-7",
+          "to": "postmix-7-5",
+          "amount": "54.72500000",
+          "asset": "BTC",
+          "time": "2026-09-04T08:00:00Z",
+          "txid": "SIM07000025",
+          "pattern": "mixer_out",
+          "fee": "0.00273625"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-026",
+          "from": "postmix-7-5",
+          "to": "mid-7-5",
+          "amount": "54.72500000",
+          "asset": "BTC",
+          "time": "2026-09-04T10:00:00Z",
+          "txid": "SIM07000026",
+          "pattern": "normal",
+          "fee": "0.00164175"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-027",
+          "from": "mid-7-5",
+          "to": "otc-7",
+          "amount": "54.67027500",
+          "asset": "BTC",
+          "time": "2026-09-04T16:00:00Z",
+          "txid": "SIM07000027",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-028",
+          "from": "postmix-7-5",
+          "to": "spare-7-5",
+          "amount": "0.21890000",
+          "asset": "BTC",
+          "time": "2026-09-04T09:00:00Z",
+          "txid": "SIM07000028",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-029",
+          "from": "split-7",
+          "to": "pool-7",
+          "amount": "70.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T22:00:00Z",
+          "txid": "SIM07000029",
+          "pattern": "mixer_in",
+          "fee": "0.00280000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-030",
+          "from": "pool-7",
+          "to": "postmix-7-6",
+          "amount": "69.65000000",
+          "asset": "BTC",
+          "time": "2026-09-04T16:00:00Z",
+          "txid": "SIM07000030",
+          "pattern": "mixer_out",
+          "fee": "0.00348250"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-031",
+          "from": "postmix-7-6",
+          "to": "mid-7-6",
+          "amount": "69.65000000",
+          "asset": "BTC",
+          "time": "2026-09-04T18:00:00Z",
+          "txid": "SIM07000031",
+          "pattern": "normal",
+          "fee": "0.00208950"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-032",
+          "from": "mid-7-6",
+          "to": "exchange-7",
+          "amount": "69.58035000",
+          "asset": "BTC",
+          "time": "2026-09-05T00:00:00Z",
+          "txid": "SIM07000032",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-033",
+          "from": "postmix-7-6",
+          "to": "spare-7-6",
+          "amount": "0.27860000",
+          "asset": "BTC",
+          "time": "2026-09-04T17:00:00Z",
+          "txid": "SIM07000033",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-034",
+          "from": "split-7",
+          "to": "pool-7",
+          "amount": "88.00000000",
+          "asset": "BTC",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM07000034",
+          "pattern": "mixer_in",
+          "fee": "0.00352000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-035",
+          "from": "pool-7",
+          "to": "postmix-7-7",
+          "amount": "87.56000000",
+          "asset": "BTC",
+          "time": "2026-09-05T01:00:00Z",
+          "txid": "SIM07000035",
+          "pattern": "mixer_out",
+          "fee": "0.00437800"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-036",
+          "from": "postmix-7-7",
+          "to": "mid-7-7",
+          "amount": "87.56000000",
+          "asset": "BTC",
+          "time": "2026-09-05T03:00:00Z",
+          "txid": "SIM07000036",
+          "pattern": "normal",
+          "fee": "0.00262680"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-037",
+          "from": "mid-7-7",
+          "to": "otc-7",
+          "amount": "87.47244000",
+          "asset": "BTC",
+          "time": "2026-09-05T09:00:00Z",
+          "txid": "SIM07000037",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-038",
+          "from": "postmix-7-7",
+          "to": "spare-7-7",
+          "amount": "0.35024000",
+          "asset": "BTC",
+          "time": "2026-09-05T02:00:00Z",
+          "txid": "SIM07000038",
+          "pattern": "split",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-039",
+          "from": "pool-7",
+          "to": "deadend-7-1",
+          "amount": "9.95000000",
+          "asset": "BTC",
+          "time": "2026-09-02T10:00:00Z",
+          "txid": "SIM07000039",
+          "pattern": "mixer_out",
+          "fee": "0.00049750"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-040",
+          "from": "pool-7",
+          "to": "deadend-7-2",
+          "amount": "9.95000000",
+          "asset": "BTC",
+          "time": "2026-09-02T20:00:00Z",
+          "txid": "SIM07000040",
+          "pattern": "mixer_out",
+          "fee": "0.00049750"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-041",
+          "from": "pool-7",
+          "to": "deadend-7-3",
+          "amount": "39.80000000",
+          "asset": "BTC",
+          "time": "2026-09-03T16:00:00Z",
+          "txid": "SIM07000041",
+          "pattern": "mixer_out",
+          "fee": "0.00199000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-042",
+          "from": "pool-7",
+          "to": "change-7",
+          "amount": "0.45000000",
+          "asset": "BTC",
+          "time": "2026-09-05T01:12:00Z",
+          "txid": "SIM07000042",
+          "pattern": "mixer_out",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-043",
+          "from": "change-7",
+          "to": "exchange-7",
+          "amount": "0.45000000",
+          "asset": "BTC",
+          "time": "2026-09-05T07:00:00Z",
+          "txid": "SIM07000043",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-07-tx-044",
+          "from": "ext-7-1",
+          "to": "pool-7",
+          "amount": "6.60000000",
+          "asset": "BTC",
+          "time": "2026-09-01T04:00:00Z",
+          "txid": "SIM07000044",
+          "pattern": "mixer_in",
+          "fee": "0.00026400"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-045",
+          "from": "ext-7-2",
+          "to": "pool-7",
+          "amount": "8.80000000",
+          "asset": "BTC",
+          "time": "2026-09-01T08:00:00Z",
+          "txid": "SIM07000045",
+          "pattern": "mixer_in",
+          "fee": "0.00035200"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-046",
+          "from": "ext-7-3",
+          "to": "pool-7",
+          "amount": "13.30000000",
+          "asset": "BTC",
+          "time": "2026-09-01T12:00:00Z",
+          "txid": "SIM07000046",
+          "pattern": "mixer_in",
+          "fee": "0.00053200"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-047",
+          "from": "bg-7-1",
+          "to": "otc-7",
+          "amount": "1.70000000",
+          "asset": "BTC",
+          "time": "2026-09-01T23:00:00Z",
+          "txid": "SIM07000047",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-048",
+          "from": "bg-7-2",
+          "to": "exchange-7",
+          "amount": "2.93000000",
+          "asset": "BTC",
+          "time": "2026-09-02T02:00:00Z",
+          "txid": "SIM07000048",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-049",
+          "from": "bg-7-3",
+          "to": "otc-7",
+          "amount": "4.16000000",
+          "asset": "BTC",
+          "time": "2026-09-02T05:00:00Z",
+          "txid": "SIM07000049",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-050",
+          "from": "bg-7-4",
+          "to": "exchange-7",
+          "amount": "5.39000000",
+          "asset": "BTC",
+          "time": "2026-09-02T08:00:00Z",
+          "txid": "SIM07000050",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-051",
+          "from": "bg-7-5",
+          "to": "otc-7",
+          "amount": "6.62000000",
+          "asset": "BTC",
+          "time": "2026-09-02T11:00:00Z",
+          "txid": "SIM07000051",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        },
+        {
+          "id": "SIM-EVAL-07-tx-052",
+          "from": "bg-7-6",
+          "to": "exchange-7",
+          "amount": "7.85000000",
+          "asset": "BTC",
+          "time": "2026-09-02T14:00:00Z",
+          "txid": "SIM07000052",
+          "pattern": "to_fiat",
+          "fee": "0.00010000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [
+          {
+            "deposit_edge": "SIM-EVAL-07-tx-002",
+            "withdrawal_edge": "SIM-EVAL-07-tx-003"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-07-tx-009",
+            "withdrawal_edge": "SIM-EVAL-07-tx-010"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-07-tx-014",
+            "withdrawal_edge": "SIM-EVAL-07-tx-015"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-07-tx-019",
+            "withdrawal_edge": "SIM-EVAL-07-tx-020"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-07-tx-024",
+            "withdrawal_edge": "SIM-EVAL-07-tx-025"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-07-tx-029",
+            "withdrawal_edge": "SIM-EVAL-07-tx-030"
+          },
+          {
+            "deposit_edge": "SIM-EVAL-07-tx-034",
+            "withdrawal_edge": "SIM-EVAL-07-tx-035"
+          }
+        ],
+        "offramp_nodes": [
+          "exchange-7",
+          "otc-7"
+        ],
+        "noise_edges": [
+          "SIM-EVAL-07-tx-039",
+          "SIM-EVAL-07-tx-040",
+          "SIM-EVAL-07-tx-041",
+          "SIM-EVAL-07-tx-042",
+          "SIM-EVAL-07-tx-044",
+          "SIM-EVAL-07-tx-045",
+          "SIM-EVAL-07-tx-046"
+        ]
+      }
+    },
+    {
+      "case_id": "SIM-EVAL-08",
+      "title": "虚拟负例：普通归集后直接进入交易所",
+      "network": "BTC",
+      "asset": "BTC",
+      "window": {
+        "from": "2026-08-31T02:00:00Z",
+        "to": "2026-09-03T06:00:00Z"
+      },
+      "nodes": [
+        {
+          "id": "src-8",
+          "label": "涉案归集地址 8（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_08_SOURCE"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "mid-8",
+          "label": "普通中转 8（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "medium",
+          "tags": [],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "exchange-8",
+          "label": "虚拟交易所 8",
+          "type": "exchange",
+          "entity": "SIM_EX_8",
+          "risk": "medium",
+          "tags": [
+            "SIM_EVAL_08_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "合规交易所"
+        },
+        {
+          "id": "otc-8",
+          "label": "虚拟承兑商 8",
+          "type": "otc",
+          "entity": "SIM_OTC_8",
+          "risk": "high",
+          "tags": [
+            "SIM_EVAL_08_OFFRAMP"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": "小额承兑"
+        },
+        {
+          "id": "bg-8-1",
+          "label": "无关用户 8-1（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_08_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-8-2",
+          "label": "无关用户 8-2（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_08_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-8-3",
+          "label": "无关用户 8-3（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_08_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        },
+        {
+          "id": "bg-8-4",
+          "label": "无关用户 8-4（虚拟）",
+          "type": "wallet",
+          "entity": null,
+          "risk": "low",
+          "tags": [
+            "SIM_EVAL_08_BACKGROUND"
+          ],
+          "first_seen": "2026-09-01T00:00:00Z",
+          "note": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": "SIM-EVAL-08-tx-001",
+          "from": "src-8",
+          "to": "mid-8",
+          "amount": "18.50000000",
+          "asset": "BTC",
+          "time": "2026-09-01T02:00:00Z",
+          "txid": "SIM08000001",
+          "pattern": "normal",
+          "fee": "0.00008000"
+        },
+        {
+          "id": "SIM-EVAL-08-tx-002",
+          "from": "mid-8",
+          "to": "exchange-8",
+          "amount": "18.40000000",
+          "asset": "BTC",
+          "time": "2026-09-01T07:00:00Z",
+          "txid": "SIM08000002",
+          "pattern": "to_fiat",
+          "fee": "0.00020000"
+        },
+        {
+          "id": "SIM-EVAL-08-tx-003",
+          "from": "mid-8",
+          "to": "otc-8",
+          "amount": "0.08000000",
+          "asset": "BTC",
+          "time": "2026-09-01T09:00:00Z",
+          "txid": "SIM08000003",
+          "pattern": "to_fiat",
+          "fee": "0.00002000"
+        },
+        {
+          "id": "SIM-EVAL-08-tx-004",
+          "from": "exchange-8",
+          "to": "otc-8",
+          "amount": "3.00000000",
+          "asset": "BTC",
+          "time": "2026-09-02T06:00:00Z",
+          "txid": "SIM08000004",
+          "pattern": "normal",
+          "fee": "0.00004000"
+        },
+        {
+          "id": "SIM-EVAL-08-tx-005",
+          "from": "bg-8-1",
+          "to": "exchange-8",
+          "amount": "1.00000000",
+          "asset": "BTC",
+          "time": "2026-09-01T16:00:00Z",
+          "txid": "SIM08000005",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-08-tx-006",
+          "from": "bg-8-2",
+          "to": "exchange-8",
+          "amount": "1.87000000",
+          "asset": "BTC",
+          "time": "2026-09-01T20:00:00Z",
+          "txid": "SIM08000006",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-08-tx-007",
+          "from": "bg-8-3",
+          "to": "exchange-8",
+          "amount": "2.74000000",
+          "asset": "BTC",
+          "time": "2026-09-02T00:00:00Z",
+          "txid": "SIM08000007",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-08-tx-008",
+          "from": "bg-8-4",
+          "to": "exchange-8",
+          "amount": "3.61000000",
+          "asset": "BTC",
+          "time": "2026-09-02T04:00:00Z",
+          "txid": "SIM08000008",
+          "pattern": "to_fiat",
+          "fee": null
+        },
+        {
+          "id": "SIM-EVAL-08-tx-009",
+          "from": "src-8",
+          "to": "exchange-8",
+          "amount": "0.50000000",
+          "asset": "BTC",
+          "time": "2026-09-02T00:00:00Z",
+          "txid": "SIM08000009",
+          "pattern": "to_fiat",
+          "fee": "0.00001000"
+        }
+      ],
+      "ground_truth": {
+        "note": "生成时已知的构造真值，仅用于在合成数据上评估归因一致性。",
+        "links": [],
+        "offramp_nodes": [
+          "exchange-8",
+          "otc-8"
+        ],
+        "noise_edges": []
+      }
+    }
+  ]
+}

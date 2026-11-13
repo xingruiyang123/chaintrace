@@ -1,0 +1,1211 @@
+{
+  "is_simulated": true,
+  "input_sha256": "177d61e1b9a39c53518371b5cc848b4b3d1d9ed525cd7ef829aff57c2e414253",
+  "input_counts": {
+    "records": 32,
+    "events": 16,
+    "claims": 15
+  },
+  "parameters": {
+    "absolute_tolerance": "0.000001",
+    "relative_tolerance": "0.002",
+    "time_window_seconds": 7200,
+    "strong_threshold": "0.75",
+    "review_threshold": "0.55",
+    "minimum_coverage": "0.45",
+    "weights": {
+      "external_id": "0.35",
+      "asset_network": "0.20",
+      "amount": "0.20",
+      "time": "0.15",
+      "direction_accounts": "0.10"
+    }
+  },
+  "analysis_runs": [
+    {
+      "case_id": "0702fb57-2ec0-525d-bcd7-b8f9a5f7d2c6",
+      "run_id": "edd13d09-59e4-5612-b1f5-91f08bf01847",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "fd0ea7ae85c9f7d879dc84ade5c263ac100c9585022365a3bf02b2a89be08b00",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "080c6d3b-7dba-5f64-9c30-bd6a53373a9c",
+      "run_id": "b7f7bb65-be20-56b9-938f-8767e0695252",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "ce677b44dcfa0ea27047ea66339498366341356a21b0635b8275389c110647f9",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "run_id": "e0ff1d62-8efb-595b-980b-20b34f46d58b",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "3004e713998a7baf3557f503043d89571db622db605ac77d0f0803336ac3c733",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "3a3598e4-664d-5220-b19e-5f15b14c7a7f",
+      "run_id": "7ca2134c-9775-54f3-8429-d4a9003d3421",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "8db5b0cee00ab000dd0a427cf2604eb48474c1547050bc69de8fcbc3f3394490",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+      "run_id": "dce62d59-5262-574e-9113-12fc93173392",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "f47fc47a7d203d25d1549c6e4959875eae09228aaad21fe60b9fd860ddccc531",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "7194c932-af29-513f-91aa-6223db22bfbc",
+      "run_id": "b646ae95-04be-5a18-af32-fea7e2ebf372",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "bca63f90db41a46d86eaa457dbcbc77ca402209a5c7bb40f2879791f8d6b37c3",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "91bea533-9c22-5f33-adb2-6791aca74399",
+      "run_id": "981a74c1-8b12-5b9c-8cf8-d26be3296d09",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "9e8a4ed1ee8e86bf70d9fc8255ff0ce1a9e70a12ff29f5e6c4a38da2e24a83a8",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "a15bdfcf-7336-5351-ad38-a228f0a2b5fd",
+      "run_id": "4232497b-3b70-5d40-9bc0-5b48975c7e99",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "f9bb44ed6e875e34b5271bc2bd7679fc3a67602cb5e9a9d5c8b32dbf16df22e2",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+      "run_id": "1af4fe95-db30-5e96-977d-a2e5a7eb975d",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "dbd01b6c6c53cee78a5f5836fdb52557082b2f349bc8e785b7bd55b2bf9d2b5a",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "b99fe3d8-9cfc-52f3-b31d-ca98cefd8d55",
+      "run_id": "e69796c4-38be-5665-974c-a58027f5e1fe",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "9cf74338b808501a7c3161f6057b5f03fbe47e73b653f160c7309762ad097aa2",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "case-exact-duplicate",
+      "run_id": "2e7eac74-74f3-56d1-8338-400f5ebad3c8",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "52948b31b0ca3e7f65720850053635eb7889d7c56cf2ec61fa63ff9c9587bf4f",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "dc5b9479-b6f5-546c-b661-c0f3c7292554",
+      "run_id": "98d50ee7-85bf-543a-8e3a-9d110d12fa9c",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "97a1dfea74ff168463c1463df4f9b708495d88bd6cf6fc783d90e68cd1fbf007",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "e19f866e-80e3-5f61-80c0-94138702c9b3",
+      "run_id": "78f754c5-451a-52d6-b4c6-8404a4c91ad9",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "fdecb8714ff750028df074ec35d2df3e56da354ff028bb3f60315983a30ecab3",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    },
+    {
+      "case_id": "fb3c5afc-f562-5aa7-9dcc-fdf05862a442",
+      "run_id": "5322dc12-1bf4-50b7-bf30-09f0fa7b1f72",
+      "algorithm_code": "EVENT_CLAIM_MATCH",
+      "algorithm_version": "0.1.0",
+      "input_snapshot_hash": "4277cdd05d1fef182db7bf687b82d2d89c5534cefd2a26430f35a3e25fb8f5ef",
+      "parameters": {
+        "absolute_tolerance": "0.000001",
+        "relative_tolerance": "0.002",
+        "time_window_seconds": 7200,
+        "strong_threshold": "0.75",
+        "review_threshold": "0.55",
+        "minimum_coverage": "0.45",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        }
+      },
+      "status": "SUCCEEDED",
+      "is_simulated": true,
+      "note": "OFFLINE-SIMULATED; not an evidentiary conclusion or database test"
+    }
+  ],
+  "event_claim_results": [
+    {
+      "run_id": "edd13d09-59e4-5612-b1f5-91f08bf01847",
+      "case_id": "0702fb57-2ec0-525d-bcd7-b8f9a5f7d2c6",
+      "left_node_id": "5fe01ebb-ad36-543d-b133-ca5cd5bcea1e",
+      "right_node_id": "3198c6e2-979e-585e-9966-b07875bf9b09",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 0.8846,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "0702fb57-2ec0-525d-bcd7-b8f9a5f7d2c6",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "time": "0.5"
+        },
+        "score_coverage": "0.65",
+        "raw_comparison_score": "0.8846153846153846153846153846",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 3600.0,
+        "match_class": "CANDIDATE_STRONG",
+        "event_business_key": "evt-A03",
+        "claim_business_key": "claim-A03",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [
+        "external_identifier_unknown"
+      ],
+      "conflict_items": []
+    },
+    {
+      "run_id": "b7f7bb65-be20-56b9-938f-8767e0695252",
+      "case_id": "080c6d3b-7dba-5f64-9c30-bd6a53373a9c",
+      "left_node_id": "cdc42688-afa0-562e-ac24-8ab9340d5e70",
+      "right_node_id": "31ae2ea3-196e-53c6-aaca-22d0854473a5",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "080c6d3b-7dba-5f64-9c30-bd6a53373a9c",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "EXACT",
+        "event_business_key": "evt-A07",
+        "claim_business_key": "claim-A07",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": []
+    },
+    {
+      "run_id": "e0ff1d62-8efb-595b-980b-20b34f46d58b",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "left_node_id": "1d53ae0b-8af7-5b58-b945-a81b0e92f2f3",
+      "right_node_id": "cb867642-c28e-554e-a629-ef77135205f0",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "EXACT",
+        "event_business_key": "evt-A05-chain",
+        "claim_business_key": "claim-A05",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": []
+    },
+    {
+      "run_id": "e0ff1d62-8efb-595b-980b-20b34f46d58b",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "left_node_id": "bc6fd357-44c4-56f8-9923-328041300acb",
+      "right_node_id": "cb867642-c28e-554e-a629-ef77135205f0",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": null,
+      "review_status": "DISPUTED",
+      "explanation": {
+        "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+        "asset_id": "TRON:USDT",
+        "event_type": "EXCHANGE_DEPOSIT",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "0",
+          "external_id": "1",
+          "time": "0.9995833333333333333333333333"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "0.89993750000000000000000000",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 3.0,
+        "match_class": "CONFLICT",
+        "event_business_key": "evt-A05-deposit",
+        "claim_business_key": "claim-A05",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": [
+        "EVENT_TYPE_MISMATCH",
+        "OBJECT_ACCOUNT_CONFLICT",
+        "SUBJECT_ACCOUNT_CONFLICT"
+      ]
+    },
+    {
+      "run_id": "7ca2134c-9775-54f3-8429-d4a9003d3421",
+      "case_id": "3a3598e4-664d-5220-b19e-5f15b14c7a7f",
+      "left_node_id": "5f2280d3-b6ee-5ff9-a655-fe7bc41a4d72",
+      "right_node_id": "7b0b3a3a-f842-51ec-a3c2-83caeb6cd2bb",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "3a3598e4-664d-5220-b19e-5f15b14c7a7f",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "time": "1"
+        },
+        "score_coverage": "0.65",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": true,
+        "amount_absolute_difference": "0.1",
+        "amount_relative_difference": "0.001",
+        "time_distance_seconds": 0,
+        "match_class": "CANDIDATE_STRONG",
+        "event_business_key": "evt-A02",
+        "claim_business_key": "claim-A02",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [
+        "external_identifier_unknown"
+      ],
+      "conflict_items": []
+    },
+    {
+      "run_id": "dce62d59-5262-574e-9113-12fc93173392",
+      "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+      "left_node_id": "3ce6c6c5-84ff-53d5-ad60-100bd3d8c7ff",
+      "right_node_id": "40f72a10-899d-5005-9c74-4187aa69dd4f",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "45b92f09-5c1a-55d7-ad27-fbc102b61712",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "time": "1"
+        },
+        "score_coverage": "0.65",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "CANDIDATE_STRONG",
+        "event_business_key": "evt-A11",
+        "claim_business_key": "claim-A11",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [
+        "external_identifier_unknown"
+      ],
+      "conflict_items": []
+    },
+    {
+      "run_id": "b646ae95-04be-5a18-af32-fea7e2ebf372",
+      "case_id": "7194c932-af29-513f-91aa-6223db22bfbc",
+      "left_node_id": "f96a4355-c3f7-5ef6-8ba6-813f2abd11ce",
+      "right_node_id": "c1900b13-5e44-5014-80c4-4297fe802069",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": null,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "7194c932-af29-513f-91aa-6223db22bfbc",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "time": "1"
+        },
+        "score_coverage": "0.65",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "CANDIDATE_REVIEW",
+        "event_business_key": "evt-A12",
+        "claim_business_key": "claim-A12",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [
+        "external_identifier_unknown",
+        "subject_person_account_not_verified"
+      ],
+      "conflict_items": []
+    },
+    {
+      "run_id": "981a74c1-8b12-5b9c-8cf8-d26be3296d09",
+      "case_id": "91bea533-9c22-5f33-adb2-6791aca74399",
+      "left_node_id": "c61df326-edff-5e4f-9eb6-3b66b53b578d",
+      "right_node_id": "ea85313c-1685-54eb-95d2-a00e86fa7298",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": null,
+      "review_status": "DISPUTED",
+      "explanation": {
+        "case_id": "91bea533-9c22-5f33-adb2-6791aca74399",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "0",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "0.9",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "CONFLICT",
+        "event_business_key": "evt-A09",
+        "claim_business_key": "claim-A09",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": [
+        "OBJECT_ACCOUNT_CONFLICT",
+        "SUBJECT_ACCOUNT_CONFLICT"
+      ]
+    },
+    {
+      "run_id": "4232497b-3b70-5d40-9bc0-5b48975c7e99",
+      "case_id": "a15bdfcf-7336-5351-ad38-a228f0a2b5fd",
+      "left_node_id": "50cbdf65-e975-5232-99f1-2ffe2a6a7ca8",
+      "right_node_id": "13b72967-7ad6-538d-bd7c-59f5faf610a8",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "a15bdfcf-7336-5351-ad38-a228f0a2b5fd",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "EXACT",
+        "event_business_key": "evt-A10",
+        "claim_business_key": "claim-A10",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": []
+    },
+    {
+      "run_id": "1af4fe95-db30-5e96-977d-a2e5a7eb975d",
+      "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+      "left_node_id": "7a2d4609-2acf-5afd-84ef-8b04cd74d111",
+      "right_node_id": "2d424e74-2719-573c-a5f8-0a4d5c75be9b",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "b869a9e3-4158-510d-aad9-9ba4c7201d09",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "time": "1"
+        },
+        "score_coverage": "0.65",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "CANDIDATE_STRONG",
+        "event_business_key": "evt-A06",
+        "claim_business_key": "claim-A06",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [
+        "external_identifier_unknown"
+      ],
+      "conflict_items": []
+    },
+    {
+      "run_id": "e69796c4-38be-5665-974c-a58027f5e1fe",
+      "case_id": "b99fe3d8-9cfc-52f3-b31d-ca98cefd8d55",
+      "left_node_id": "597c76e3-34e3-5e83-af3b-ee3a0e55c893",
+      "right_node_id": "4f754d1f-35e0-5c45-bb8e-540032602829",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "b99fe3d8-9cfc-52f3-b31d-ca98cefd8d55",
+        "asset_id": "ASSET-0",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "time": "1"
+        },
+        "score_coverage": "0.65",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0.00",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "CANDIDATE_STRONG",
+        "event_business_key": "benchmark-event-150",
+        "claim_business_key": "benchmark-claim-150",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [
+        "external_identifier_unknown"
+      ],
+      "conflict_items": []
+    },
+    {
+      "run_id": "2e7eac74-74f3-56d1-8338-400f5ebad3c8",
+      "case_id": "case-exact-duplicate",
+      "left_node_id": "661ba637-5b44-595e-b370-d5dd922e1ec3",
+      "right_node_id": "103c01d9-4dd1-5d11-a989-de7f724cb6bb",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "case-exact-duplicate",
+        "asset_id": "USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0.0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "EXACT",
+        "event_business_key": "e1",
+        "claim_business_key": "c1",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": []
+    },
+    {
+      "run_id": "2e7eac74-74f3-56d1-8338-400f5ebad3c8",
+      "case_id": "case-exact-duplicate",
+      "left_node_id": "9f5f809a-a575-5b72-9cc2-272b73cc79e4",
+      "right_node_id": "103c01d9-4dd1-5d11-a989-de7f724cb6bb",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "case-exact-duplicate",
+        "asset_id": "USDT",
+        "event_type": "EXCHANGE_DEPOSIT",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0.0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "EXACT",
+        "event_business_key": "e2",
+        "claim_business_key": "c1",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": []
+    },
+    {
+      "run_id": "98d50ee7-85bf-543a-8e3a-9d110d12fa9c",
+      "case_id": "dc5b9479-b6f5-546c-b661-c0f3c7292554",
+      "left_node_id": "92fd9adc-814a-56dd-b715-f72cca4b0484",
+      "right_node_id": "e06aaa7d-7e7e-5774-be95-9bfb67d962e6",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": null,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "dc5b9479-b6f5-546c-b661-c0f3c7292554",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1"
+        },
+        "score_coverage": "0.40",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "match_class": "INSUFFICIENT",
+        "event_business_key": "evt-A08",
+        "claim_business_key": "claim-A08",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [
+        "claim_time_unknown",
+        "external_identifier_unknown",
+        "object_account_unknown",
+        "subject_account_unknown"
+      ],
+      "conflict_items": []
+    },
+    {
+      "run_id": "78f754c5-451a-52d6-b4c6-8404a4c91ad9",
+      "case_id": "e19f866e-80e3-5f61-80c0-94138702c9b3",
+      "left_node_id": "2736ffd3-37ea-5608-986e-aa73cc1d2a4d",
+      "right_node_id": "5517738f-4e13-5416-95d2-388e908eba96",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": 1.0,
+      "review_status": "PENDING",
+      "explanation": {
+        "case_id": "e19f866e-80e3-5f61-80c0-94138702c9b3",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "1",
+          "direction_accounts": "1",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "1",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "EXACT",
+        "event_business_key": "evt-A01",
+        "claim_business_key": "claim-A01",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": []
+    },
+    {
+      "run_id": "5322dc12-1bf4-50b7-bf30-09f0fa7b1f72",
+      "case_id": "fb3c5afc-f562-5aa7-9dcc-fdf05862a442",
+      "left_node_id": "279d130e-a834-542b-bca6-7f10cbe7df4d",
+      "right_node_id": "c3a62ddf-bdbd-5344-840c-644af2955efd",
+      "match_type": "EVENT_TO_CLAIM",
+      "score": null,
+      "review_status": "DISPUTED",
+      "explanation": {
+        "case_id": "fb3c5afc-f562-5aa7-9dcc-fdf05862a442",
+        "asset_id": "TRON:USDT",
+        "event_type": "ONCHAIN_TRANSFER",
+        "feature_scores": {
+          "amount": "1",
+          "asset_network": "0",
+          "direction_accounts": "1",
+          "external_id": "1",
+          "time": "1"
+        },
+        "score_coverage": "1.00",
+        "raw_comparison_score": "0.8",
+        "weights": {
+          "external_id": "0.35",
+          "asset_network": "0.20",
+          "amount": "0.20",
+          "time": "0.15",
+          "direction_accounts": "0.10"
+        },
+        "source_integrity_ok": true,
+        "is_simulated": true,
+        "requires_human_review": true,
+        "amount_tolerance": {
+          "absolute": "0.000001",
+          "relative": "0.002"
+        },
+        "time_window_seconds": 7200,
+        "fee_explains_difference": false,
+        "amount_absolute_difference": "0",
+        "amount_relative_difference": "0",
+        "time_distance_seconds": 0,
+        "match_class": "CONFLICT",
+        "event_business_key": "evt-A04",
+        "claim_business_key": "claim-A04",
+        "algorithm_version": "0.1.0"
+      },
+      "missing_items": [],
+      "conflict_items": [
+        "ASSET_MISMATCH"
+      ]
+    }
+  ],
+  "event_reconciliation": [
+    {
+      "run_id": "e0ff1d62-8efb-595b-980b-20b34f46d58b",
+      "case_id": "09b74c81-b0c8-560e-beba-099fd38ce842",
+      "left_node_id": "1d53ae0b-8af7-5b58-b945-a81b0e92f2f3",
+      "right_node_id": "bc6fd357-44c4-56f8-9923-328041300acb",
+      "match_type": "EVENT_TO_EVENT",
+      "score": null,
+      "review_status": "PENDING",
+      "explanation": {
+        "match_class": "CANDIDATE_REVIEW",
+        "transfer_id": "evt-A05-chain",
+        "deposit_id": "evt-A05-deposit",
+        "same_tx_hash": true,
+        "asset_network_consistent": true,
+        "deposit_address_corresponds": true,
+        "amount_difference": "0",
+        "time_delta_seconds": 3.0,
+        "separate_events_not_merged": true,
+        "is_simulated": true,
+        "requires_human_review": true
+      },
+      "missing_items": [],
+      "conflict_items": []
+    }
+  ],
+  "claims_without_output": [
+    {
+      "case_id": "b99fe3d8-9cfc-52f3-b31d-ca98cefd8d55",
+      "claim_id": "benchmark-claim-160"
+    }
+  ],
+  "metrics": {
+    "input_events": 16,
+    "input_claims": 15,
+    "within_case_cartesian_combinations": 17,
+    "global_cartesian_reference": 240,
+    "evaluated_pairs": 16,
+    "returned_results": 16,
+    "class_counts": {
+      "EXACT": 6,
+      "CANDIDATE_STRONG": 5,
+      "CANDIDATE_REVIEW": 1,
+      "INSUFFICIENT": 1,
+      "CONFLICT": 3
+    },
+    "event_reconciliation_links": 1
+  }
+}

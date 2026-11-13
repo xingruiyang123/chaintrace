@@ -1,0 +1,279 @@
+/* MixerAttribution 专属样式；选择器一律 .ma- 前缀，禁止裸标签选择器。 */
+
+/* 全页数字等宽，避免跳动 */
+.ma{font-variant-numeric:tabular-nums}
+
+/* ---------- 色阶：5 档 ↔ parameters.attribution.tier ---------- */
+/* 语义轴只用 tier 三色，5 档靠同一色相内的明度分层，不跨到琥珀（琥珀固定表示信号灯 YELLOW / 待复核） */
+/* b1 灰（LOW）→ b2/b3 蓝（MEDIUM 下/上段）→ b4/b5 绿（HIGH 下/上段） */
+.ma-tone-b1{--ma-fg:#6b7a8c;--ma-bg:#f1f3f6;--ma-line:#e1e7ee}
+.ma-tone-b2{--ma-fg:#556fa8;--ma-bg:#e9effa;--ma-line:#d3dff2}
+.ma-tone-b3{--ma-fg:#38538c;--ma-bg:#ccdaf3;--ma-line:#b6c8e9}
+.ma-tone-b4{--ma-fg:#277b68;--ma-bg:#d5ebe3;--ma-line:#bcded3}
+.ma-tone-b5{--ma-fg:#0f5e50;--ma-bg:#a9d7c6;--ma-line:#8fc9b5}
+
+/* ---------- 顶部视图切换条 ---------- */
+.ma-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 22px;background:#fff;border-bottom:1px solid #eef1f6;flex-shrink:0}
+.ma-seg{display:flex;gap:2px;padding:3px;background:#f1f4f8;border:1px solid #edf0f5;border-radius:7px}
+.ma-seg button{display:flex;align-items:center;gap:5px;border:0;background:transparent;color:#77859b;font-size:12px;padding:5px 12px;border-radius:5px;cursor:pointer;transition:background 160ms ease,color 160ms ease}
+.ma-seg button:hover{color:#45618f}
+.ma-seg button[aria-pressed="true"]{background:#fff;color:#334f85;font-weight:600;box-shadow:0 1px 4px #253b6014}
+.ma-seg button:focus-visible{outline:2px solid #6e8ed0;outline-offset:1px}
+.ma-bar-note{font-size:11px;color:#94a0b1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- 矩阵视图：说明 + 图例 ---------- */
+.ma-hint{display:flex;flex-direction:column;gap:3px;margin:14px 22px 0;padding:9px 12px;background:#f5f8fc;border:1px solid #e6ecf5;border-radius:8px;font-size:12px;color:#5f7189;line-height:1.65}
+.ma-hint b{color:#334f85;font-weight:600}
+.ma-hint em{font-style:normal;font-size:11px;color:#93a0b1}
+
+.ma-legend{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;margin:10px 22px 0;font-size:11px;color:#7f8da2}
+.ma-lg-t{color:#94a0b1}
+.ma-lg{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.ma-lg i{display:block;width:18px;height:11px;border-radius:3px;background:var(--ma-bg,#f1f3f6);border:1px solid var(--ma-line,#e1e7ee)}
+.ma-lg-gap{margin-left:2px;color:#8a97a9}
+.ma-lg .ma-lg-hatch{background:repeating-linear-gradient(135deg,#f2f5f9 0 4px,#fbfcfe 4px 8px);border-color:#e6ebf2}
+
+/* ---------- 矩阵：单池卡片 ---------- */
+.ma-poolmatrix{margin:14px 22px 0;background:#fff;border:1px solid #e7ecf3;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px #19345505}
+.ma-pm-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:#fbfcfe;border-bottom:1px solid #eff2f7}
+.ma-pm-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.ma-pm-title b{font-size:13px;font-weight:600;color:#31465f}
+.ma-pm-sub{font-size:11px;color:#8b97a9;white-space:nowrap}
+.ma-pm-score{display:flex;align-items:baseline;gap:5px;flex-shrink:0}
+.ma-pm-score small{font-size:10px;color:#94a0b1}
+.ma-pm-score b{font-size:20px;font-weight:650;color:#3a5170;letter-spacing:-.02em}
+
+.ma-mx-wrap{overflow-x:auto;padding:12px 14px 14px}
+.ma-mx{display:grid;gap:5px;align-items:stretch;min-width:320px}
+
+.ma-mx-corner{align-self:end;padding:0 0 5px 2px;font-size:10px;color:#9aa7b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-mx-colhead{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px;min-width:0;padding-bottom:4px}
+.ma-mx-colhead b{max-width:100%;font-size:11.5px;font-weight:600;color:#5a6d87;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-mx-colhead small{max-width:100%;font-size:9.5px;color:#9aa7b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-mx-rowhead{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0;padding-right:6px}
+.ma-mx-rowhead b{font-size:12px;font-weight:600;color:#41586f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-mx-rowhead small{font-size:10px;color:#93a0b2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-mx-sumhead{align-self:end;padding:0 0 5px 9px;border-left:1px dashed #dfe6ef;font-size:10px;color:#9aa7b8;white-space:nowrap}
+
+/* 单元格：有候选 / 无候选 / 选中 */
+.ma-cell{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:46px;padding:0;border:1px solid var(--ma-line,#e3e8ef);border-radius:6px;background:var(--ma-bg,#f1f3f6);color:var(--ma-fg,#6b7a8c);font:inherit;line-height:1}
+.ma-cell b{font-size:14px;font-weight:650;letter-spacing:-.02em}
+.ma-cell small{font-size:9px;opacity:.72;letter-spacing:.02em}
+.ma-cell-btn{cursor:pointer;transition:transform 160ms ease,box-shadow 160ms ease}
+.ma-cell-btn:hover{transform:translateY(-1px);box-shadow:0 3px 10px #21356b1a}
+.ma-cell-btn:focus-visible{outline:2px solid #6e8ed0;outline-offset:1px}
+.ma-cell[aria-pressed="true"]{outline:2px solid #6e8ed0;outline-offset:-1px;box-shadow:0 0 0 3px #6e8ed01f}
+.ma-cell-best{border-color:var(--ma-fg)}
+.ma-cell-best small{opacity:.9;font-weight:700}
+.ma-cell-empty{background:repeating-linear-gradient(135deg,#f2f5f9 0 5px,#fbfcfe 5px 10px);border-color:#eaeef4;cursor:default}
+
+/* 同分并列：右上角小标 + 虚线描边，与「唯一第一名」的实线区分开 */
+.ma-cell-tie{padding-top:12px}
+.ma-cell-tie-tag{position:absolute;top:3px;right:4px;font-style:normal;font-size:8.5px;font-weight:600;line-height:1;letter-spacing:.02em;color:var(--ma-fg);background:#ffffffcc;border:1px solid var(--ma-line);border-radius:3px;padding:1px 3px;white-space:nowrap}
+.ma-cell-best.ma-cell-tie{border-style:dashed}
+
+/* 行内最高：把「同行比较」落到一个具体出金上 */
+.ma-mx-sum{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0;padding-left:9px;border-left:1px dashed #dfe6ef}
+.ma-mx-sum b{font-size:14px;font-weight:650;color:#3f5578;letter-spacing:-.02em}
+.ma-mx-sum small{font-size:10px;color:#97a3b5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- 列表视图 ---------- */
+.ma-list-view{padding:14px 22px 0}
+.ma-table{border:1px solid #e7ecf3;border-radius:10px;background:#fff;overflow:hidden}
+.ma-tr{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,1fr) 62px 74px 108px;gap:8px;align-items:center;padding:0 14px;width:100%;text-align:left}
+.ma-th{min-height:34px;background:#f7f9fc;font-size:10.5px;color:#8c9aaf;letter-spacing:.02em}
+.ma-th span{padding:0}
+.ma-tr-btn{min-height:48px;border:0;border-top:1px solid #f0f3f8;border-left:3px solid var(--ma-fg,#cdd6e2);background:#fff;font:inherit;cursor:pointer;transition:background 160ms ease}
+.ma-tr-btn:hover{background:#f7fafd}
+.ma-tr-btn:focus-visible{outline:2px solid #6e8ed0;outline-offset:-2px}
+.ma-tr-btn.is-on{background:#eef3fc}
+.ma-tr-btn.is-on .ma-td-id b{color:#2f4c7d}
+.ma-td-id{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ma-td-id b{font-size:12px;font-weight:600;color:#3f5570;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ma-td-id small{font-size:10px;color:#95a2b3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ma-td-edge{font-size:12px;color:#586c86;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ma-td-num{font-size:13px;font-weight:600;color:#334a68;text-align:right}
+.ma-num{text-align:right}
+.ma-td-tier{display:flex;align-items:center}
+
+/* ---------- 池列表（可折叠） ---------- */
+.ma-pools{margin:18px 22px 22px}
+.ma-pools-head{display:flex;align-items:center;gap:7px;width:100%;padding:0 0 10px;border:0;background:transparent;color:#64738a;font-size:12px;font-weight:500;cursor:pointer;text-align:left}
+.ma-pools-head:hover{color:#45618f}
+.ma-pools-head:focus-visible{outline:2px solid #6e8ed0;outline-offset:2px}
+.ma-pools-head em{font-style:normal;font-size:11px;font-weight:400;color:#96a3b4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ma-chev{transition:transform 180ms ease;flex-shrink:0}
+.ma-chev-closed{transform:rotate(-90deg)}
+
+.ma-pool{margin-bottom:10px;border:1px solid #e7ecf3;border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 2px 10px #19345505}
+.ma-pool.is-on{border-color:#cfdcf3;box-shadow:0 0 0 2px #6e8ed01a}
+.ma-pool-head{display:flex;align-items:center;gap:9px;width:100%;padding:10px 14px;border:0;border-bottom:1px solid #f0f3f8;background:#fbfcfe;font:inherit;text-align:left;cursor:pointer}
+.ma-pool-head:hover{background:#f5f8fd}
+.ma-pool-head:focus-visible{outline:2px solid #6e8ed0;outline-offset:-2px}
+.ma-pool-head[aria-pressed="true"]{background:#f3f7fe}
+.ma-pool-name{font-size:13px;font-weight:600;color:#31465f;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ma-mech{flex-shrink:0;font-size:10px;color:#5f7289;background:#eef2f8;border:1px solid #e6ecf4;border-radius:4px;padding:2px 6px;white-space:nowrap}
+.ma-pool-detect{display:flex;align-items:baseline;gap:4px;margin-left:auto;flex-shrink:0}
+.ma-pool-detect b{font-size:19px;font-weight:650;color:#3a5170;letter-spacing:-.02em}
+.ma-pool-detect small{font-size:10px;color:#95a2b3}
+.ma-pool-go{color:#a9b6c7;flex-shrink:0}
+
+.ma-pool-meta{display:flex;flex-wrap:wrap;gap:4px 14px;padding:9px 14px;border-bottom:1px dashed #eef1f6;font-size:11px;color:#8492a3}
+.ma-pool-meta b{color:#42596f;font-weight:600}
+
+.ma-sigs{list-style:none;margin:0;padding:10px 14px 6px;display:flex;flex-direction:column;gap:5px}
+.ma-sig{display:grid;grid-template-columns:14px minmax(0,1fr) auto minmax(70px,auto);column-gap:8px;row-gap:3px;align-items:center;padding:6px 9px;border:1px solid #eef2f7;border-radius:6px;background:#fafcfd}
+.ma-sig-ico{display:grid;place-items:center;color:#4f9a84}
+.ma-sig-name{font-size:12px;font-weight:500;color:#40566f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-sig-name i{font-style:normal;font-size:9.5px;color:#a5b0bd;margin-left:5px;letter-spacing:.02em}
+.ma-sig-state{justify-self:end;font-size:10px;font-weight:600;color:#3f8d76;background:#eaf3ef;border:1px solid #dbeae3;border-radius:4px;padding:1px 5px;white-space:nowrap}
+.ma-sig-val{font-size:11px;color:#5f7189;text-align:right;white-space:nowrap}
+.ma-sig-val em{font-style:normal;color:#98a4b4}
+.ma-sig-detail{grid-column:2 / -1;font-size:11px;line-height:1.55;color:#8b97a9}
+.ma-sig.is-miss{background:#f8f9fb;border-color:#eef1f5}
+.ma-sig.is-miss .ma-sig-ico{color:#a9b4c2}
+.ma-sig.is-miss .ma-sig-name{color:#788798}
+.ma-sig.is-miss .ma-sig-state{justify-self:end;color:#8a97a9;background:#f1f3f6;border-color:#e7ebf0}
+.ma-sig.is-miss .ma-sig-val{color:#8b97a8}
+.ma-sig.is-miss .ma-sig-detail{color:#9aa6b5}
+.ma-sig-none{display:block;font-size:11px;color:#98a4b4}
+.ma-sig-sum{margin:2px 14px 12px;font-size:10.5px;color:#94a0b1;line-height:1.6}
+.ma-sig-sum b{color:#54697f;font-weight:600}
+
+.ma-none{margin:14px 22px;padding:14px 16px;border:1px dashed #e2e8f0;border-radius:8px;background:#fbfcfe;font-size:12px;color:#8b97a9;line-height:1.7}
+.ma-none-in{margin:10px 14px 14px}
+
+/* ---------- KPI 的并列说明（第 3 格） ---------- */
+/* modules.css 的 .kpi / .kpi span 都是行内排版；这里提高特异性覆盖成块级小字，附加类名一律 .ma- 前缀 */
+.ma .kpi.ma-kpi-tied{display:flex;flex-wrap:wrap;align-items:baseline;align-content:flex-start;column-gap:5px;row-gap:0}
+.ma .kpi.ma-kpi-tied b{font-variant-numeric:tabular-nums}
+.ma .kpi.ma-kpi-tied .ma-kpi-note{flex:0 0 100%;display:block;margin:4px 0 0;font-size:9.5px;line-height:1.5;color:#93a0b2;white-space:normal;overflow:visible;text-overflow:clip;font-weight:400;letter-spacing:0;text-align:left}
+/* 最高归因分的并列提示：行内小标签，与「分」并排 */
+.ma .kpi .ma-kpi-inline{display:inline-block;margin-left:5px;padding:1px 5px;border:1px solid #e1e7ef;border-radius:3px;background:#f4f6f9;color:#7f8da2;font-size:9.5px;white-space:nowrap;vertical-align:2px}
+
+/* ---------- 右侧栏 ---------- */
+.ma-side-in{display:flex;flex-direction:column}
+.ma-side .side-block h4{font-size:12px;color:#64738a}
+.ma-h4-note{font-size:10px;font-weight:400;color:#9aa7b8;white-space:nowrap}
+.ma-side-top{padding:13px 18px 12px;border-bottom:1px solid #eef1f6}
+
+.ma-back{display:inline-flex;align-items:center;gap:4px;padding:0 0 8px;border:0;background:transparent;color:#8b97a9;font-size:11px;cursor:pointer}
+.ma-back:hover{color:#45618f}
+.ma-back:focus-visible{outline:2px solid #6e8ed0;outline-offset:2px}
+.ma-back svg{transform:rotate(180deg)}
+
+.ma-kicker{font-size:10.5px;color:#95a2b3;letter-spacing:.02em;line-height:1.5;word-break:break-word}
+.ma-pool-title{margin-top:3px;font-size:15px;font-weight:650;color:#2f4560;line-height:1.45}
+
+.ma-score-line{display:flex;align-items:flex-end;gap:10px;margin-top:7px;flex-wrap:wrap}
+.ma-score{font-size:36px;font-weight:650;line-height:1;letter-spacing:-.035em;color:#2b4059}
+.ma-score-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding-bottom:4px}
+.ma-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 7px;border:1px solid var(--ma-line,#e3e8ef);border-radius:5px;background:var(--ma-bg,#f1f3f6);color:var(--ma-fg,#6b7a8c);font-size:10px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.ma-rank{font-size:10.5px;color:#8492a3;white-space:nowrap}
+/* 构造真值徽标：中性灰阶，不用绿/红 —— 真值是我们自己造的，一致与否不构成准确/错误判定 */
+.ma-gt{display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border:1px solid #e1e7ef;border-radius:4px;background:#f4f6f9;color:#6f8098;font-size:10px;font-weight:400;white-space:nowrap}
+.ma-gt-note{margin:6px 0 0;font-size:9.5px;line-height:1.55;color:#9aa7b8}
+
+.ma-pair{display:grid;grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr);align-items:center;gap:6px;margin-top:11px;padding:9px 10px;border:1px solid #eef1f6;border-radius:8px;background:#f7f9fc}
+.ma-pair-side{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ma-pair-side small{font-size:9.5px;color:#95a2b3}
+.ma-pair-side b{font-size:12px;font-weight:600;color:#3f5677;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-pair-side em{font-style:normal;font-size:10px;color:#8b97a9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-pair-arrow{color:#a9b6c7;justify-self:center}
+
+/* 先验 / 候选规模：放在六维之上，先回答「这个分数意味着什么」 */
+.ma-prior{background:#fbfcfe}
+.ma-prior-row{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.ma-prior-cell{padding:7px 9px;border:1px solid #e9eef4;border-radius:7px;background:#fff}
+.ma-prior-cell small{display:block;font-size:9.5px;line-height:1.45;color:#95a2b3;margin-bottom:3px}
+.ma-prior-cell b{font-size:15px;font-weight:650;color:#35465f;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.ma-prior-sub{margin:7px 0 0;font-size:10px;line-height:1.6;color:#8b97a9}
+.ma-prior-sub b{color:#54697f;font-weight:600}
+/* 用「信息不足」灰（missing），不用琥珀 —— 琥珀留给信号灯 YELLOW；这里说的是信息不足以定案，不是待办 */
+.ma-prior-tie{margin:7px 0 0;padding:6px 8px;border:1px dashed #d5dce6;border-radius:6px;background:#f4f6f9;font-size:10.5px;line-height:1.6;color:#5f7189}
+.ma-prior-text{margin:8px 0 0;font-size:10.5px;line-height:1.7;color:#7a889d}
+.ma-prior-text b{color:#40566f;font-weight:600}
+
+/* 六维特征条 */
+.ma-feats{display:flex;flex-direction:column;gap:11px}
+.ma-feat-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.ma-feat-name{font-size:12px;font-weight:500;color:#40566f}
+.ma-feat-name i{font-style:normal;font-size:9.5px;color:#a5b0bd;margin-left:5px;letter-spacing:.02em}
+.ma-feat-contrib{font-size:12px;font-weight:650;color:#3b5170}
+.ma-feat-track{height:6px;margin-top:5px;border-radius:3px;background:#eef2f7;overflow:hidden}
+.ma-feat-fill{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#93aacf,#5576b8)}
+.ma-feat-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px;font-size:10px;color:#94a0b1}
+.ma-feat-detail{margin:3px 0 0;font-size:11px;line-height:1.6;color:#7f8da2}
+.ma-sum{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px;padding-top:11px;border-top:1px dashed #e4e9f0;font-size:11px;color:#7a889d}
+.ma-sum b{font-size:14px;font-weight:650;color:#334a68;margin-left:3px}
+.ma-ok{padding:2px 7px;border:1px solid #d7e9e1;border-radius:4px;background:#eef6f2;color:#3f8d76;font-size:10px;white-space:nowrap}
+.ma-warn{padding:2px 7px;border:1px solid #e9eef4;border-radius:4px;background:#f5f7fa;color:#8492a3;font-size:10px;white-space:nowrap}
+
+/* 概览：分布 + 合成数据指标 */
+.ma-ovstats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ma-ovstat{padding:8px 10px;border:1px solid #eef1f6;border-radius:8px;background:#fbfcfe}
+.ma-ovstat small{display:block;font-size:10px;color:#95a2b3;margin-bottom:3px}
+.ma-ovstat b{font-size:18px;font-weight:650;color:#35465f;letter-spacing:-.02em}
+.ma-distbar{display:flex;height:8px;margin:10px 0 7px;border-radius:4px;background:#eef2f7;overflow:hidden}
+.ma-distbar i{display:block;height:100%}
+.ma-dist-HIGH{background:#238a78}
+.ma-dist-MEDIUM{background:#5576b8}
+.ma-dist-LOW{background:#8492a3}
+.ma-distlegend{display:flex;flex-wrap:wrap;gap:11px;font-size:10px;color:#7f8da2}
+.ma-distlegend span{display:flex;align-items:center;gap:4px}
+.ma-distlegend i{display:block;width:7px;height:7px;border-radius:2px}
+.ma-distlegend b{color:#40566f;font-weight:600}
+
+.ma-simtag{padding:2px 6px;border:1px solid #d7e9e1;border-radius:4px;background:#eaf3ef;color:#4c796a;font-size:9.5px;white-space:nowrap}
+.ma-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.ma-metrics div{padding:7px 8px;border:1px solid #eef1f6;border-radius:7px;background:#fbfcfe;text-align:center}
+.ma-metrics small{display:block;font-size:9.5px;color:#95a2b3;margin-bottom:2px}
+.ma-metrics b{font-size:15px;font-weight:650;color:#35465f;letter-spacing:-.02em}
+.ma-note{margin:9px 0 0;font-size:10.5px;line-height:1.7;color:#8b97a9}
+.ma-tie-note{margin:9px 0 0;padding:7px 9px;border:1px solid #e9eef4;border-radius:6px;background:#f7f9fc;font-size:10.5px;line-height:1.65;color:#6f8098}
+.ma-tie-note b{color:#43536c;font-weight:600}
+.ma-metric-meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:7px;font-size:10px;color:#93a0b2}
+.ma-metric-meta b{color:#54697f;font-weight:600}
+.ma-tie-hint{margin:9px 0 0;padding:7px 9px;border:1px dashed var(--ma-line,#dbe4f4);border-radius:6px;background:var(--ma-bg,#eff3fb);font-size:10.5px;line-height:1.65;color:#5c6f8c}
+.ma-tie-hint b{font-weight:650;color:#33465f}
+
+.ma-baselines{margin-top:11px;padding-top:10px;border-top:1px dashed #eef1f6}
+.ma-baselines>small{display:block;font-size:10px;color:#95a2b3;margin-bottom:5px}
+.ma-baselines div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;font-size:11px;color:#6f8098}
+.ma-baselines b{font-size:11.5px;font-weight:600;color:#54697f}
+.ma-baseline-head{font-size:9.5px;color:#a2aebd;padding-bottom:1px}
+.ma-baseline-head b{font-size:9.5px;font-weight:500;color:#a2aebd}
+.ma-baseline-row span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ma-baseline-row b{width:40px;text-align:right;flex-shrink:0}
+.ma-baseline-head b{width:40px;text-align:right;flex-shrink:0}
+.ma-baselines-note{margin-top:6px;line-height:1.6;color:#9aa7b8}
+
+/* 池详情：边清单与候选跳转 */
+.ma-side .ma-edge-list{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.ma-side .ma-edge-list li{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;font-size:11px;color:#8492a3}
+.ma-side .ma-edge-list li:before{display:none}
+.ma-edge-list b{font-size:11.5px;font-weight:600;color:#4a5f7c}
+.ma-mini-links{display:flex;flex-direction:column;gap:5px}
+.ma-mini{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;width:100%;padding:6px 8px;border:1px solid #eef1f6;border-radius:6px;background:#fbfcfe;font:inherit;text-align:left;cursor:pointer;transition:background 160ms ease}
+.ma-mini:hover{background:#f4f7fc}
+.ma-mini:focus-visible{outline:2px solid #6e8ed0;outline-offset:1px}
+.ma-mini.is-on{border-color:#cfdcf3;background:#eef3fc}
+.ma-mini-id{font-size:11px;font-weight:600;color:#4a5f7c}
+.ma-mini-pair{font-size:10.5px;color:#93a0b1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ma-mini b{font-size:11.5px;font-weight:650;color:#33465f}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:1300px){
+  .ma-bar{padding-left:18px;padding-right:18px}
+  .ma-hint,.ma-legend,.ma-none{margin-left:18px;margin-right:18px}
+  .ma-poolmatrix,.ma-pools{margin-left:18px;margin-right:18px}
+  .ma-list-view{padding-left:18px;padding-right:18px}
+  .ma-tr{grid-template-columns:74px minmax(0,1fr) minmax(0,1fr) 54px 66px 46px;padding:0 10px;gap:6px}
+}
+@media(max-width:1050px){
+  .ma-bar-note{display:none}
+  .ma-mx-wrap{padding:10px 10px 12px}
+  .ma-sig{grid-template-columns:14px minmax(60px,auto) auto;row-gap:3px}
+  .ma-sig-val{grid-column:2 / -1;justify-self:start;text-align:left}
+  .ma-sig-detail{grid-column:2 / -1}
+}

@@ -1,0 +1,127 @@
+{
+  "version": "v0.1",
+  "note": "法币出口规则库。每条规则含 rule_id / label / when / score / explain_template；S_off = min(cap, Σ 命中规则分值)。when 内的条件为「与」关系，支持的条件键见 README 第 3 节。所有分值与条件是启发式参数，不构成对任何真实主体的定性。",
+  "node_rules": [
+    {
+      "rule_id": "R-UB-01",
+      "label": "节点类型为地下钱庄",
+      "when": { "type": ["underground_bank"] },
+      "score": 68,
+      "explain_template": "节点 {node_id}（{label}）在网络中被标注为地下钱庄类结算节点"
+    },
+    {
+      "rule_id": "R-EX-01",
+      "label": "节点类型为交易所",
+      "when": { "type": ["exchange"] },
+      "score": 58,
+      "explain_template": "节点 {node_id}（{label}）为交易所类兑付节点，通常具备 KYC 与协作通道"
+    },
+    {
+      "rule_id": "R-OT-01",
+      "label": "节点类型为场外承兑商",
+      "when": { "type": ["otc"] },
+      "score": 50,
+      "explain_template": "节点 {node_id}（{label}）为场外承兑节点，{entity_text}"
+    },
+    {
+      "rule_id": "R-PG-01",
+      "label": "节点类型为支付网关",
+      "when": { "type": ["payment_gateway"] },
+      "score": 44,
+      "explain_template": "节点 {node_id}（{label}）为支付网关类收单结算节点"
+    },
+    {
+      "rule_id": "R-BR-01",
+      "label": "节点类型为跨链桥",
+      "when": { "type": ["bridge"] },
+      "score": 40,
+      "explain_template": "节点 {node_id}（{label}）为跨链桥，兑现路径需跨链追踪"
+    },
+    {
+      "rule_id": "R-DX-01",
+      "label": "节点类型为 DeFi 协议",
+      "when": { "type": ["defi"] },
+      "score": 34,
+      "explain_template": "节点 {node_id}（{label}）为 DeFi 协议，兑现多经兑换池完成"
+    },
+    {
+      "rule_id": "R-EN-01",
+      "label": "出口存在可识别主体",
+      "when": { "has_entity": true },
+      "score": 5,
+      "explain_template": "该出口在画像库中对应实体 {entity}，具备可对接的责任主体"
+    },
+    {
+      "rule_id": "R-RK-01",
+      "label": "节点风险等级为高",
+      "when": { "risk": ["high"] },
+      "score": 6,
+      "explain_template": "该出口风险等级为高，与涉案资金流向一致"
+    },
+    {
+      "rule_id": "R-TX-01",
+      "label": "名称含承兑特征",
+      "when": { "text_any": ["承兑"] },
+      "score": 4,
+      "explain_template": "节点名称或备注含「承兑」特征：{note}"
+    },
+    {
+      "rule_id": "R-TX-02",
+      "label": "名称含对敲/钱庄特征",
+      "when": { "text_any": ["对敲", "钱庄"] },
+      "score": 6,
+      "explain_template": "节点名称或备注含对敲或钱庄特征：{note}"
+    }
+  ],
+  "edge_rules": [
+    {
+      "rule_id": "R-E-03",
+      "label": "存在 to_fiat 兑现入金",
+      "when": { "pattern": "to_fiat", "min_count": 1 },
+      "score": 12,
+      "explain_template": "{to_fiat_count} 笔 to_fiat 入金，合计 {inflow_total}"
+    },
+    {
+      "rule_id": "R-E-05",
+      "label": "混币池出金 3 跳内到达",
+      "when": { "mixer_within_hops": 3 },
+      "score": 10,
+      "explain_template": "该出口与混币池 {mixer_label} 的距离为 {mixer_hops} 跳，处于断链后的下游"
+    },
+    {
+      "rule_id": "R-E-06",
+      "label": "存在整额兑现入金",
+      "when": { "min_integral_deposits": 1 },
+      "score": 8,
+      "explain_template": "{integral_count} 笔入金为整额（无小数部分），符合柜台或对敲结算习惯"
+    },
+    {
+      "rule_id": "R-E-07",
+      "label": "入金笔数偏高",
+      "when": { "min_deposit_count": 5 },
+      "score": 9,
+      "explain_template": "共 {deposit_count} 笔入金，呈高频归集特征"
+    },
+    {
+      "rule_id": "R-E-08",
+      "label": "只入不出",
+      "when": { "no_out_edges": true },
+      "score": 4,
+      "explain_template": "该节点在本案观测窗口内没有出金，停在兑付环节"
+    },
+    {
+      "rule_id": "R-E-09",
+      "label": "多来源入金",
+      "when": { "min_distinct_sources": 3 },
+      "score": 6,
+      "explain_template": "{distinct_sources} 个不同地址向该出口入金"
+    },
+    {
+      "rule_id": "R-E-10",
+      "label": "存在跨链转出",
+      "when": { "pattern": "bridge_out", "min_count": 1 },
+      "score": 8,
+      "explain_template": "该出口存在跨链转出，兑现发生在其他链上"
+    }
+  ]
+}

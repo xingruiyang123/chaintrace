@@ -16,7 +16,9 @@
   - Python 作业：测试文件 `from chaintrace_matcher import ...` 失败，因算法模块与桥接服务分处两层目录。改为显式设置 `PYTHONPATH`（`ALGO_DIR` + `PROTOTYPE_DIR`），不再依赖工作目录。
   - UI 作业：`node --test tests/analysis.test.mjs` 读取的 `desktop/验收导出/核验完整结果.json` 被 `.gitignore` 排除，仓库里本就不存在。改为**先用冻结引擎跑一次导出**再跑测试，并断言导出行数 > 0、结果文件存在。
 - 本地已验证等价命令：Python `27 passed`；导出生成 `event_claim_rows = 16`；UI `5 passed`；`vite build` 通过。
-- 文档同步：README 的「私有仓库候选」与「按私有仓库准备」改为公开事实；PROGRESS 的「私有 monorepo」改为公开；ADR 0001 增加 2026-11-13 状态说明（保留原决策背景，标注哪半句已失效）。**仍未附加 LICENSE**——无许可证即默认保留所有权利。
+- **纳入算法二与六个可视化模块**：`desktop/algo2/`（图构建、混币池识别、断链归因、法币出口评分、可控性、追缴路径、评估集生成、基准脚本、pytest 37 项）与 `desktop/src/modules/`（总览、资金流向、混币归因、法币出口、可控性评分、路径沙盘），以及 `src/lib/bridge.js`、`离线原型/mixer_service.py`、两个合成样例与识别结果。**冻结算法一与既有四页未改。**
+- CI 增加算法二测试步骤；`.gitignore` 为 `algo2/outputs/benchmark.json` 开例外（基准结果是可复核证据）。
+- README 增补：两条链路的边界说明、评估口径表（p@k + 两个基线 + 含/零竞争条件分组）、目录说明、`ELECTRON_RUN_AS_NODE` 环境坑。- 文档同步：README 的「私有仓库候选」与「按私有仓库准备」改为公开事实；PROGRESS 的「私有 monorepo」改为公开；ADR 0001 增加 2026-11-13 状态说明（保留原决策背景，标注哪半句已失效）。**仍未附加 LICENSE**——无许可证即默认保留所有权利。
 ## 2026-11-07 候选基线说明
 
 - 来源导出候选记录新增结构化输入对象及关联来源记录导出；哈希仅用于内容一致性检查，不证明原始材料真实性或完整页段定位。

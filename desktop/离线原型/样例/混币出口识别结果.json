@@ -1,0 +1,2646 @@
+{
+  "schema_version": "mixer_offramp/v1",
+  "is_simulated": true,
+  "input_sha256": "13de9aef8f16ba39f36d5a4652fa1ede9d6551c03474409f08ffc870162d4a73",
+  "source_file_sha256": "0b5d234f8f1242318c9d7369d3a93bb78198d8f6e0cb88d4a3e2308b39b83891",
+  "generated_at": "2026-11-13T09:18:27Z",
+  "parameters": {
+    "mixer": {
+      "min_inputs": 3,
+      "equal_output_tolerance": 0.0005,
+      "batch_window_hours": 48,
+      "min_equal_outputs": 3
+    },
+    "attribution": {
+      "weights": {
+        "amount": 30,
+        "time": 20,
+        "denomination": 15,
+        "path_rarity": 15,
+        "cooccurrence": 12,
+        "fee_fit": 8
+      },
+      "tier": {
+        "high": 70,
+        "medium": 45
+      }
+    },
+    "offramp": {
+      "cap": 100
+    },
+    "controllability": {
+      "alpha": 0.65,
+      "beta": 0.25,
+      "gamma": 0.1,
+      "penalty": {
+        "high": 15,
+        "medium": 8,
+        "low": 2
+      },
+      "signal": {
+        "green": 75,
+        "yellow": 60
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "SIM-MIX-01",
+      "network": "BTC",
+      "summary": {
+        "nodes": 15,
+        "edges": 19,
+        "mixer_pools": 2,
+        "links": 17,
+        "offramps": 3,
+        "green": 1,
+        "yellow": 2,
+        "red": 0,
+        "high_links": 13,
+        "paths": 2,
+        "distinct_rank1": 2
+      },
+      "mixer_pools": [
+        {
+          "pool_id": "pool-cj-a",
+          "label": "虚拟 CoinJoin 池 A",
+          "mechanism": "coinjoin",
+          "detection_score": 84,
+          "signals": [
+            {
+              "id": "M1",
+              "label": "多输入聚合",
+              "value": 3,
+              "threshold": ">=3",
+              "weight": 20,
+              "hit": true,
+              "detail": "观测量到的直接入金地址 3 个，达到多输入聚合门槛"
+            },
+            {
+              "id": "M2",
+              "label": "等额输出",
+              "value": 4,
+              "threshold": ">=3",
+              "weight": 22,
+              "hit": true,
+              "detail": "最大等额组 4 笔，面额 3.98000000，达到等额拆分门槛"
+            },
+            {
+              "id": "M3",
+              "label": "批处理时间窗",
+              "value": 0.1,
+              "threshold": "<=48h",
+              "weight": 16,
+              "hit": true,
+              "detail": "5 笔出金集中在 0.1 小时内，符合批处理"
+            },
+            {
+              "id": "M4",
+              "label": "地址一次性",
+              "value": 4,
+              "threshold": ">=2",
+              "weight": 14,
+              "hit": true,
+              "detail": "4 个出金目标地址只收到一笔入金、此前也未在案内出现，符合一次性收款地址"
+            },
+            {
+              "id": "M5",
+              "label": "面额标准化",
+              "value": 100.0,
+              "threshold": ">=60%",
+              "weight": 12,
+              "hit": true,
+              "detail": "5/5 笔出金为整额或短尾数面额（占比 100%），呈面额标准化"
+            },
+            {
+              "id": "M6",
+              "label": "入出金不守恒",
+              "value": -33.25,
+              "threshold": "0.01%–3%",
+              "weight": 16,
+              "hit": false,
+              "detail": "入金 11.97000000、出金 15.95000000，差额 -33.25%，出金反而多于入金，不像服务抽成（更可能是该池还有未纳入的入金）"
+            },
+            {
+              "id": "M7",
+              "label": "固定面额存提",
+              "value": 3,
+              "threshold": ">=2 笔同面额",
+              "weight": 26,
+              "hit": false,
+              "detail": "3 笔存款同为标准面额 3.99000000，但未见同面额提现"
+            }
+          ],
+          "rounds": 2,
+          "window_hours": 49.2,
+          "inflow": "11.97000000",
+          "outflow": "15.95000000",
+          "deposit_edges": [
+            "tx-0011",
+            "tx-0012",
+            "tx-0013"
+          ],
+          "withdrawal_edges": [
+            "tx-0041",
+            "tx-0042",
+            "tx-0043",
+            "tx-0044",
+            "tx-0045"
+          ]
+        },
+        {
+          "pool_id": "pool-cj-x",
+          "label": "虚拟 CoinJoin 池 X（干扰）",
+          "mechanism": "unknown",
+          "detection_score": 12,
+          "signals": [
+            {
+              "id": "M1",
+              "label": "多输入聚合",
+              "value": 2,
+              "threshold": ">=3",
+              "weight": 20,
+              "hit": false,
+              "detail": "观测量到的直接入金地址 2 个，低于门槛 3 个"
+            },
+            {
+              "id": "M2",
+              "label": "等额输出",
+              "value": 1,
+              "threshold": ">=3",
+              "weight": 22,
+              "hit": false,
+              "detail": "最大等额组 1 笔，面额 3.18000000，低于门槛 3 笔"
+            },
+            {
+              "id": "M3",
+              "label": "批处理时间窗",
+              "value": 0.0,
+              "threshold": "<=48h",
+              "weight": 16,
+              "hit": false,
+              "detail": "1 笔出金集中在 0.0 小时内，超过批处理窗口 48 小时或笔数不足"
+            },
+            {
+              "id": "M4",
+              "label": "地址一次性",
+              "value": 0,
+              "threshold": ">=2",
+              "weight": 14,
+              "hit": false,
+              "detail": "0 个出金目标地址只收到一笔入金、此前也未在案内出现，不足 2 个，地址复用度偏高"
+            },
+            {
+              "id": "M5",
+              "label": "面额标准化",
+              "value": 100.0,
+              "threshold": ">=60%",
+              "weight": 12,
+              "hit": true,
+              "detail": "1/1 笔出金为整额或短尾数面额（占比 100%），呈面额标准化"
+            },
+            {
+              "id": "M6",
+              "label": "入出金不守恒",
+              "value": 56.44,
+              "threshold": "0.01%–3%",
+              "weight": 16,
+              "hit": false,
+              "detail": "入金 7.30000000、出金 3.18000000，差额 56.44%，超出抽成区间，更像拆分或未观测完整"
+            },
+            {
+              "id": "M7",
+              "label": "固定面额存提",
+              "value": 1,
+              "threshold": ">=2 笔同面额",
+              "weight": 26,
+              "hit": false,
+              "detail": "同面额存款仅 1 笔，未形成固定面额存提模式"
+            }
+          ],
+          "rounds": 2,
+          "window_hours": 69.2,
+          "inflow": "7.30000000",
+          "outflow": "3.18000000",
+          "deposit_edges": [
+            "tx-0021",
+            "tx-0022"
+          ],
+          "withdrawal_edges": [
+            "tx-0046"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "link_id": "LK-001",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0011",
+          "withdrawal_edge": "tx-0041",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-01 的入度为 1，并在 2 跳内继续流入虚拟交易所 A，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0011 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": true
+        },
+        {
+          "link_id": "LK-002",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0011",
+          "withdrawal_edge": "tx-0042",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-02 的入度为 1，并在 2 跳内继续流入虚拟交易所 A，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0011 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-003",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0011",
+          "withdrawal_edge": "tx-0043",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.2 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-03 的入度为 1，并在 2 跳内继续流入虚拟支付网关 C，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.2 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0011 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-004",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0011",
+          "withdrawal_edge": "tx-0044",
+          "score": 84.29,
+          "tier": "HIGH",
+          "rank": 4,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.7,
+              "weight": 20,
+              "detail": "入金后 49.2 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.7 分：入金后 49.2 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 84.29 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0011 共有 5 个候选出金，本对排名第 4。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-005",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0011",
+          "withdrawal_edge": "tx-0045",
+          "score": 33.09,
+          "tier": "LOW",
+          "rank": 5,
+          "features": {
+            "amount": {
+              "value": 0.0,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 0.03000000 差额 99.25%，超出抽成区间，更像拆分或找零"
+            },
+            "time": {
+              "value": 89.7,
+              "weight": 20,
+              "detail": "入金后 49.2 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 8.0,
+              "weight": 15,
+              "detail": "出金仅为入金的 0.8%，按找零处理"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-change-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 0.0,
+              "weight": 8,
+              "detail": "隐含抽成 99.25%，远超常见费率，费率维度不成立"
+            }
+          },
+          "explain": [
+            "时间维度 89.7 分：入金后 49.2 小时转出，处于混币服务常见的延迟区间之内",
+            "批次共现维度 60.0 分：入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低",
+            "链上位置维度 45.0 分：出金地址 addr-change-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱",
+            "综合 33.09 分 → LOW（HIGH≥70／MEDIUM≥45）；同一入金 tx-0011 共有 5 个候选出金，本对排名第 5。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-006",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0012",
+          "withdrawal_edge": "tx-0041",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-01 的入度为 1，并在 2 跳内继续流入虚拟交易所 A，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0012 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-007",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0012",
+          "withdrawal_edge": "tx-0042",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-02 的入度为 1，并在 2 跳内继续流入虚拟交易所 A，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0012 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": true
+        },
+        {
+          "link_id": "LK-008",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0012",
+          "withdrawal_edge": "tx-0043",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-03 的入度为 1，并在 2 跳内继续流入虚拟支付网关 C，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0012 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-009",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0012",
+          "withdrawal_edge": "tx-0044",
+          "score": 84.31,
+          "tier": "HIGH",
+          "rank": 4,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.2 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.2 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 84.31 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0012 共有 5 个候选出金，本对排名第 4。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-010",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0012",
+          "withdrawal_edge": "tx-0045",
+          "score": 33.09,
+          "tier": "LOW",
+          "rank": 5,
+          "features": {
+            "amount": {
+              "value": 0.0,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 0.03000000 差额 99.25%，超出抽成区间，更像拆分或找零"
+            },
+            "time": {
+              "value": 89.7,
+              "weight": 20,
+              "detail": "入金后 49.2 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 8.0,
+              "weight": 15,
+              "detail": "出金仅为入金的 0.8%，按找零处理"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-change-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 0.0,
+              "weight": 8,
+              "detail": "隐含抽成 99.25%，远超常见费率，费率维度不成立"
+            }
+          },
+          "explain": [
+            "时间维度 89.7 分：入金后 49.2 小时转出，处于混币服务常见的延迟区间之内",
+            "批次共现维度 60.0 分：入金在出金前 49.1 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低",
+            "链上位置维度 45.0 分：出金地址 addr-change-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱",
+            "综合 33.09 分 → LOW（HIGH≥70／MEDIUM≥45）；同一入金 tx-0012 共有 5 个候选出金，本对排名第 5。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-011",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0013",
+          "withdrawal_edge": "tx-0041",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.0 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-01 的入度为 1，并在 2 跳内继续流入虚拟交易所 A，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.0 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.0 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0013 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-012",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0013",
+          "withdrawal_edge": "tx-0042",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-02 的入度为 1，并在 2 跳内继续流入虚拟交易所 A，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.0 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0013 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-013",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0013",
+          "withdrawal_edge": "tx-0043",
+          "score": 91.06,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-03 的入度为 1，并在 2 跳内继续流入虚拟支付网关 C，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.0 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 91.06 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0013 共有 5 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": true
+        },
+        {
+          "link_id": "LK-014",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0013",
+          "withdrawal_edge": "tx-0044",
+          "score": 84.31,
+          "tier": "HIGH",
+          "rank": 4,
+          "features": {
+            "amount": {
+              "value": 98.7,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.0 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.4,
+              "weight": 8,
+              "detail": "隐含抽成 0.25%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 98.7 分：入金 3.99000000 与出金 3.98000000 差额 0.25%，落在混币池抽成区间",
+            "时间维度 89.8 分：入金后 49.1 小时转出，处于混币服务常见的延迟区间之内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 84.31 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0013 共有 5 个候选出金，本对排名第 4。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-015",
+          "pool_id": "pool-cj-a",
+          "deposit_edge": "tx-0013",
+          "withdrawal_edge": "tx-0045",
+          "score": 33.11,
+          "tier": "LOW",
+          "rank": 5,
+          "features": {
+            "amount": {
+              "value": 0.0,
+              "weight": 30,
+              "detail": "入金 3.99000000 与出金 0.03000000 差额 99.25%，超出抽成区间，更像拆分或找零"
+            },
+            "time": {
+              "value": 89.8,
+              "weight": 20,
+              "detail": "入金后 49.2 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 8.0,
+              "weight": 15,
+              "detail": "出金仅为入金的 0.8%，按找零处理"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-change-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 60.0,
+              "weight": 12,
+              "detail": "入金在出金前 49.0 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 0.0,
+              "weight": 8,
+              "detail": "隐含抽成 99.25%，远超常见费率，费率维度不成立"
+            }
+          },
+          "explain": [
+            "时间维度 89.8 分：入金后 49.2 小时转出，处于混币服务常见的延迟区间之内",
+            "批次共现维度 60.0 分：入金在出金前 49.0 小时到达，与该轮 5 笔出金同处一个批次；同轮笔数越多，单对确定性越低",
+            "链上位置维度 45.0 分：出金地址 addr-change-01 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱",
+            "综合 33.11 分 → LOW（HIGH≥70／MEDIUM≥45）；同一入金 tx-0013 共有 5 个候选出金，本对排名第 5。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-016",
+          "pool_id": "pool-cj-x",
+          "deposit_edge": "tx-0021",
+          "withdrawal_edge": "tx-0046",
+          "score": 84.01,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 96.9,
+              "weight": 30,
+              "detail": "入金 3.20000000 与出金 3.18000000 差额 0.62%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 85.6,
+              "weight": 20,
+              "detail": "入金后 69.2 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 30.0,
+              "weight": 15,
+              "detail": "出金为单独面额，不属任何等额切片"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-02 的入度为 1，并在 2 跳内继续流入虚拟支付网关 C，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 100.0,
+              "weight": 12,
+              "detail": "入金在出金前 69.2 小时到达，与该轮 1 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 97.7,
+              "weight": 8,
+              "detail": "隐含抽成 0.62%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 96.9 分：入金 3.20000000 与出金 3.18000000 差额 0.62%，落在混币池抽成区间",
+            "时间维度 85.6 分：入金后 69.2 小时转出，处于混币服务常见的延迟区间之内",
+            "链上位置维度 90.0 分：出金地址 addr-noise-02 的入度为 1，并在 2 跳内继续流入虚拟支付网关 C，仍在本案资金链上",
+            "综合 84.01 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-0021 共有 1 个候选出金，本对排名第 1。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-017",
+          "pool_id": "pool-cj-x",
+          "deposit_edge": "tx-0022",
+          "withdrawal_edge": "tx-0046",
+          "score": 47.72,
+          "tier": "MEDIUM",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 1.7,
+              "weight": 30,
+              "detail": "入金 4.10000000 与出金 3.18000000 差额 22.44%，超出抽成区间，更像拆分或找零"
+            },
+            "time": {
+              "value": 85.6,
+              "weight": 20,
+              "detail": "入金后 69.1 小时转出，处于混币服务常见的延迟区间之内"
+            },
+            "denomination": {
+              "value": 30.0,
+              "weight": 15,
+              "detail": "出金为单独面额，不属任何等额切片"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-02 的入度为 1，并在 2 跳内继续流入虚拟支付网关 C，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 100.0,
+              "weight": 12,
+              "detail": "入金在出金前 69.1 小时到达，与该轮 1 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 1.1,
+              "weight": 8,
+              "detail": "隐含抽成 22.44%，远超常见费率，费率维度不成立"
+            }
+          },
+          "explain": [
+            "时间维度 85.6 分：入金后 69.1 小时转出，处于混币服务常见的延迟区间之内",
+            "链上位置维度 90.0 分：出金地址 addr-noise-02 的入度为 1，并在 2 跳内继续流入虚拟支付网关 C，仍在本案资金链上",
+            "批次共现维度 100.0 分：入金在出金前 69.1 小时到达，与该轮 1 笔出金同处一个批次；同轮笔数越多，单对确定性越低",
+            "综合 47.72 分 → MEDIUM（HIGH≥70／MEDIUM≥45）；同一入金 tx-0022 共有 1 个候选出金，本对排名第 1。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        }
+      ],
+      "offramps": [
+        {
+          "node_id": "ex-a-sim",
+          "label": "虚拟交易所 A",
+          "offramp_type": "exchange",
+          "s_off": 89.0,
+          "hits": [
+            {
+              "rule_id": "R-EX-01",
+              "label": "节点类型为交易所",
+              "score": 58,
+              "explain": "节点 ex-a-sim（虚拟交易所 A）为交易所类兑付节点，通常具备 KYC 与协作通道",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-EN-01",
+              "label": "出口存在可识别主体",
+              "score": 5,
+              "explain": "该出口在画像库中对应实体 SIM_EX_A，具备可对接的责任主体",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-E-03",
+              "label": "存在 to_fiat 兑现入金",
+              "score": 12,
+              "explain": "2 笔 to_fiat 入金，合计 7.92000000",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-05",
+              "label": "混币池出金 3 跳内到达",
+              "score": 10,
+              "explain": "该出口与混币池 虚拟 CoinJoin 池 A 的距离为 2 跳，处于断链后的下游",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-08",
+              "label": "只入不出",
+              "score": 4,
+              "explain": "该节点在本案观测窗口内没有出金，停在兑付环节",
+              "kind": "edge"
+            }
+          ],
+          "inflow_total": "7.92000000",
+          "from_mixer": "7.92000000",
+          "deposit_count": 2,
+          "controllability": {
+            "s_profile": 90.8,
+            "s_off": 89.0,
+            "c": 100,
+            "p": 8,
+            "s_ctrl": 83.3,
+            "level": "GREEN",
+            "main_constraints": [
+              "主要维度均已达标，按常规协作流程推进"
+            ],
+            "freeze_window_hours": 36,
+            "profile": {
+              "rule_friendly": 92,
+              "execution_efficiency": 76.2,
+              "cost": 74,
+              "response_hours": 85.6,
+              "evidence": 75.7,
+              "priority_bonus": 9
+            },
+            "profile_weights": {
+              "rule_friendly": 0.28,
+              "execution_efficiency": 0.26,
+              "cost": 0.2,
+              "response_hours": 0.18,
+              "evidence": 0.08
+            },
+            "formula": "0.65×90.8 + 0.25×89.0 + 0.10×100 − 8 = 83.3",
+            "estimate_note": "冻结窗口与响应时效为估计值，依据出口类型与风险等级推算，不是实测。"
+          },
+          "best_link_score": 91.06
+        },
+        {
+          "node_id": "pg-c-sim",
+          "label": "虚拟支付网关 C",
+          "offramp_type": "payment_gateway",
+          "s_off": 83.0,
+          "hits": [
+            {
+              "rule_id": "R-PG-01",
+              "label": "节点类型为支付网关",
+              "score": 44,
+              "explain": "节点 pg-c-sim（虚拟支付网关 C）为支付网关类收单结算节点",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-EN-01",
+              "label": "出口存在可识别主体",
+              "score": 5,
+              "explain": "该出口在画像库中对应实体 SIM_PG_C，具备可对接的责任主体",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-E-03",
+              "label": "存在 to_fiat 兑现入金",
+              "score": 12,
+              "explain": "2 笔 to_fiat 入金，合计 5.00000000",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-05",
+              "label": "混币池出金 3 跳内到达",
+              "score": 10,
+              "explain": "该出口与混币池 虚拟 CoinJoin 池 A 的距离为 2 跳，处于断链后的下游",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-06",
+              "label": "存在整额兑现入金",
+              "score": 8,
+              "explain": "2 笔入金为整额（无小数部分），符合柜台或对敲结算习惯",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-08",
+              "label": "只入不出",
+              "score": 4,
+              "explain": "该节点在本案观测窗口内没有出金，停在兑付环节",
+              "kind": "edge"
+            }
+          ],
+          "inflow_total": "5.00000000",
+          "from_mixer": "5.00000000",
+          "deposit_count": 2,
+          "controllability": {
+            "s_profile": 80.3,
+            "s_off": 83.0,
+            "c": 100,
+            "p": 8,
+            "s_ctrl": 74.9,
+            "level": "YELLOW",
+            "main_constraints": [
+              "主要维度均已达标，按常规协作流程推进"
+            ],
+            "freeze_window_hours": 48,
+            "profile": {
+              "rule_friendly": 72,
+              "execution_efficiency": 71.0,
+              "cost": 70,
+              "response_hours": 71.2,
+              "evidence": 73.9,
+              "priority_bonus": 9
+            },
+            "profile_weights": {
+              "rule_friendly": 0.28,
+              "execution_efficiency": 0.26,
+              "cost": 0.2,
+              "response_hours": 0.18,
+              "evidence": 0.08
+            },
+            "formula": "0.65×80.3 + 0.25×83.0 + 0.10×100 − 8 = 74.9",
+            "estimate_note": "冻结窗口与响应时效为估计值，依据出口类型与风险等级推算，不是实测。"
+          },
+          "best_link_score": 91.06
+        },
+        {
+          "node_id": "otc-b-sim",
+          "label": "虚拟承兑商 B",
+          "offramp_type": "otc",
+          "s_off": 91.0,
+          "hits": [
+            {
+              "rule_id": "R-OT-01",
+              "label": "节点类型为场外承兑商",
+              "score": 50,
+              "explain": "节点 otc-b-sim（虚拟承兑商 B）为场外承兑节点，对应实体 SIM_OTC_B",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-EN-01",
+              "label": "出口存在可识别主体",
+              "score": 5,
+              "explain": "该出口在画像库中对应实体 SIM_OTC_B，具备可对接的责任主体",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-RK-01",
+              "label": "节点风险等级为高",
+              "score": 6,
+              "explain": "该出口风险等级为高，与涉案资金流向一致",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-TX-01",
+              "label": "名称含承兑特征",
+              "score": 4,
+              "explain": "节点名称或备注含「承兑」特征：未持牌场外承兑",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-E-03",
+              "label": "存在 to_fiat 兑现入金",
+              "score": 12,
+              "explain": "1 笔 to_fiat 入金，合计 0.90000000",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-05",
+              "label": "混币池出金 3 跳内到达",
+              "score": 10,
+              "explain": "该出口与混币池 虚拟 CoinJoin 池 A 的距离为 2 跳，处于断链后的下游",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-08",
+              "label": "只入不出",
+              "score": 4,
+              "explain": "该节点在本案观测窗口内没有出金，停在兑付环节",
+              "kind": "edge"
+            }
+          ],
+          "inflow_total": "0.90000000",
+          "from_mixer": "0.90000000",
+          "deposit_count": 1,
+          "controllability": {
+            "s_profile": 68.5,
+            "s_off": 91.0,
+            "c": 100,
+            "p": 15,
+            "s_ctrl": 62.3,
+            "level": "YELLOW",
+            "main_constraints": [
+              "缺合规主体或正式接口，只能走替代取证路径",
+              "协作与取证成本较高，需要上级审批"
+            ],
+            "freeze_window_hours": 8,
+            "profile": {
+              "rule_friendly": 34,
+              "execution_efficiency": 67.8,
+              "cost": 50,
+              "response_hours": 92.8,
+              "evidence": 70.3,
+              "priority_bonus": 9
+            },
+            "profile_weights": {
+              "rule_friendly": 0.28,
+              "execution_efficiency": 0.26,
+              "cost": 0.2,
+              "response_hours": 0.18,
+              "evidence": 0.08
+            },
+            "formula": "0.65×68.5 + 0.25×91.0 + 0.10×100 − 15 = 62.3",
+            "estimate_note": "冻结窗口与响应时效为估计值，依据出口类型与风险等级推算，不是实测。"
+          },
+          "best_link_score": 91.06
+        }
+      ],
+      "paths": [
+        {
+          "path_id": "P-01",
+          "name": "主路径",
+          "steps": [
+            {
+              "order": 1,
+              "node_id": "addr-src-01",
+              "edge_id": "tx-0001",
+              "action": "涉案资金拆分至地址 addr-split-01"
+            },
+            {
+              "order": 2,
+              "node_id": "addr-split-01",
+              "edge_id": "tx-0011",
+              "action": "入金混币池 虚拟 CoinJoin 池 A"
+            },
+            {
+              "order": 3,
+              "node_id": "pool-cj-a",
+              "edge_id": "tx-0041",
+              "action": "混币转出（断链处）→ addr-mid-01"
+            },
+            {
+              "order": 4,
+              "node_id": "addr-mid-01",
+              "edge_id": "tx-0051",
+              "action": "入金交易所 虚拟交易所 A"
+            },
+            {
+              "order": 5,
+              "node_id": "ex-a-sim",
+              "edge_id": null,
+              "action": "锁定交易所账户并发起协查"
+            }
+          ],
+          "score": 85.2,
+          "estimated_hours": 56,
+          "cost_level": "低",
+          "best_intercept_node": "ex-a-sim",
+          "prerequisites": [
+            "立案文书与协查函齐备",
+            "交易所 KYC 调取通道可用"
+          ],
+          "risks": [
+            "资金在协作前被再次转出（出口保留窗口约 36 小时，为估计值）",
+            "归因分 91.1 为候选判定，若配对不成立则本路径不成立"
+          ],
+          "fallback_path_id": "P-02",
+          "differentiator": "起点 addr-src-01；拦截点 ex-a-sim。"
+        },
+        {
+          "path_id": "P-02",
+          "name": "备选路径",
+          "steps": [
+            {
+              "order": 1,
+              "node_id": "addr-src-01",
+              "edge_id": "tx-0001",
+              "action": "涉案资金拆分至地址 addr-split-01"
+            },
+            {
+              "order": 2,
+              "node_id": "addr-split-01",
+              "edge_id": "tx-0011",
+              "action": "入金混币池 虚拟 CoinJoin 池 A"
+            },
+            {
+              "order": 3,
+              "node_id": "pool-cj-a",
+              "edge_id": "tx-0043",
+              "action": "混币转出（断链处）→ addr-mid-03"
+            },
+            {
+              "order": 4,
+              "node_id": "addr-mid-03",
+              "edge_id": "tx-0053",
+              "action": "入金支付网关 虚拟支付网关 C"
+            },
+            {
+              "order": 5,
+              "node_id": "pg-c-sim",
+              "edge_id": null,
+              "action": "核查收单结算主体"
+            }
+          ],
+          "score": 81.0,
+          "estimated_hours": 68,
+          "cost_level": "中",
+          "best_intercept_node": "pg-c-sim",
+          "prerequisites": [
+            "结算主体工商信息可核实",
+            "跨境协作渠道可用"
+          ],
+          "risks": [
+            "资金在协作前被再次转出（出口保留窗口约 48 小时，为估计值）",
+            "归因分 91.1 为候选判定，若配对不成立则本路径不成立"
+          ],
+          "fallback_path_id": null,
+          "differentiator": "与 P-01 换拦截点：ex-a-sim → pg-c-sim；起点仍为 addr-src-01。"
+        }
+      ],
+      "metrics": {
+        "attribution": {
+          "p_at_1": 0.3333,
+          "p_at_3": 1.0,
+          "mrr": 0.6111,
+          "n": 3,
+          "avg_tied": 3.0,
+          "competition": "含竞争条件",
+          "data": "合成数据"
+        },
+        "baselines": [
+          {
+            "name": "仅金额匹配",
+            "p_at_1": 0.3333,
+            "p_at_3": 1.0,
+            "mrr": 0.6111,
+            "n": 3,
+            "avg_tied": 1.0
+          },
+          {
+            "name": "仅时间最近",
+            "p_at_1": 0.3333,
+            "p_at_3": 1.0,
+            "mrr": 0.6111,
+            "n": 3,
+            "avg_tied": 1.0
+          }
+        ],
+        "note": "指标口径为「给定入金，正确出金是否排在第 1/前 3」，只在合成数据上衡量归因一致性。"
+      }
+    },
+    {
+      "case_id": "SIM-MIX-02",
+      "network": "TRON",
+      "summary": {
+        "nodes": 8,
+        "edges": 12,
+        "mixer_pools": 1,
+        "links": 16,
+        "offramps": 2,
+        "green": 0,
+        "yellow": 1,
+        "red": 1,
+        "high_links": 16,
+        "paths": 2,
+        "distinct_rank1": 0
+      },
+      "mixer_pools": [
+        {
+          "pool_id": "pool-tb",
+          "label": "虚拟固定面额混币池 B",
+          "mechanism": "tornado_like",
+          "detection_score": 94,
+          "signals": [
+            {
+              "id": "M1",
+              "label": "多输入聚合",
+              "value": 2,
+              "threshold": ">=3",
+              "weight": 20,
+              "hit": false,
+              "detail": "观测量到的直接入金地址 2 个，低于门槛 3 个"
+            },
+            {
+              "id": "M2",
+              "label": "等额输出",
+              "value": 4,
+              "threshold": ">=3",
+              "weight": 22,
+              "hit": true,
+              "detail": "最大等额组 4 笔，面额 99980.00000000，达到等额拆分门槛"
+            },
+            {
+              "id": "M3",
+              "label": "批处理时间窗",
+              "value": 0.3,
+              "threshold": "<=48h",
+              "weight": 16,
+              "hit": true,
+              "detail": "4 笔出金集中在 0.3 小时内，符合批处理"
+            },
+            {
+              "id": "M4",
+              "label": "地址一次性",
+              "value": 3,
+              "threshold": ">=2",
+              "weight": 14,
+              "hit": true,
+              "detail": "3 个出金目标地址只收到一笔入金、此前也未在案内出现，符合一次性收款地址"
+            },
+            {
+              "id": "M5",
+              "label": "面额标准化",
+              "value": 0.0,
+              "threshold": ">=60%",
+              "weight": 12,
+              "hit": false,
+              "detail": "0/4 笔出金为整额或短尾数面额（占比 0%），面额零散"
+            },
+            {
+              "id": "M6",
+              "label": "入出金不守恒",
+              "value": 0.02,
+              "threshold": "0.01%–3%",
+              "weight": 16,
+              "hit": true,
+              "detail": "入金 400000.00000000、出金 399920.00000000，差额 0.02%，落在服务抽成区间"
+            },
+            {
+              "id": "M7",
+              "label": "固定面额存提",
+              "value": 4,
+              "threshold": ">=2 笔同面额",
+              "weight": 26,
+              "hit": true,
+              "detail": "4 笔存款同为标准面额 100000.00000000，并有 4 笔同面额提现"
+            }
+          ],
+          "rounds": 2,
+          "window_hours": 90.3,
+          "inflow": "400000.00000000",
+          "outflow": "399920.00000000",
+          "deposit_edges": [
+            "tx-1001",
+            "tx-1002",
+            "tx-1003",
+            "tx-1011"
+          ],
+          "withdrawal_edges": [
+            "tx-1021",
+            "tx-1022",
+            "tx-1023",
+            "tx-1024"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "link_id": "LK-018",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1001",
+          "withdrawal_edge": "tx-1021",
+          "score": 90.65,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.2,
+              "weight": 20,
+              "detail": "入金后 90.0 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-11 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 90.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.2 分：入金后 90.0 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.65 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1001 共有 4 个候选出金，本对排名第 1，与另外 1 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": true
+        },
+        {
+          "link_id": "LK-019",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1001",
+          "withdrawal_edge": "tx-1022",
+          "score": 90.65,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.2,
+              "weight": 20,
+              "detail": "入金后 90.1 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-12 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 90.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.2 分：入金后 90.1 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.65 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1001 共有 4 个候选出金，本对排名第 1，与另外 1 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-020",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1001",
+          "withdrawal_edge": "tx-1023",
+          "score": 90.63,
+          "tier": "HIGH",
+          "rank": 3,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.1,
+              "weight": 20,
+              "detail": "入金后 90.2 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-13 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 90.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.1 分：入金后 90.2 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.63 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1001 共有 4 个候选出金，本对排名第 3。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-021",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1001",
+          "withdrawal_edge": "tx-1024",
+          "score": 83.88,
+          "tier": "HIGH",
+          "rank": 4,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.1,
+              "weight": 20,
+              "detail": "入金后 90.3 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-11 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 90.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.1 分：入金后 90.3 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 83.88 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1001 共有 4 个候选出金，本对排名第 4。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-022",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1002",
+          "withdrawal_edge": "tx-1021",
+          "score": 90.65,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.2,
+              "weight": 20,
+              "detail": "入金后 89.9 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-11 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.9 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.2 分：入金后 89.9 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.65 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1002 共有 4 个候选出金，本对排名第 1，与另外 1 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-023",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1002",
+          "withdrawal_edge": "tx-1022",
+          "score": 90.65,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.2,
+              "weight": 20,
+              "detail": "入金后 90.0 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-12 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.9 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.2 分：入金后 90.0 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.65 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1002 共有 4 个候选出金，本对排名第 1，与另外 1 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": true
+        },
+        {
+          "link_id": "LK-024",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1002",
+          "withdrawal_edge": "tx-1023",
+          "score": 90.63,
+          "tier": "HIGH",
+          "rank": 3,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.1,
+              "weight": 20,
+              "detail": "入金后 90.1 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-13 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.9 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.1 分：入金后 90.1 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.63 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1002 共有 4 个候选出金，本对排名第 3。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-025",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1002",
+          "withdrawal_edge": "tx-1024",
+          "score": 83.88,
+          "tier": "HIGH",
+          "rank": 4,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.1,
+              "weight": 20,
+              "detail": "入金后 90.2 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-11 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.9 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.1 分：入金后 90.2 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 83.88 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1002 共有 4 个候选出金，本对排名第 4。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-026",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1003",
+          "withdrawal_edge": "tx-1021",
+          "score": 90.65,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.2,
+              "weight": 20,
+              "detail": "入金后 89.8 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-11 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.8 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.2 分：入金后 89.8 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.65 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1003 共有 4 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-027",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1003",
+          "withdrawal_edge": "tx-1022",
+          "score": 90.65,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.2,
+              "weight": 20,
+              "detail": "入金后 90.0 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-12 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.8 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.2 分：入金后 90.0 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.65 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1003 共有 4 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-028",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1003",
+          "withdrawal_edge": "tx-1023",
+          "score": 90.65,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.2,
+              "weight": 20,
+              "detail": "入金后 90.0 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-13 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.8 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.2 分：入金后 90.0 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.65 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1003 共有 4 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": true
+        },
+        {
+          "link_id": "LK-029",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1003",
+          "withdrawal_edge": "tx-1024",
+          "score": 83.88,
+          "tier": "HIGH",
+          "rank": 4,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.1,
+              "weight": 20,
+              "detail": "入金后 90.2 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-11 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 89.8 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.1 分：入金后 90.2 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 83.88 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1003 共有 4 个候选出金，本对排名第 4。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-030",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1011",
+          "withdrawal_edge": "tx-1021",
+          "score": 90.75,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.7,
+              "weight": 20,
+              "detail": "入金后 88.0 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-11 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 88.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.7 分：入金后 88.0 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.75 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1011 共有 4 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-031",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1011",
+          "withdrawal_edge": "tx-1022",
+          "score": 90.75,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.7,
+              "weight": 20,
+              "detail": "入金后 88.1 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-12 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 88.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.7 分：入金后 88.1 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.75 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1011 共有 4 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-032",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1011",
+          "withdrawal_edge": "tx-1023",
+          "score": 90.75,
+          "tier": "HIGH",
+          "rank": 1,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.7,
+              "weight": 20,
+              "detail": "入金后 88.2 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 90.0,
+              "weight": 15,
+              "detail": "出金地址 addr-mid-13 的入度为 1，并在 2 跳内继续流入虚拟承兑商 B2，仍在本案资金链上"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 88.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.7 分：入金后 88.2 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 90.75 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1011 共有 4 个候选出金，本对排名第 1，与另外 2 笔同分并列。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        },
+        {
+          "link_id": "LK-033",
+          "pool_id": "pool-tb",
+          "deposit_edge": "tx-1011",
+          "withdrawal_edge": "tx-1024",
+          "score": 83.98,
+          "tier": "HIGH",
+          "rank": 4,
+          "features": {
+            "amount": {
+              "value": 99.9,
+              "weight": 30,
+              "detail": "入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间"
+            },
+            "time": {
+              "value": 80.6,
+              "weight": 20,
+              "detail": "入金后 88.3 小时转出，延迟偏长但仍在可解释范围内"
+            },
+            "denomination": {
+              "value": 100.0,
+              "weight": 15,
+              "detail": "出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）"
+            },
+            "path_rarity": {
+              "value": 45.0,
+              "weight": 15,
+              "detail": "出金地址 addr-noise-11 的入度为 1，2 跳内未继续流向法币出口，链上位置证据弱"
+            },
+            "cooccurrence": {
+              "value": 70.0,
+              "weight": 12,
+              "detail": "入金在出金前 88.0 小时到达，与该轮 4 笔出金同处一个批次；同轮笔数越多，单对确定性越低"
+            },
+            "fee_fit": {
+              "value": 96.8,
+              "weight": 8,
+              "detail": "隐含抽成 0.02%，与混币服务公开费率量级一致"
+            }
+          },
+          "explain": [
+            "金额维度 99.9 分：入金 100000.00000000 与出金 99980.00000000 差额 0.02%，落在混币池抽成区间",
+            "时间维度 80.6 分：入金后 88.3 小时转出，延迟偏长但仍在可解释范围内",
+            "面额维度 100.0 分：出金与入金同量级，且属于 4 笔一组的等额切片（容差 0.05%）",
+            "综合 83.98 分 → HIGH（HIGH≥70／MEDIUM≥45）；同一入金 tx-1011 共有 4 个候选出金，本对排名第 4。同分同名次，名次本身不代表先后。该对应关系为算法候选，不表示资金转移已确认。"
+          ],
+          "ground_truth_hit": false
+        }
+      ],
+      "offramps": [
+        {
+          "node_id": "otc-b2-sim",
+          "label": "虚拟承兑商 B2",
+          "offramp_type": "otc",
+          "s_off": 100.0,
+          "hits": [
+            {
+              "rule_id": "R-OT-01",
+              "label": "节点类型为场外承兑商",
+              "score": 50,
+              "explain": "节点 otc-b2-sim（虚拟承兑商 B2）为场外承兑节点，对应实体 SIM_OTC_B2",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-EN-01",
+              "label": "出口存在可识别主体",
+              "score": 5,
+              "explain": "该出口在画像库中对应实体 SIM_OTC_B2，具备可对接的责任主体",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-RK-01",
+              "label": "节点风险等级为高",
+              "score": 6,
+              "explain": "该出口风险等级为高，与涉案资金流向一致",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-TX-01",
+              "label": "名称含承兑特征",
+              "score": 4,
+              "explain": "节点名称或备注含「承兑」特征：微信群承兑，无固定 KYC",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-E-03",
+              "label": "存在 to_fiat 兑现入金",
+              "score": 12,
+              "explain": "3 笔 to_fiat 入金，合计 299550.00000000",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-05",
+              "label": "混币池出金 3 跳内到达",
+              "score": 10,
+              "explain": "该出口与混币池 虚拟固定面额混币池 B 的距离为 2 跳，处于断链后的下游",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-06",
+              "label": "存在整额兑现入金",
+              "score": 8,
+              "explain": "3 笔入金为整额（无小数部分），符合柜台或对敲结算习惯",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-09",
+              "label": "多来源入金",
+              "score": 6,
+              "explain": "3 个不同地址向该出口入金",
+              "kind": "edge"
+            }
+          ],
+          "inflow_total": "299550.00000000",
+          "from_mixer": "299550.00000000",
+          "deposit_count": 3,
+          "controllability": {
+            "s_profile": 68.3,
+            "s_off": 100.0,
+            "c": 100,
+            "p": 15,
+            "s_ctrl": 64.4,
+            "level": "YELLOW",
+            "main_constraints": [
+              "协作与取证成本较高，需要上级审批",
+              "缺合规主体或正式接口，只能走替代取证路径"
+            ],
+            "freeze_window_hours": 8,
+            "profile": {
+              "rule_friendly": 38,
+              "execution_efficiency": 71.0,
+              "cost": 36,
+              "response_hours": 92.8,
+              "evidence": 79.0,
+              "priority_bonus": 9
+            },
+            "profile_weights": {
+              "rule_friendly": 0.28,
+              "execution_efficiency": 0.26,
+              "cost": 0.2,
+              "response_hours": 0.18,
+              "evidence": 0.08
+            },
+            "formula": "0.65×68.3 + 0.25×100.0 + 0.10×100 − 15 = 64.4",
+            "estimate_note": "冻结窗口与响应时效为估计值，依据出口类型与风险等级推算，不是实测。"
+          },
+          "best_link_score": 90.75
+        },
+        {
+          "node_id": "ub-1-sim",
+          "label": "虚拟地下钱庄 D",
+          "offramp_type": "underground_bank",
+          "s_off": 100.0,
+          "hits": [
+            {
+              "rule_id": "R-UB-01",
+              "label": "节点类型为地下钱庄",
+              "score": 68,
+              "explain": "节点 ub-1-sim（虚拟地下钱庄 D）在网络中被标注为地下钱庄类结算节点",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-EN-01",
+              "label": "出口存在可识别主体",
+              "score": 5,
+              "explain": "该出口在画像库中对应实体 SIM_UB_D，具备可对接的责任主体",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-RK-01",
+              "label": "节点风险等级为高",
+              "score": 6,
+              "explain": "该出口风险等级为高，与涉案资金流向一致",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-TX-02",
+              "label": "名称含对敲/钱庄特征",
+              "score": 6,
+              "explain": "节点名称或备注含对敲或钱庄特征：对敲结算",
+              "kind": "node"
+            },
+            {
+              "rule_id": "R-E-03",
+              "label": "存在 to_fiat 兑现入金",
+              "score": 12,
+              "explain": "1 笔 to_fiat 入金，合计 299000.00000000",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-05",
+              "label": "混币池出金 3 跳内到达",
+              "score": 10,
+              "explain": "该出口与混币池 虚拟固定面额混币池 B 的距离为 3 跳，处于断链后的下游",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-06",
+              "label": "存在整额兑现入金",
+              "score": 8,
+              "explain": "1 笔入金为整额（无小数部分），符合柜台或对敲结算习惯",
+              "kind": "edge"
+            },
+            {
+              "rule_id": "R-E-08",
+              "label": "只入不出",
+              "score": 4,
+              "explain": "该节点在本案观测窗口内没有出金，停在兑付环节",
+              "kind": "edge"
+            }
+          ],
+          "inflow_total": "299000.00000000",
+          "from_mixer": "299000.00000000",
+          "deposit_count": 1,
+          "controllability": {
+            "s_profile": 53.8,
+            "s_off": 100.0,
+            "c": 100,
+            "p": 15,
+            "s_ctrl": 55.0,
+            "level": "RED",
+            "main_constraints": [
+              "协作与取证成本较高，需要上级审批",
+              "缺合规主体或正式接口，只能走替代取证路径"
+            ],
+            "freeze_window_hours": 4,
+            "profile": {
+              "rule_friendly": 18,
+              "execution_efficiency": 57.0,
+              "cost": 14,
+              "response_hours": 90.4,
+              "evidence": 73.0,
+              "priority_bonus": 9
+            },
+            "profile_weights": {
+              "rule_friendly": 0.28,
+              "execution_efficiency": 0.26,
+              "cost": 0.2,
+              "response_hours": 0.18,
+              "evidence": 0.08
+            },
+            "formula": "0.65×53.8 + 0.25×100.0 + 0.10×100 − 15 = 55.0",
+            "estimate_note": "冻结窗口与响应时效为估计值，依据出口类型与风险等级推算，不是实测。"
+          },
+          "best_link_score": 90.75
+        }
+      ],
+      "paths": [
+        {
+          "path_id": "P-01",
+          "name": "主路径",
+          "steps": [
+            {
+              "order": 1,
+              "node_id": "addr-src-11",
+              "edge_id": "tx-1001",
+              "action": "入金混币池 虚拟固定面额混币池 B"
+            },
+            {
+              "order": 2,
+              "node_id": "pool-tb",
+              "edge_id": "tx-1021",
+              "action": "混币转出（断链处）→ addr-mid-11"
+            },
+            {
+              "order": 3,
+              "node_id": "addr-mid-11",
+              "edge_id": "tx-1031",
+              "action": "入金承兑商 虚拟承兑商 B2"
+            },
+            {
+              "order": 4,
+              "node_id": "otc-b2-sim",
+              "edge_id": null,
+              "action": "落地核查承兑商实际控制人"
+            }
+          ],
+          "score": 77.5,
+          "estimated_hours": 24,
+          "cost_level": "中",
+          "best_intercept_node": "otc-b2-sim",
+          "prerequisites": [
+            "承兑商收款账户可核实",
+            "银行侧可配合即时止付"
+          ],
+          "risks": [
+            "资金在协作前被再次转出（出口保留窗口约 8 小时，为估计值）",
+            "归因分 90.7 为候选判定，若配对不成立则本路径不成立"
+          ],
+          "fallback_path_id": "P-02",
+          "differentiator": "起点 addr-src-11；拦截点 otc-b2-sim。"
+        },
+        {
+          "path_id": "P-02",
+          "name": "备选路径",
+          "steps": [
+            {
+              "order": 1,
+              "node_id": "addr-src-11",
+              "edge_id": "tx-1001",
+              "action": "入金混币池 虚拟固定面额混币池 B"
+            },
+            {
+              "order": 2,
+              "node_id": "pool-tb",
+              "edge_id": "tx-1021",
+              "action": "混币转出（断链处）→ addr-mid-11"
+            },
+            {
+              "order": 3,
+              "node_id": "addr-mid-11",
+              "edge_id": "tx-1031",
+              "action": "入金承兑商 虚拟承兑商 B2"
+            },
+            {
+              "order": 4,
+              "node_id": "otc-b2-sim",
+              "edge_id": "tx-1041",
+              "action": "入金地下钱庄 虚拟地下钱庄 D"
+            },
+            {
+              "order": 5,
+              "node_id": "ub-1-sim",
+              "edge_id": null,
+              "action": "落地核查并对敲账户止付"
+            }
+          ],
+          "score": 70.8,
+          "estimated_hours": 24,
+          "cost_level": "中",
+          "best_intercept_node": "addr-mid-11",
+          "prerequisites": [
+            "落地核查线索已核实",
+            "收款账户可即时止付"
+          ],
+          "risks": [
+            "资金在协作前被再次转出（出口保留窗口约 4 小时，为估计值）",
+            "归因分 90.7 为候选判定，若配对不成立则本路径不成立",
+            "出口可控性为红灯，冻结缺少正式接口，只能落地核查"
+          ],
+          "fallback_path_id": null,
+          "differentiator": "与 P-01 换拦截点：otc-b2-sim → addr-mid-11（ub-1-sim 为红灯出口，拦截点前移到 addr-mid-11）；起点仍为 addr-src-11。"
+        }
+      ],
+      "metrics": {
+        "attribution": {
+          "p_at_1": 0.4444,
+          "p_at_3": 1.0,
+          "mrr": 0.6111,
+          "n": 3,
+          "avg_tied": 2.33,
+          "competition": "含竞争条件",
+          "data": "合成数据"
+        },
+        "baselines": [
+          {
+            "name": "仅金额匹配",
+            "p_at_1": 0.3333,
+            "p_at_3": 1.0,
+            "mrr": 0.6111,
+            "n": 3,
+            "avg_tied": 1.0
+          },
+          {
+            "name": "仅时间最近",
+            "p_at_1": 0.3333,
+            "p_at_3": 1.0,
+            "mrr": 0.6111,
+            "n": 3,
+            "avg_tied": 1.0
+          }
+        ],
+        "note": "指标口径为「给定入金，正确出金是否排在第 1/前 3」，只在合成数据上衡量归因一致性。"
+      }
+    }
+  ],
+  "boundaries": [
+    "本页全部数据为虚构模拟数据，仅用于展示原型能力；混币—法币的对应关系为算法候选，不表示资金转移已确认。",
+    "混币池为识别候选（附分数与信号），不等于已确认归属；未命中的信号同样输出，可用于说明「为何不是它」。",
+    "归因分与可控性分的全部权重、阈值、罚分都写在 parameters 里，界面与复核者可以逐项复算。",
+    "可控性评分中的冻结窗口与响应时效为估计值，不是实测数据。",
+    "本结果不构成对任何真实主体的事实认定，也不能替代依法取得的证据。"
+  ]
+}

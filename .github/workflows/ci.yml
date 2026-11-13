@@ -38,6 +38,11 @@ jobs:
           python -m pytest -q \
             "$ALGO_DIR/tests" \
             desktop/test_evidence_export.py
+      - name: Run mixer-to-fiat algorithm tests
+        working-directory: desktop
+        env:
+          PYTHONPATH: ${{ env.PROTOTYPE_DIR }}
+        run: python -m pytest -q algo2/tests
 
   desktop:
     name: UI 规则测试与构建
