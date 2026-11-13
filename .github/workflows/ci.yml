@@ -13,8 +13,16 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # 算法模块与桥接服务不在同一层目录，两个作业都要能 import 到：
+  #   chaintrace_matcher.py  -> 冻结原始代码/…/算法一V0.1
+  #   service.py             -> 离线原型
+  ALGO_DIR: desktop/冻结原始代码/原始源码与测试证据/算法一V0.1
+  PROTOTYPE_DIR: desktop/离线原型
+
 jobs:
   python:
+    name: Python 测试
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
@@ -22,11 +30,17 @@ jobs:
         with:
           python-version: "3.13"
       - name: Install Python test dependency
-        run: python -m pip install -r desktop/冻结原始代码/原始源码与测试证据/算法一V0.1/requirements-dev.txt
+        run: python -m pip install -r "$ALGO_DIR/requirements-dev.txt"
       - name: Run matcher and evidence export tests
-        run: python -m pytest -q desktop/冻结原始代码/原始源码与测试证据/算法一V0.1/tests desktop/test_evidence_export.py
+        env:
+          PYTHONPATH: ${{ env.ALGO_DIR }}:${{ env.PROTOTYPE_DIR }}
+        run: |
+          python -m pytest -q \
+            "$ALGO_DIR/tests" \
+            desktop/test_evidence_export.py
 
   desktop:
+    name: UI 规则测试与构建
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
@@ -35,9 +49,30 @@ jobs:
           node-version: "22"
           cache: npm
           cache-dependency-path: desktop/package-lock.json
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.13"
       - name: Install locked dependencies
         working-directory: desktop
         run: npm ci
+      # analysis.test.mjs 读取的是「真实导出产物」，该目录被 .gitignore 排除，
+      # 所以必须先用原引擎跑一次导出，再跑 UI 测试（否则 ENOENT）。
+      - name: Generate export fixture from the frozen engine
+        env:
+          PYTHONPATH: ${{ env.ALGO_DIR }}:${{ env.PROTOTYPE_DIR }}
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, "desktop/离线原型")
+          from service import run_file
+          sample = Path("desktop/离线原型/样例/综合模拟样例.json")
+          out = Path("desktop/验收导出")
+          result, log = run_file(str(sample), str(out))
+          print("event_claim_rows =", log["event_claim_rows"])
+          assert log["event_claim_rows"] > 0, "导出没有产生任何事件—主张结果"
+          assert (out / "核验完整结果.json").exists(), "缺少 UI 测试所需的结果文件"
+          PY
       - name: Run UI rule tests
         working-directory: desktop
         run: node --test tests/analysis.test.mjs
