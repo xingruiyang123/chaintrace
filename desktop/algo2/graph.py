@@ -77,6 +77,22 @@ def money_text(value: Decimal) -> str:
     return f"{value.quantize(CENT):f}"
 
 
+# 数据质量状态（规格 DATA_QUALITY_CONTRACT §1）。
+# 只用于"值可不可用"，不是资金归因结论。
+DQ_PRESENT = "PRESENT"
+DQ_MISSING = "MISSING"
+DQ_INVALID = "INVALID"
+DQ_UNVERIFIED = "UNVERIFIED"
+DQ_NOT_APPLICABLE = "NOT_APPLICABLE"
+DQ_CONFLICTED = "CONFLICTED"
+
+DQ_STATES = (DQ_PRESENT, DQ_MISSING, DQ_INVALID, DQ_UNVERIFIED,
+             DQ_NOT_APPLICABLE, DQ_CONFLICTED)
+
+# 关键字段：缺失时逐笔可识别性无法可靠判断 → WITHHELD
+CRITICAL_EDGE_FIELDS = ("amount", "time")
+
+
 def parse_amount(raw: Any, where: str) -> Decimal:
     """把契约里的十进制字符串转成 Decimal。
 
@@ -140,16 +156,37 @@ class Node:
 
 @dataclass(frozen=True)
 class Edge:
+    """一条交易边。
+
+    V0.2.2：amount / at 允许为 None（"没有提供"），并各自带数据质量状态。
+    注意：None 只表示**缺失**，不表示 0；下游不得把 None 折算成任何默认值。
+    """
     id: str
     src: str
     dst: str
-    amount: Decimal
+    amount: Decimal | None
     amount_text: str
     asset: str | None
-    at: datetime
+    at: datetime | None
     pattern: str
     fee: Decimal | None
     txid: str | None
+    amount_status: str = DQ_PRESENT
+    time_status: str = DQ_PRESENT
+
+    @property
+    def is_complete(self) -> bool:
+        """关键字段是否齐全；不齐全的边不能参与金额/时间类分析。"""
+        return self.amount is not None and self.at is not None
+
+    @property
+    def missing_critical_fields(self) -> tuple[str, ...]:
+        out = []
+        if self.amount is None:
+            out.append("amount")
+        if self.at is None:
+            out.append("time")
+        return tuple(out)
 
     @property
     def is_mixer_in(self) -> bool:
@@ -186,7 +223,33 @@ class Case:
             self._in[edge.dst].append(edge)
         for bucket in (self._out, self._in):
             for items in bucket.values():
-                items.sort(key=lambda e: (e.at, e.id))
+                # 时间可能缺失：缺失的排在最后，避免 None 与 datetime 比较
+                items.sort(key=lambda e: (e.at is None, e.at or datetime.min.replace(tzinfo=timezone.utc), e.id))
+
+    @property
+    def degraded_edges(self) -> list[Edge]:
+        """关键字段缺失的边（不参与金额/时间类分析，但要如实报告）。"""
+        return [e for e in self.edges if not e.is_complete]
+
+    @property
+    def has_degraded(self) -> bool:
+        return any(not e.is_complete for e in self.edges)
+
+    def complete_view(self) -> "Case":
+        """只含完整边的副本，供需要金额/时间的模块使用。
+
+        为什么要有这个视图：mixer_detect / offramp / paths 假设 amount、at 一定存在。
+        V0.2.2 不改它们的任何一行，改为在这里把不完整边滤掉再交给它们。
+        """
+        if not self.has_degraded:
+            return self
+        kept = [e for e in self.edges if e.is_complete]
+        return Case(
+            case_id=self.case_id, title=self.title, network=self.network,
+            asset=self.asset, window_from=self.window_from, window_to=self.window_to,
+            nodes=dict(self.nodes), edges=kept,
+            ground_truth=self.ground_truth,
+        )
 
     # —— 便捷访问 ——
     def node(self, node_id: str) -> Node:
@@ -292,19 +355,37 @@ def _load_edges(raw_edges: Any, case_id: str, nodes: dict[str, Node]) -> list[Ed
             raise InputError(f"边 {edge_id} 的起点与终点相同：{src}")
         pattern = item.get("pattern")
         if pattern not in EDGE_PATTERNS:
+            # 「给错了」→ 拒收（契约 §2.2.1：降级只用于「没有提供」）
             raise InputError(f"边 {edge_id} 的 pattern 不在枚举内：{pattern!r}")
+
+        # —— 金额：缺失降级 / 非法拒收 ——
+        raw_amount = item.get("amount")
+        if raw_amount is None:
+            amount, amount_status = None, DQ_MISSING
+        else:
+            amount, amount_status = parse_amount(raw_amount, f"边 {edge_id}"), DQ_PRESENT
+
+        # —— 时间：缺失降级 / 非法拒收 ——
+        raw_time = item.get("time")
+        if raw_time is None:
+            at, time_status = None, DQ_MISSING
+        else:
+            at, time_status = parse_time(raw_time, f"边 {edge_id}"), DQ_PRESENT
+
         edges.append(
             Edge(
                 id=edge_id,
                 src=src,
                 dst=dst,
-                amount=parse_amount(item.get("amount"), f"边 {edge_id}"),
-                amount_text=str(item.get("amount")),
+                amount=amount,
+                amount_text="" if amount is None else str(raw_amount),
                 asset=item.get("asset") if isinstance(item.get("asset"), str) else None,
-                at=parse_time(item.get("time"), f"边 {edge_id}"),
+                at=at,
                 pattern=pattern,
                 fee=parse_money_optional(item.get("fee"), f"边 {edge_id} 的 fee"),
                 txid=item.get("txid") if isinstance(item.get("txid"), str) else None,
+                amount_status=amount_status,
+                time_status=time_status,
             )
         )
     return edges

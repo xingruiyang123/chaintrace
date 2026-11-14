@@ -1,7 +1,7 @@
 {
   "schema_version": "mixer_offramp/benchmark/v0.1",
   "is_simulated": true,
-  "generated_at": "2026-11-13T10:01:58Z",
+  "generated_at": "2026-11-14T03:03:49Z",
   "dataset": {
     "name": "混币—法币出口识别 合成评估集",
     "path": "algo2/fixtures/mixer_eval_cases.json",

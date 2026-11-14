@@ -95,7 +95,7 @@
 
 ```powershell
 cd desktop
-D:\anaconda\python.exe -m pytest algo2\tests -q              # 32 项
+D:\anaconda\python.exe -m pytest algo2\tests -q              # 37 项
 D:\anaconda\python.exe -m algo2.generate_fixture             # 生成评估集
 D:\anaconda\python.exe -m algo2.benchmark                    # 跑基准，落盘 outputs/benchmark.json
 D:\anaconda\python.exe 离线原型\mixer_service.py 离线原型\样例\混币出口虚拟样例.json <空目录>

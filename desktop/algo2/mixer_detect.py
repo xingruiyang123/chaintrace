@@ -133,6 +133,117 @@ def _rounds(times: list[datetime], batch_window_hours: float) -> int:
     return rounds
 
 
+def classify_mechanism(
+    signals: list[dict],
+    deposits: list[Edge],
+    withdrawals: list[Edge],
+) -> tuple[str, list[str], list[str]]:
+    """按**定义性结构**判定机制，不用总分归类（规格 C6）。
+
+    边界（必须遵守）：
+      - 总分只用于「这个池有多像混币」，不用于「属于哪种混币」；
+      - 每种机制只列**必要条件**，不列加权证据；
+      - 条件不足时返回 unknown / insufficient_evidence，**禁止回退为 coinjoin**。
+
+    返回 (mechanism, 满足条件的机制列表, 判定依据)。
+    """
+    hit = {s["id"]: bool(s["hit"]) for s in signals}
+    satisfied: list[str] = []
+    basis: list[str] = []
+
+    # CoinJoin 类：多输入聚合（M1）与等额输出（M2）同时成立——
+    # 这两条是定义性结构，单输入也能等额分发（工资/空投），故 M1 不可省。
+    if hit.get("M1") and hit.get("M2"):
+        satisfied.append("coinjoin")
+        basis.append("M1 多输入聚合 且 M2 等额输出 同时成立")
+
+    # 固定面额池：固定面额存提（M7），不要求多输入。
+    if hit.get("M7"):
+        satisfied.append("fixed_denomination")
+        basis.append("M7 固定面额存提成立")
+
+    # 托管式：存在抽成（M6 入出金不守恒）、无等额输出组、且呈**归集**形态
+    # （出金笔数不多于入金笔数）。第三条是必需的：
+    # 仅凭「有抽成且无等额组」会把正常换汇/支付业务一并算进来（实测 OTC 商户即如此）。
+    consolidating = len(withdrawals) <= len(deposits)
+    if hit.get("M6") and not hit.get("M2") and consolidating:
+        satisfied.append("custodial")
+        basis.append(
+            f"M6 入出金不守恒成立、无等额输出组，且呈归集形态"
+            f"（入金 {len(deposits)} 笔 / 出金 {len(withdrawals)} 笔）"
+        )
+
+    if len(satisfied) >= 2:
+        return "ambiguous", satisfied, basis + ["同时满足多种机制的必要条件，无法唯一归类"]
+    if len(satisfied) == 1:
+        return satisfied[0], satisfied, basis
+    hit_count = sum(1 for v in hit.values() if v)
+    if hit_count < 2:
+        return "insufficient_evidence", satisfied, ["命中信号少于 2 条，结构证据不足以归类"]
+    return "unknown", satisfied, ["不符合任何已知机制的必要条件"]
+
+
+def counter_evidence(signals: list[dict], deposits: list[Edge], withdrawals: list[Edge]) -> list[dict]:
+    """反证分两类（规格 C6）。
+
+    - mechanism_specific：直接否定某机制的**定义性结构**，可降级机制判定；
+    - generic：与混币行为相关但缺乏权重依据的结构特征，**只作解释提示，不扣分**。
+    """
+    hit = {s["id"]: bool(s["hit"]) for s in signals}
+    value = {s["id"]: s["value"] for s in signals}
+    hints: list[dict] = []
+
+    sources = {e.src for e in deposits}
+    if len(sources) <= 1:
+        hints.append({
+            "id": "X-COINJOIN-SINGLE-INPUT",
+            "scope": "mechanism_specific",
+            "label": "单一入金来源",
+            "detail": f"入金来源地址仅 {len(sources)} 个，不满足 CoinJoin 的多输入共同签名结构",
+            "effect": "blocks_coinjoin",
+        })
+
+    if not hit.get("M2"):
+        hints.append({
+            "id": "X-NO-EQUAL-OUTPUT",
+            "scope": "mechanism_specific",
+            "label": "无等额输出组",
+            "detail": f"最大等额组仅 {value.get('M2')} 笔，不满足等额切片结构",
+            "effect": "blocks_coinjoin",
+        })
+
+    total_in = sum((e.amount for e in deposits), ZERO)
+    total_out = sum((e.amount for e in withdrawals), ZERO)
+    if total_in == total_out and total_in != ZERO:
+        hints.append({
+            "id": "X-CONSERVED",
+            "scope": "generic",
+            "label": "金额完全守恒",
+            "detail": "入金与出金金额完全相等，未见服务抽成，与常见混币服务费率特征不符",
+            "effect": "hint_only",
+        })
+
+    if hit.get("M3"):
+        hints.append({
+            "id": "X-BATCH-WINDOW",
+            "scope": "generic",
+            "label": "批处理时间窗",
+            "detail": "出金集中在批处理窗口内，但批量发放类正常业务同样具备该特征",
+            "effect": "hint_only",
+        })
+
+    if not hit.get("M4"):
+        hints.append({
+            "id": "X-ADDRESS-REUSE",
+            "scope": "generic",
+            "label": "地址复用度高",
+            "detail": "没有出现一次性出金地址，更接近常规归集或经营收款",
+            "effect": "hint_only",
+        })
+
+    return hints
+
+
 def pool_candidates(case: Case, params: dict) -> list[str]:
     """候选池 = 显式标注为 mixer 的节点 + 结构上像混币池的节点。"""
     min_inputs = int(params["min_inputs"])
@@ -282,14 +393,8 @@ def analyse_pool(case: Case, pool_id: str, params: dict) -> dict:
     hit_ids = [s["id"] for s in signals if s["hit"]]
     score = min(100, sum(s["weight"] for s in signals if s["hit"]))
 
-    if m7_hit:
-        mechanism = "tornado_like"
-    elif m2_value > 0 and m2_value >= 2 and len(deposits) >= 2:
-        mechanism = "coinjoin"
-    elif m2_value >= 2:
-        mechanism = "equal_output"
-    else:
-        mechanism = "unknown"
+    mechanism, satisfied, basis = classify_mechanism(signals, deposits, withdrawals)
+    counter_hints = counter_evidence(signals, deposits, withdrawals)
 
     moments = [e.at for e in deposits + withdrawals]
     window_hours = round(_hours(max(moments), min(moments)), 1) if len(moments) > 1 else 0.0
@@ -298,6 +403,9 @@ def analyse_pool(case: Case, pool_id: str, params: dict) -> dict:
         "pool_id": pool_id,
         "label": pool.label,
         "mechanism": mechanism,
+        "mechanism_satisfied": satisfied,
+        "mechanism_basis": basis,
+        "counter_hints": counter_hints,
         "detection_score": int(score),
         "signals": signals,
         "rounds": _rounds(moments, batch_window),

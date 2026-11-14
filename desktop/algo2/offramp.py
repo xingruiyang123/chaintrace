@@ -87,6 +87,32 @@ def _render(template: str, ctx: dict) -> str:
     return text
 
 
+def reach_offramp(case: Case, start: str, hops: int = FROM_MIXER_HOPS) -> str | None:
+    """从 start 出发（不穿过混币池）在 hops 跳内是否到达法币出口；返回命中的出口 id。
+
+    v0.2.1 起本判定从 attribution 迁到这里（规格 C3）：归因模块只允许处理 A 域纯链上
+    结构，而本判定要读 node.type 标签，属 B 域。归因只把结果当辅助字段记录，不参与打分。
+    """
+    frontier = [start]
+    seen = {start}
+    for _ in range(hops):
+        next_frontier: list[str] = []
+        for node_id in frontier:
+            for edge in case.out_edges(node_id):
+                target = case.node(edge.dst)
+                if target.type == "mixer":
+                    continue
+                if target.type in OFFRAMP_TYPES:
+                    return target.id
+                if target.id not in seen:
+                    seen.add(target.id)
+                    next_frontier.append(target.id)
+        frontier = next_frontier
+        if not frontier:
+            break
+    return None
+
+
 def _ancestry(case: Case, pools: set[str], start: str, max_hops: int) -> tuple[int | None, str | None]:
     """沿入金边回溯，找最近的混币池；返回（跳数, 池 id）。"""
     queue: list[tuple[str, int]] = [(start, 0)]

@@ -333,6 +333,9 @@ def build_case_paths(
             break
 
     if alt is None:
+        applied = _constraints(case, origins, excluded, allowed, main, None)
+        for row in [main]:
+            row["constraints"] = applied
         return [main]
 
     alt["path_id"] = "P-02"
@@ -349,4 +352,76 @@ def build_case_paths(
         f"{reason}；起点仍为 {alt['steps'][0]['node_id']}。"
     )
     main["fallback_path_id"] = alt["path_id"]
+    for row, other in ((main, alt), (alt, main)):
+        row["constraints"] = _constraints(case, origins, excluded, allowed, row, other)
     return [main, alt]
+
+
+def _constraints(
+    case: Case,
+    origins: list[str],
+    excluded: set[str],
+    allowed: set[str],
+    path: dict,
+    other: dict | None,
+) -> dict:
+    """把路径规划**实际生效**的硬约束显式写出来（规格：路径的约束与输出定义）。
+
+    只声明代码真正强制的约束。任何一条不满足，该路径根本不会进入候选——
+    所以正常情况下 `violated` 必须为空；它非空即说明实现与声明脱节。
+    """
+    edge_ids = [step["edge_id"] for step in path.get("steps", []) if step.get("edge_id")]
+    start = path["steps"][0]["node_id"] if path.get("steps") else None
+    end = path["steps"][-1]["node_id"] if path.get("steps") else None
+    checks = [
+        {
+            "id": "P-START-FROM-SOURCE",
+            "desc": "起点必须是标记为资金来源的节点",
+            "enforced_by": "build_case_paths 只遍历 origins",
+            "satisfied": start in origins,
+        },
+        {
+            "id": "P-EDGES-REACHABLE",
+            "desc": "路径上的每条边都必须在起点可达边集内",
+            "enforced_by": "_shortest_chain 仅使用 allowed 边",
+            "satisfied": all(e in allowed for e in edge_ids),
+        },
+        {
+            "id": "P-EXCLUDE-NOISE",
+            "desc": "不得使用构造真值里标注为外部用户的噪声边",
+            "enforced_by": "reachable_edges 跳过 excluded",
+            "satisfied": not (set(edge_ids) & excluded),
+        },
+        {
+            "id": "P-END-AT-OFFRAMP",
+            "desc": "路径必须终止于一个法币出口节点",
+            "enforced_by": "_build 要求 offramp 可达；终点节点类型决定处置动作",
+            "satisfied": bool(end) and case.node(end).type in TYPE_ACTIONS,
+        },
+        {
+            "id": "P-ALT-CHANGES-INTERCEPT",
+            "desc": "备选路径必须更换拦截点，否则不构成备选",
+            "enforced_by": "build_case_paths 选取 alt 时比较 best_intercept_node",
+            "satisfied": (
+                True if other is None
+                else path.get("best_intercept_node") != other.get("best_intercept_node")
+            ),
+        },
+    ]
+    return {
+        "applied": checks,
+        "violated": [c["id"] for c in checks if not c["satisfied"]],
+        "hard": True,
+        # 明确声明这不是约束：路径**可以**穿过混币池。
+        # 追缴路径要覆盖「资金来源 → 混币 → 出口」的完整链条，
+        # 池内配对由归因模块单独给出候选，两者不要混为一谈。
+        "declared_non_constraints": [
+            {
+                "id": "N-ALLOW-POOL-CROSSING",
+                "desc": "路径允许穿过混币池；池内配对结论由归因模块给出",
+                "why": "追缴路径需要覆盖混币前后完整链条，禁止穿越会让路径无法闭环",
+            }
+        ],
+        "relation_type": "unresolved",
+        "note": "路径为候选方案，不表示资金关系已确认；拦截点不等于资金归属",
+    }
