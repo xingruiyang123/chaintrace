@@ -1,0 +1,1922 @@
+{
+ "name": "混币—法币出口识别 负样本池（假阳性检验）",
+ "schema_version": "mixer_offramp/v1",
+ "is_simulated": true,
+ "notice": "全部为人工构造的虚构数据；不含任何真实地址、实体或案件信息。用途是检验混币池识别器会不会把普通业务形态误判为混币池。",
+ "generator": "algo2/experiments/exp_adversarial.py（配套负样本，构造值见各案 note）",
+ "ground_truth_note": "负样本没有配对真值，ground_truth 一律为 null；expected_label 固定为 not_mixer。",
+ "cases": [
+  {
+   "case_id": "NEG-01",
+   "title": "负样本一：工资批量发放（12 笔等额、时间集中）",
+   "negative_type": "工资批量发放",
+   "expected_label": "not_mixer",
+   "pool_node": "NEG-01-hub",
+   "note": "单输入 + 12 笔等额输出 + 11 分钟内批量完成：只差“多输入聚合”这一条就同时满足等额、批处理、一次性地址、面额标准化。",
+   "network": "BTC",
+   "asset": "BTC",
+   "window": {
+    "from": "2026-10-08T00:00:00Z",
+    "to": "2026-10-08T03:00:00Z"
+   },
+   "nodes": [
+    {
+     "id": "NEG-01-co",
+     "label": "模拟公司归集地址（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_PAYROLL_CO",
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "公司资金归集"
+    },
+    {
+     "id": "NEG-01-hub",
+     "label": "模拟发薪热钱包（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_PAYROLL_CO",
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "按月批量发薪"
+    },
+    {
+     "id": "NEG-01-emp-01",
+     "label": "模拟员工地址 01（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-02",
+     "label": "模拟员工地址 02（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-03",
+     "label": "模拟员工地址 03（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-04",
+     "label": "模拟员工地址 04（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-05",
+     "label": "模拟员工地址 05（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-06",
+     "label": "模拟员工地址 06（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-07",
+     "label": "模拟员工地址 07（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-08",
+     "label": "模拟员工地址 08（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-09",
+     "label": "模拟员工地址 09（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-10",
+     "label": "模拟员工地址 10（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-11",
+     "label": "模拟员工地址 11（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    },
+    {
+     "id": "NEG-01-emp-12",
+     "label": "模拟员工地址 12（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "员工个人收款地址，只收这一次"
+    }
+   ],
+   "edges": [
+    {
+     "id": "NEG-01-tx-001",
+     "from": "NEG-01-co",
+     "to": "NEG-01-hub",
+     "amount": "96000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:00:00Z",
+     "txid": "NEG-01001",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-002",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-01",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:05:00Z",
+     "txid": "NEG-01002",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-003",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-02",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:06:00Z",
+     "txid": "NEG-01003",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-004",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-03",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:07:00Z",
+     "txid": "NEG-01004",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-005",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-04",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:08:00Z",
+     "txid": "NEG-01005",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-006",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-05",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:09:00Z",
+     "txid": "NEG-01006",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-007",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-06",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:10:00Z",
+     "txid": "NEG-01007",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-008",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-07",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:11:00Z",
+     "txid": "NEG-01008",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-009",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-08",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:12:00Z",
+     "txid": "NEG-01009",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-010",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-09",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:13:00Z",
+     "txid": "NEG-01010",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-011",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-10",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:14:00Z",
+     "txid": "NEG-01011",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-012",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-11",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:15:00Z",
+     "txid": "NEG-01012",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-01-tx-013",
+     "from": "NEG-01-hub",
+     "to": "NEG-01-emp-12",
+     "amount": "8000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-08T01:16:00Z",
+     "txid": "NEG-01013",
+     "pattern": "split",
+     "fee": "0.00001000"
+    }
+   ],
+   "ground_truth": null
+  },
+  {
+   "case_id": "NEG-02",
+   "title": "负样本二：空投分发（20 笔等额、地址一次性）",
+   "negative_type": "空投分发",
+   "expected_label": "not_mixer",
+   "pool_node": "NEG-02-dist",
+   "note": "单输入 + 20 笔 500 等额 + 40 分钟内发完 + 20 个一次性地址。",
+   "network": "BTC",
+   "asset": "BTC",
+   "window": {
+    "from": "2026-10-09T02:00:00Z",
+    "to": "2026-10-09T05:00:00Z"
+   },
+   "nodes": [
+    {
+     "id": "NEG-02-token",
+     "label": "模拟项目方代币地址（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_AIRDROP_PROJ",
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "空投资金方"
+    },
+    {
+     "id": "NEG-02-dist",
+     "label": "模拟空投分发地址（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_AIRDROP_PROJ",
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "批量分发"
+    },
+    {
+     "id": "NEG-02-air-01",
+     "label": "模拟空投领取地址 01（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-02",
+     "label": "模拟空投领取地址 02（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-03",
+     "label": "模拟空投领取地址 03（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-04",
+     "label": "模拟空投领取地址 04（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-05",
+     "label": "模拟空投领取地址 05（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-06",
+     "label": "模拟空投领取地址 06（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-07",
+     "label": "模拟空投领取地址 07（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-08",
+     "label": "模拟空投领取地址 08（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-09",
+     "label": "模拟空投领取地址 09（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-10",
+     "label": "模拟空投领取地址 10（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-11",
+     "label": "模拟空投领取地址 11（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-12",
+     "label": "模拟空投领取地址 12（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-13",
+     "label": "模拟空投领取地址 13（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-14",
+     "label": "模拟空投领取地址 14（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-15",
+     "label": "模拟空投领取地址 15（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-16",
+     "label": "模拟空投领取地址 16（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-17",
+     "label": "模拟空投领取地址 17（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-18",
+     "label": "模拟空投领取地址 18（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-19",
+     "label": "模拟空投领取地址 19（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    },
+    {
+     "id": "NEG-02-air-20",
+     "label": "模拟空投领取地址 20（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性领取地址，领取后不再使用"
+    }
+   ],
+   "edges": [
+    {
+     "id": "NEG-02-tx-001",
+     "from": "NEG-02-token",
+     "to": "NEG-02-dist",
+     "amount": "10000.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:00:00Z",
+     "txid": "NEG-02001",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-002",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-01",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:02:00Z",
+     "txid": "NEG-02002",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-003",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-02",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:04:00Z",
+     "txid": "NEG-02003",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-004",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-03",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:06:00Z",
+     "txid": "NEG-02004",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-005",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-04",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:08:00Z",
+     "txid": "NEG-02005",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-006",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-05",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:10:00Z",
+     "txid": "NEG-02006",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-007",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-06",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:12:00Z",
+     "txid": "NEG-02007",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-008",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-07",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:14:00Z",
+     "txid": "NEG-02008",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-009",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-08",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:16:00Z",
+     "txid": "NEG-02009",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-010",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-09",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:18:00Z",
+     "txid": "NEG-02010",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-011",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-10",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:20:00Z",
+     "txid": "NEG-02011",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-012",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-11",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:22:00Z",
+     "txid": "NEG-02012",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-013",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-12",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:24:00Z",
+     "txid": "NEG-02013",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-014",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-13",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:26:00Z",
+     "txid": "NEG-02014",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-015",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-14",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:28:00Z",
+     "txid": "NEG-02015",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-016",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-15",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:30:00Z",
+     "txid": "NEG-02016",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-017",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-16",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:32:00Z",
+     "txid": "NEG-02017",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-018",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-17",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:34:00Z",
+     "txid": "NEG-02018",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-019",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-18",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:36:00Z",
+     "txid": "NEG-02019",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-020",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-19",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:38:00Z",
+     "txid": "NEG-02020",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-02-tx-021",
+     "from": "NEG-02-dist",
+     "to": "NEG-02-air-20",
+     "amount": "500.00000000",
+     "asset": "BTC",
+     "time": "2026-10-09T03:40:00Z",
+     "txid": "NEG-02021",
+     "pattern": "split",
+     "fee": "0.00001000"
+    }
+   ],
+   "ground_truth": null
+  },
+  {
+   "case_id": "NEG-03",
+   "title": "负样本三：交易所归集（8 入 1 出、金额不等、时间分散）",
+   "negative_type": "交易所归集",
+   "expected_label": "not_mixer",
+   "pool_node": "NEG-03-hot",
+   "note": "8 个用户地址在 3 天内分散充值，第 4 天一次性划转到冷钱包，金额不等且总量守恒。",
+   "network": "BTC",
+   "asset": "BTC",
+   "window": {
+    "from": "2026-10-01T00:00:00Z",
+    "to": "2026-10-05T00:00:00Z"
+   },
+   "nodes": [
+    {
+     "id": "NEG-03-hot",
+     "label": "模拟交易所热钱包（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_EXCHANGE_AGG",
+     "risk": "medium",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "用户充值归集地址"
+    },
+    {
+     "id": "NEG-03-cold",
+     "label": "模拟交易所冷钱包（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_EXCHANGE_AGG",
+     "risk": "medium",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "冷存储，归集后一次性划转"
+    },
+    {
+     "id": "NEG-03-u01",
+     "label": "模拟充值用户 01（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    },
+    {
+     "id": "NEG-03-u02",
+     "label": "模拟充值用户 02（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    },
+    {
+     "id": "NEG-03-u03",
+     "label": "模拟充值用户 03（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    },
+    {
+     "id": "NEG-03-u04",
+     "label": "模拟充值用户 04（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    },
+    {
+     "id": "NEG-03-u05",
+     "label": "模拟充值用户 05（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    },
+    {
+     "id": "NEG-03-u06",
+     "label": "模拟充值用户 06（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    },
+    {
+     "id": "NEG-03-u07",
+     "label": "模拟充值用户 07（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    },
+    {
+     "id": "NEG-03-u08",
+     "label": "模拟充值用户 08（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "交易所个人充值地址"
+    }
+   ],
+   "edges": [
+    {
+     "id": "NEG-03-tx-001",
+     "from": "NEG-03-u01",
+     "to": "NEG-03-hot",
+     "amount": "1.23456789",
+     "asset": "BTC",
+     "time": "2026-10-01T02:10:00Z",
+     "txid": "NEG-03001",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-002",
+     "from": "NEG-03-u02",
+     "to": "NEG-03-hot",
+     "amount": "0.50000000",
+     "asset": "BTC",
+     "time": "2026-10-01T09:40:00Z",
+     "txid": "NEG-03002",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-003",
+     "from": "NEG-03-u03",
+     "to": "NEG-03-hot",
+     "amount": "12.34567891",
+     "asset": "BTC",
+     "time": "2026-10-02T04:25:00Z",
+     "txid": "NEG-03003",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-004",
+     "from": "NEG-03-u04",
+     "to": "NEG-03-hot",
+     "amount": "3.00000000",
+     "asset": "BTC",
+     "time": "2026-10-02T15:05:00Z",
+     "txid": "NEG-03004",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-005",
+     "from": "NEG-03-u05",
+     "to": "NEG-03-hot",
+     "amount": "0.07500000",
+     "asset": "BTC",
+     "time": "2026-10-02T23:50:00Z",
+     "txid": "NEG-03005",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-006",
+     "from": "NEG-03-u06",
+     "to": "NEG-03-hot",
+     "amount": "8.88888888",
+     "asset": "BTC",
+     "time": "2026-10-03T06:30:00Z",
+     "txid": "NEG-03006",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-007",
+     "from": "NEG-03-u07",
+     "to": "NEG-03-hot",
+     "amount": "2.50000000",
+     "asset": "BTC",
+     "time": "2026-10-03T13:15:00Z",
+     "txid": "NEG-03007",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-008",
+     "from": "NEG-03-u08",
+     "to": "NEG-03-hot",
+     "amount": "5.05000000",
+     "asset": "BTC",
+     "time": "2026-10-03T22:00:00Z",
+     "txid": "NEG-03008",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-03-tx-009",
+     "from": "NEG-03-hot",
+     "to": "NEG-03-cold",
+     "amount": "33.59413568",
+     "asset": "BTC",
+     "time": "2026-10-04T05:00:00Z",
+     "txid": "NEG-03009",
+     "pattern": "aggregate",
+     "fee": "0.00001000"
+    }
+   ],
+   "ground_truth": null
+  },
+  {
+   "case_id": "NEG-04",
+   "title": "负样本四：找零链（多入多出、金额不等、有找零）",
+   "negative_type": "找零链",
+   "expected_label": "not_mixer",
+   "pool_node": "NEG-04-w",
+   "note": "5 笔入金跨 6 天，8 笔出金里 3 笔是回到同一找零地址的找零、2 个收款地址被复用，手续费 0.0002 相对 5 个币可忽略。",
+   "network": "BTC",
+   "asset": "BTC",
+   "window": {
+    "from": "2026-10-05T00:00:00Z",
+    "to": "2026-10-13T00:00:00Z"
+   },
+   "nodes": [
+    {
+     "id": "NEG-04-w",
+     "label": "模拟个人热钱包（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "UTXO 找零式使用，同一钱包反复收付"
+    },
+    {
+     "id": "NEG-04-p1",
+     "label": "模拟付款方 1（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": ""
+    },
+    {
+     "id": "NEG-04-p2",
+     "label": "模拟付款方 2（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": ""
+    },
+    {
+     "id": "NEG-04-p3",
+     "label": "模拟付款方 3（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": ""
+    },
+    {
+     "id": "NEG-04-p4",
+     "label": "模拟付款方 4（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": ""
+    },
+    {
+     "id": "NEG-04-p5",
+     "label": "模拟付款方 5（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": ""
+    },
+    {
+     "id": "NEG-04-pay-a",
+     "label": "模拟收款方 A（虚拟，地址复用）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "收付款对手方"
+    },
+    {
+     "id": "NEG-04-pay-b",
+     "label": "模拟收款方 B（虚拟，地址复用）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "收付款对手方"
+    },
+    {
+     "id": "NEG-04-chg",
+     "label": "模拟找零地址（虚拟，反复接收找零）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "找零地址"
+    },
+    {
+     "id": "NEG-04-pay-c",
+     "label": "模拟收款方 C（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "收付款对手方"
+    }
+   ],
+   "edges": [
+    {
+     "id": "NEG-04-tx-001",
+     "from": "NEG-04-p1",
+     "to": "NEG-04-w",
+     "amount": "1.23456789",
+     "asset": "BTC",
+     "time": "2026-10-05T08:20:00Z",
+     "txid": "NEG-04001",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-002",
+     "from": "NEG-04-p2",
+     "to": "NEG-04-w",
+     "amount": "0.87654321",
+     "asset": "BTC",
+     "time": "2026-10-06T11:05:00Z",
+     "txid": "NEG-04002",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-003",
+     "from": "NEG-04-p3",
+     "to": "NEG-04-w",
+     "amount": "1.50000000",
+     "asset": "BTC",
+     "time": "2026-10-07T19:40:00Z",
+     "txid": "NEG-04003",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-004",
+     "from": "NEG-04-p4",
+     "to": "NEG-04-w",
+     "amount": "0.71234568",
+     "asset": "BTC",
+     "time": "2026-10-09T03:30:00Z",
+     "txid": "NEG-04004",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-005",
+     "from": "NEG-04-p5",
+     "to": "NEG-04-w",
+     "amount": "0.67654322",
+     "asset": "BTC",
+     "time": "2026-10-11T21:15:00Z",
+     "txid": "NEG-04005",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-006",
+     "from": "NEG-04-w",
+     "to": "NEG-04-pay-a",
+     "amount": "1.23456789",
+     "asset": "BTC",
+     "time": "2026-10-06T13:00:00Z",
+     "txid": "NEG-04006",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-007",
+     "from": "NEG-04-w",
+     "to": "NEG-04-chg",
+     "amount": "0.11111111",
+     "asset": "BTC",
+     "time": "2026-10-06T13:00:00Z",
+     "txid": "NEG-04007",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-008",
+     "from": "NEG-04-w",
+     "to": "NEG-04-pay-b",
+     "amount": "2.34567890",
+     "asset": "BTC",
+     "time": "2026-10-08T09:20:00Z",
+     "txid": "NEG-04008",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-009",
+     "from": "NEG-04-w",
+     "to": "NEG-04-chg",
+     "amount": "0.22222222",
+     "asset": "BTC",
+     "time": "2026-10-08T09:20:00Z",
+     "txid": "NEG-04009",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-010",
+     "from": "NEG-04-w",
+     "to": "NEG-04-pay-a",
+     "amount": "0.34567891",
+     "asset": "BTC",
+     "time": "2026-10-10T15:45:00Z",
+     "txid": "NEG-04010",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-011",
+     "from": "NEG-04-w",
+     "to": "NEG-04-chg",
+     "amount": "0.33333333",
+     "asset": "BTC",
+     "time": "2026-10-10T15:45:00Z",
+     "txid": "NEG-04011",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-012",
+     "from": "NEG-04-w",
+     "to": "NEG-04-pay-b",
+     "amount": "0.40000000",
+     "asset": "BTC",
+     "time": "2026-10-12T07:10:00Z",
+     "txid": "NEG-04012",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-04-tx-013",
+     "from": "NEG-04-w",
+     "to": "NEG-04-pay-c",
+     "amount": "0.00720764",
+     "asset": "BTC",
+     "time": "2026-10-12T07:10:00Z",
+     "txid": "NEG-04013",
+     "pattern": "split",
+     "fee": "0.00001000"
+    }
+   ],
+   "ground_truth": null
+  },
+  {
+   "case_id": "NEG-05",
+   "title": "负样本五：OTC 商户日常经营（多入多出、金额杂乱、18 天跨度）",
+   "negative_type": "OTC 商户日常经营",
+   "expected_label": "not_mixer",
+   "pool_node": "NEG-05-desk",
+   "note": "10 笔客户入金跨 18 天、12 笔结算出金发往 5 个长期对手方（全部复用），金额零散，净留下 1.5% 点差。",
+   "network": "BTC",
+   "asset": "BTC",
+   "window": {
+    "from": "2026-10-01T00:00:00Z",
+    "to": "2026-10-21T00:00:00Z"
+   },
+   "nodes": [
+    {
+     "id": "NEG-05-desk",
+     "label": "模拟 OTC 商户收付钱包（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_OTC_DESK",
+     "risk": "medium",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "承兑商日常经营地址"
+    },
+    {
+     "id": "NEG-05-c01",
+     "label": "模拟出金客户 01（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c02",
+     "label": "模拟出金客户 02（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c03",
+     "label": "模拟出金客户 03（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c04",
+     "label": "模拟出金客户 04（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c05",
+     "label": "模拟出金客户 05（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c06",
+     "label": "模拟出金客户 06（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c07",
+     "label": "模拟出金客户 07（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c08",
+     "label": "模拟出金客户 08（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c09",
+     "label": "模拟出金客户 09（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-c10",
+     "label": "模拟出金客户 10（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性客户地址"
+    },
+    {
+     "id": "NEG-05-cp-a",
+     "label": "模拟对手方 A（虚拟，地址复用）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "长期结算对手方"
+    },
+    {
+     "id": "NEG-05-cp-b",
+     "label": "模拟对手方 B（虚拟，地址复用）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "长期结算对手方"
+    },
+    {
+     "id": "NEG-05-cp-c",
+     "label": "模拟对手方 C（虚拟，地址复用）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "长期结算对手方"
+    },
+    {
+     "id": "NEG-05-cp-d",
+     "label": "模拟对手方 D（虚拟，地址复用）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "长期结算对手方"
+    },
+    {
+     "id": "NEG-05-cp-e",
+     "label": "模拟对手方 E（虚拟，地址复用）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "长期结算对手方"
+    }
+   ],
+   "edges": [
+    {
+     "id": "NEG-05-tx-001",
+     "from": "NEG-05-c01",
+     "to": "NEG-05-desk",
+     "amount": "1237.45678900",
+     "asset": "BTC",
+     "time": "2026-10-01T03:00:00Z",
+     "txid": "NEG-05001",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-002",
+     "from": "NEG-05-c02",
+     "to": "NEG-05-desk",
+     "amount": "880.12345678",
+     "asset": "BTC",
+     "time": "2026-10-01T19:20:00Z",
+     "txid": "NEG-05002",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-003",
+     "from": "NEG-05-c03",
+     "to": "NEG-05-desk",
+     "amount": "1540.98765000",
+     "asset": "BTC",
+     "time": "2026-10-03T07:45:00Z",
+     "txid": "NEG-05003",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-004",
+     "from": "NEG-05-c04",
+     "to": "NEG-05-desk",
+     "amount": "96.54321000",
+     "asset": "BTC",
+     "time": "2026-10-04T22:10:00Z",
+     "txid": "NEG-05004",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-005",
+     "from": "NEG-05-c05",
+     "to": "NEG-05-desk",
+     "amount": "2104.30987654",
+     "asset": "BTC",
+     "time": "2026-10-06T11:05:00Z",
+     "txid": "NEG-05005",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-006",
+     "from": "NEG-05-c06",
+     "to": "NEG-05-desk",
+     "amount": "733.21098765",
+     "asset": "BTC",
+     "time": "2026-10-08T16:40:00Z",
+     "txid": "NEG-05006",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-007",
+     "from": "NEG-05-c07",
+     "to": "NEG-05-desk",
+     "amount": "1890.56789012",
+     "asset": "BTC",
+     "time": "2026-10-11T02:15:00Z",
+     "txid": "NEG-05007",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-008",
+     "from": "NEG-05-c08",
+     "to": "NEG-05-desk",
+     "amount": "455.87654321",
+     "asset": "BTC",
+     "time": "2026-10-13T13:30:00Z",
+     "txid": "NEG-05008",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-009",
+     "from": "NEG-05-c09",
+     "to": "NEG-05-desk",
+     "amount": "3012.45678901",
+     "asset": "BTC",
+     "time": "2026-10-16T05:55:00Z",
+     "txid": "NEG-05009",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-010",
+     "from": "NEG-05-c10",
+     "to": "NEG-05-desk",
+     "amount": "1027.34567890",
+     "asset": "BTC",
+     "time": "2026-10-18T20:05:00Z",
+     "txid": "NEG-05010",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-011",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-a",
+     "amount": "980.12345678",
+     "asset": "BTC",
+     "time": "2026-10-01T21:40:00Z",
+     "txid": "NEG-05011",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-012",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-b",
+     "amount": "1245.67890123",
+     "asset": "BTC",
+     "time": "2026-10-02T16:05:00Z",
+     "txid": "NEG-05012",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-013",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-c",
+     "amount": "640.98765432",
+     "asset": "BTC",
+     "time": "2026-10-04T09:30:00Z",
+     "txid": "NEG-05013",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-014",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-a",
+     "amount": "1725.43210987",
+     "asset": "BTC",
+     "time": "2026-10-06T02:20:00Z",
+     "txid": "NEG-05014",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-015",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-d",
+     "amount": "312.45678901",
+     "asset": "BTC",
+     "time": "2026-10-07T18:55:00Z",
+     "txid": "NEG-05015",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-016",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-b",
+     "amount": "2140.98765000",
+     "asset": "BTC",
+     "time": "2026-10-09T07:15:00Z",
+     "txid": "NEG-05016",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-017",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-e",
+     "amount": "768.21098765",
+     "asset": "BTC",
+     "time": "2026-10-12T13:40:00Z",
+     "txid": "NEG-05017",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-018",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-c",
+     "amount": "1350.56789012",
+     "asset": "BTC",
+     "time": "2026-10-14T22:05:00Z",
+     "txid": "NEG-05018",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-019",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-d",
+     "amount": "489.34567890",
+     "asset": "BTC",
+     "time": "2026-10-17T06:35:00Z",
+     "txid": "NEG-05019",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-020",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-e",
+     "amount": "1102.67890123",
+     "asset": "BTC",
+     "time": "2026-10-19T11:50:00Z",
+     "txid": "NEG-05020",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-021",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-a",
+     "amount": "58.90123456",
+     "asset": "BTC",
+     "time": "2026-10-20T01:25:00Z",
+     "txid": "NEG-05021",
+     "pattern": "split",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-05-tx-022",
+     "from": "NEG-05-desk",
+     "to": "NEG-05-cp-b",
+     "amount": "1968.82443447",
+     "asset": "BTC",
+     "time": "2026-10-20T09:10:00Z",
+     "txid": "NEG-05022",
+     "pattern": "split",
+     "fee": "0.00001000"
+    }
+   ],
+   "ground_truth": null
+  },
+  {
+   "case_id": "NEG-06",
+   "title": "负样本六：跨链桥中转（单入多出、有几笔接近等额）",
+   "negative_type": "跨链桥中转",
+   "expected_label": "not_mixer",
+   "pool_node": "NEG-06-relay",
+   "note": "桥托管地址划入 51.91 后 86 分钟内向 9 个认领地址放款，其中 3 笔 5 个币近乎等额，桥费 0.089%。",
+   "network": "BTC",
+   "asset": "BTC",
+   "window": {
+    "from": "2026-10-12T03:00:00Z",
+    "to": "2026-10-12T07:00:00Z"
+   },
+   "nodes": [
+    {
+     "id": "NEG-06-bridge",
+     "label": "模拟跨链桥托管地址（虚拟）",
+     "type": "bridge",
+     "entity": "SIM_BRIDGE",
+     "risk": "medium",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "跨链桥锁定/释放"
+    },
+    {
+     "id": "NEG-06-relay",
+     "label": "模拟跨链桥中转放款地址（虚拟）",
+     "type": "wallet",
+     "entity": "SIM_BRIDGE",
+     "risk": "medium",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "批量放款到各认领地址"
+    },
+    {
+     "id": "NEG-06-claim-01",
+     "label": "模拟跨链认领地址 01（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-02",
+     "label": "模拟跨链认领地址 02（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-03",
+     "label": "模拟跨链认领地址 03（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-04",
+     "label": "模拟跨链认领地址 04（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-05",
+     "label": "模拟跨链认领地址 05（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-06",
+     "label": "模拟跨链认领地址 06（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-07",
+     "label": "模拟跨链认领地址 07（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-08",
+     "label": "模拟跨链认领地址 08（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    },
+    {
+     "id": "NEG-06-claim-09",
+     "label": "模拟跨链认领地址 09（虚拟）",
+     "type": "wallet",
+     "entity": null,
+     "risk": "low",
+     "tags": [],
+     "first_seen": "2026-10-01T00:00:00Z",
+     "note": "一次性认领地址"
+    }
+   ],
+   "edges": [
+    {
+     "id": "NEG-06-tx-001",
+     "from": "NEG-06-bridge",
+     "to": "NEG-06-relay",
+     "amount": "51.91000000",
+     "asset": "BTC",
+     "time": "2026-10-12T04:00:00Z",
+     "txid": "NEG-06001",
+     "pattern": "bridge_out",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-002",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-01",
+     "amount": "5.00000000",
+     "asset": "BTC",
+     "time": "2026-10-12T04:05:00Z",
+     "txid": "NEG-06002",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-003",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-02",
+     "amount": "5.00000000",
+     "asset": "BTC",
+     "time": "2026-10-12T04:11:00Z",
+     "txid": "NEG-06003",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-004",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-03",
+     "amount": "5.00002000",
+     "asset": "BTC",
+     "time": "2026-10-12T04:18:00Z",
+     "txid": "NEG-06004",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-005",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-04",
+     "amount": "12.34567890",
+     "asset": "BTC",
+     "time": "2026-10-12T04:26:00Z",
+     "txid": "NEG-06005",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-006",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-05",
+     "amount": "3.14159265",
+     "asset": "BTC",
+     "time": "2026-10-12T04:34:00Z",
+     "txid": "NEG-06006",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-007",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-06",
+     "amount": "0.87654321",
+     "asset": "BTC",
+     "time": "2026-10-12T04:41:00Z",
+     "txid": "NEG-06007",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-008",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-07",
+     "amount": "10.00000000",
+     "asset": "BTC",
+     "time": "2026-10-12T04:52:00Z",
+     "txid": "NEG-06008",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-009",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-08",
+     "amount": "2.00000000",
+     "asset": "BTC",
+     "time": "2026-10-12T05:07:00Z",
+     "txid": "NEG-06009",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    },
+    {
+     "id": "NEG-06-tx-010",
+     "from": "NEG-06-relay",
+     "to": "NEG-06-claim-09",
+     "amount": "8.50000000",
+     "asset": "BTC",
+     "time": "2026-10-12T05:30:00Z",
+     "txid": "NEG-06010",
+     "pattern": "normal",
+     "fee": "0.00001000"
+    }
+   ],
+   "ground_truth": null
+  }
+ ]
+}

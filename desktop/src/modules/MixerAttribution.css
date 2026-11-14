@@ -80,7 +80,7 @@
 /* ---------- 列表视图 ---------- */
 .ma-list-view{padding:14px 22px 0}
 .ma-table{border:1px solid #e7ecf3;border-radius:10px;background:#fff;overflow:hidden}
-.ma-tr{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,1fr) 62px 74px 108px;gap:8px;align-items:center;padding:0 14px;width:100%;text-align:left}
+.ma-tr{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,1fr) 62px 74px 104px 108px;gap:8px;align-items:center;padding:0 14px;width:100%;text-align:left}
 .ma-th{min-height:34px;background:#f7f9fc;font-size:10.5px;color:#8c9aaf;letter-spacing:.02em}
 .ma-th span{padding:0}
 .ma-tr-btn{min-height:48px;border:0;border-top:1px solid #f0f3f8;border-left:3px solid var(--ma-fg,#cdd6e2);background:#fff;font:inherit;cursor:pointer;transition:background 160ms ease}
@@ -216,9 +216,9 @@
 .ma-ovstat b{font-size:18px;font-weight:650;color:#35465f;letter-spacing:-.02em}
 .ma-distbar{display:flex;height:8px;margin:10px 0 7px;border-radius:4px;background:#eef2f7;overflow:hidden}
 .ma-distbar i{display:block;height:100%}
-.ma-dist-HIGH{background:#238a78}
-.ma-dist-MEDIUM{background:#5576b8}
-.ma-dist-LOW{background:#8492a3}
+.ma-dist-HIGH{background:#5b6b7c}
+.ma-dist-MEDIUM{background:#8a97a6}
+.ma-dist-LOW{background:#c2ccd8}
 .ma-distlegend{display:flex;flex-wrap:wrap;gap:11px;font-size:10px;color:#7f8da2}
 .ma-distlegend span{display:flex;align-items:center;gap:4px}
 .ma-distlegend i{display:block;width:7px;height:7px;border-radius:2px}
@@ -268,7 +268,7 @@
   .ma-hint,.ma-legend,.ma-none{margin-left:18px;margin-right:18px}
   .ma-poolmatrix,.ma-pools{margin-left:18px;margin-right:18px}
   .ma-list-view{padding-left:18px;padding-right:18px}
-  .ma-tr{grid-template-columns:74px minmax(0,1fr) minmax(0,1fr) 54px 66px 46px;padding:0 10px;gap:6px}
+  .ma-tr{grid-template-columns:74px minmax(0,1fr) minmax(0,1fr) 54px 66px 88px 46px;padding:0 10px;gap:6px}
 }
 @media(max-width:1050px){
   .ma-bar-note{display:none}
@@ -277,3 +277,103 @@
   .ma-sig-val{grid-column:2 / -1;justify-self:start;text-align:left}
   .ma-sig-detail{grid-column:2 / -1}
 }
+
+/* ============================================================
+   V0.2.2-F1 · 逐笔六态
+   与分数档位（ma-tone-*）是两套变量：档位说"分高不高"，
+   六态说"能不能当唯一结论"。这里只覆盖后者的显示。
+   ============================================================ */
+
+/* 可判定状态保留分数色，不覆盖 */
+.ma-lg-note{margin-left:auto;color:#93a1b1;font-style:italic;font-size:10px}
+
+.ma-state-kept{}
+
+/* 不可当唯一结论的三态：一律中性，避免 91 分被读成"已确认" */
+.ma-state-blocked{--ma-fg:#5b6b7c;--ma-bg:#eef2f6;--ma-line:#cbd5e1}
+
+/* 证据冲突：红系，与"已确认"明确区隔 */
+.ma-state-conflict{--ma-fg:#9f1239;--ma-bg:#fee2e2;--ma-line:#fca5a5}
+
+/* 有条件支持：琥珀 */
+.ma-state-conditional{--ma-fg:#92400e;--ma-bg:#fef3c7;--ma-line:#fcd34d}
+
+/* 已有证据支持：绿 */
+.ma-state-supported{--ma-fg:#166534;--ma-bg:#dcfce7;--ma-line:#86efac}
+
+/* 格子里的六态标签：压住原"并列"标签的位置，字号更小一行放得下 */
+.ma-cell .ma-state-tag{
+  position:static;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:8.5px;
+  font-style:normal;
+  padding:1px 4px;
+  border-radius:3px;
+  line-height:1.35;
+}
+
+/* 表头六态汇总条 */
+.ma-states{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+  margin:2px 0 8px;
+  padding:6px 8px;
+  border:1px solid var(--line,#e3e8ef);
+  border-radius:7px;
+  background:#fbfcfe;
+  font-size:10px;
+  color:#5b6b7c;
+}
+.ma-state-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  padding:2px 7px;
+  border:1px solid var(--ma-line,#e3e8ef);
+  border-radius:999px;
+  background:var(--ma-bg,#f1f3f6);
+  color:var(--ma-fg,#6b7a8c);
+  font-weight:600;
+}
+.ma-state-chip b{font-weight:700}
+.ma-states-note{margin-left:auto;color:#93a1b1;font-style:italic}
+
+/* 列表里的六态列 */
+.ma-td-state{display:flex;align-items:center}
+.ma-td-state .ma-badge{font-size:9.5px}
+
+/* 详情侧栏的证据块 */
+.ma-state-block{
+  margin:8px 0 10px;
+  padding:8px 10px;
+  border:1px solid var(--ma-line,#e3e8ef);
+  border-left-width:3px;
+  border-radius:6px;
+  background:var(--ma-bg,#f8fafc);
+  color:var(--ma-fg,#475569);
+  font-size:11px;
+  line-height:1.6;
+}
+.ma-state-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ma-state-label{font-size:12px;font-weight:700}
+.ma-state-split{font-size:9.5px;color:#93a1b1;font-style:italic}
+.ma-state-why{margin:4px 0 0}
+.ma-state-why b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px}
+.ma-state-missing{margin:3px 0 0;color:#b45309}
+.ma-state-ev{margin:3px 0 0}
+.ma-state-ignored{margin:3px 0 0;padding-left:16px;color:#93a1b1}
+
+/* 档位徽标改中性：槽位仍是"分数档位"，但不再用绿色抢视觉，
+   颜色统一归六态（谁决定"能不能用"，谁才有颜色） */
+.ma-td-tier .ma-badge{--ma-fg:#5b6b7c;--ma-bg:#f4f6fa;--ma-line:#dbe2ea;font-weight:600}
+
+/* 档位徽标：只表示评分区间，不用颜色。颜色一律留给六态。 */
+.ma-tier-badge{--ma-fg:#5b6b7c;--ma-bg:#f4f6fa;--ma-line:#dbe2ea;font-weight:600}
+
+/* 档位分布条同理：用明度区分区间，不用色相，避免被读成"绿=可信" */
+.ma-distbar,.ma-distlegend{filter:saturate(0)}

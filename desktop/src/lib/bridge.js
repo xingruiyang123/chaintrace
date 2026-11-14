@@ -43,8 +43,13 @@ export const bridge = {
     if (isNative() && window.chaintrace.mixerSample) return window.chaintrace.mixerSample();
     return DEMO_MIXER;
   },
-  async runMixer() {
-    if (isNative() && window.chaintrace.runMixer) return window.chaintrace.runMixer(DEMO_MIXER);
+  async runMixer(file) {
+    if (isNative() && window.chaintrace.runMixer) {
+      // 必须用 mixerSample() 返回的真实路径：主进程只接受自己上次给出的那个路径。
+      // 传 DEMO_MIXER（'demo://…'）会被主进程判为"未载入样例"。
+      const target = file || await window.chaintrace.mixerSample();
+      return window.chaintrace.runMixer(target);
+    }
     // 浏览器演示：返回与契约完全一致的静态结果，页面行为与原生一致。
     return { result: demoMixerResult, dataset: demoMixerDataset };
   },

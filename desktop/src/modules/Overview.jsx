@@ -3,6 +3,7 @@ import {
   LayoutDashboard, ShieldCheck, Waypoints, Link2Off, ArrowRight, ChevronDown,
 } from 'lucide-react';
 import './modules.css';
+import CaseDecisionPanel from './CaseDecisionPanel.jsx';
 import './Overview.css';
 
 /**
@@ -29,7 +30,7 @@ const TYPES = [
 ];
 
 const SIGNALS = [
-  { key: 'green', label: '可优先拦截', color: '#238a78' },
+  { key: 'green', label: '优先核查出口', color: '#238a78' },
   { key: 'yellow', label: '持续监控', color: '#bd8734' },
   { key: 'red', label: '暂不执行', color: '#c65e58' },
 ];
@@ -238,7 +239,7 @@ export default function Overview({ result, dataset, caseId, onPick, verification
     { label: '混币池', value: model.pools, unit: '个' },
     { label: '断链归因候选', value: model.links, unit: '条' },
     { label: '法币出口', value: model.offramps, unit: '个' },
-    { label: '可优先拦截', value: model.signals.green, unit: '个' },
+    { label: '优先核查出口', value: model.signals.green, unit: '个' },
   ];
 
   const stackLabel = model.typeRows.map((type) => `${type.label} ${type.count} 条`).join('，');
@@ -254,6 +255,7 @@ export default function Overview({ result, dataset, caseId, onPick, verification
           setMoreBelow(element.scrollHeight - element.scrollTop - element.clientHeight > 24);
         }}>
           <div className="ov-body">
+            <CaseDecisionPanel result={result} caseId={caseId} />
             <section className="ov-band" aria-label="两条链路的关键指标">
               <KpiGroup index="01" title="核验链路" icon={ShieldCheck} ready={model.verificationReady} items={verificationKpis} />
               <KpiGroup index="02" title="追缴链路" icon={Waypoints} ready={model.mixerReady} items={mixerKpis} />

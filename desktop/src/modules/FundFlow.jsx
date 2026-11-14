@@ -3,6 +3,7 @@ import {
   Waypoints, Wallet, Shuffle, Landmark, Banknote, Building2, TriangleAlert,
   Layers, GitFork, ArrowRight, MousePointer2, Link2Off,
 } from 'lucide-react';
+import { effectiveTierOf, identifiabilityLabel, identifiabilityNote, isConditional } from '../analysis.js';
 import './modules.css';
 import './FundFlow.css';
 
@@ -51,7 +52,7 @@ const MECHANISM = {
 };
 
 const RISK = { high: '高', medium: '中', low: '低' };
-const LEVEL = { GREEN: '可优先拦截', YELLOW: '持续监控', RED: '暂不执行' };
+const LEVEL = { GREEN: '优先核查出口', YELLOW: '持续监控', RED: '暂不执行' };
 
 const LANES = [
   { key: 'source', title: '涉案源', note: 'SIM_SOURCE' },
@@ -701,7 +702,12 @@ export default function FundFlow({ result, dataset, caseId, onPick, focus }) {
                   <ul className="ff-link-list">
                     {relatedLinks.map((link) => (
                       <li key={link.link_id}>
-                        <span className="ff-tier" data-tier={link.tier}>{link.tier}</span>
+                        <span className="ff-tier" data-tier={effectiveTierOf(link)} title={identifiabilityNote(link)}>
+                          {effectiveTierOf(link) === 'WITHHELD' ? identifiabilityLabel(link) : effectiveTierOf(link)}
+                        </span>
+                        {isConditional(link) && (
+                          <span className="ff-tie-tag" title={identifiabilityNote(link)}>{identifiabilityLabel(link)}</span>
+                        )}
                         <span className="ff-link-main">
                           <b>{link.link_id}</b>
                           <small>{link.deposit_edge} ↔ {link.withdrawal_edge}</small>

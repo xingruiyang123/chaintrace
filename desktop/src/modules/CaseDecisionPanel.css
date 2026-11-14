@@ -1,0 +1,143 @@
+/* 案件级裁决面板（V0.2.2）。颜色沿用界面基线的状态色：
+   YES 绿 / NO 红 / CONDITIONAL 琥珀 / UNDETERMINED 灰。 */
+
+.cdp {
+  margin: 0 0 14px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 10px;
+  background: rgba(248, 250, 252, 0.72);
+  padding: 12px 14px 10px;
+}
+
+.cdp-legacy {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border-style: dashed;
+  color: #475569;
+}
+.cdp-legacy strong { display: block; font-size: 13px; margin-bottom: 3px; }
+.cdp-legacy p { margin: 0; font-size: 12px; line-height: 1.6; color: #64748b; }
+.cdp-legacy code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  background: rgba(148, 163, 184, 0.16);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.cdp-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+.cdp-icon { color: #475569; display: inline-flex; }
+.cdp-title { display: flex; align-items: baseline; gap: 8px; }
+.cdp-title h3 { margin: 0; font-size: 13.5px; font-weight: 600; color: #1e293b; }
+.cdp-case {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.cdp-status {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.cdp-status[data-status="YES"] { color: #166534; background: #dcfce7; border-color: #86efac; }
+.cdp-status[data-status="NO"] { color: #991b1b; background: #fee2e2; border-color: #fca5a5; }
+.cdp-status[data-status="CONDITIONAL"] { color: #92400e; background: #fef3c7; border-color: #fcd34d; }
+.cdp-status[data-status="UNDETERMINED"] { color: #334155; background: #e2e8f0; border-color: #cbd5e1; }
+
+.cdp-layers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 10px;
+}
+.cdp-layer {
+  display: flex;
+  gap: 7px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+.cdp-layer b { display: block; font-size: 11.5px; color: #334155; margin-bottom: 2px; }
+.cdp-layer p { margin: 0; font-size: 11px; line-height: 1.5; color: #64748b; }
+.cdp-layer-icon { color: #94a3b8; padding-top: 1px; display: inline-flex; }
+.cdp-layer[data-state="SUPPORTED"] { border-color: #86efac; background: #f0fdf4; }
+.cdp-layer[data-state="CONFIRMED_OK"] { border-color: #86efac; background: #f0fdf4; }
+.cdp-layer[data-state="CONDITIONAL"] { border-color: #fcd34d; background: #fffbeb; }
+.cdp-layer[data-state="PARTIAL"] { border-color: #fcd34d; background: #fffbeb; }
+.cdp-layer[data-state="CONFLICTED"] { border-color: #fca5a5; background: #fef2f2; }
+.cdp-layer[data-state="DENIED"] { border-color: #fca5a5; background: #fef2f2; }
+
+.cdp-reasons {
+  margin: 0 0 8px;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: #334155;
+}
+
+.cdp-conds { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+.cdp-cond { padding: 7px 10px; border-radius: 7px; font-size: 11.5px; }
+.cdp-cond[data-kind="blocking"] { background: #fef2f2; border: 1px solid #fecaca; }
+.cdp-cond[data-kind="unresolved"] { background: #fffbeb; border: 1px solid #fde68a; }
+.cdp-cond-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 11.5px;
+  color: #475569;
+  margin-bottom: 4px;
+}
+.cdp-cond ul { margin: 0; padding-left: 16px; line-height: 1.6; color: #475569; }
+
+.cdp-held {
+  margin-top: 9px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  background: #f8fafc;
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  font-size: 11.5px;
+}
+.cdp-held ul { margin: 4px 0 0; padding-left: 16px; line-height: 1.75; color: #475569; }
+.cdp-held code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10.5px;
+  color: #1e293b;
+}
+.cdp-held-tag {
+  margin-left: 6px;
+  font-size: 10px;
+  padding: 0 5px;
+  border-radius: 3px;
+  background: #e2e8f0;
+  color: #475569;
+}
+.cdp-more { color: #94a3b8; }
+
+.cdp-foot {
+  margin-top: 9px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  font-size: 11px;
+  color: #94a3b8;
+}
+.cdp-warn { color: #b45309; }
+
+/* 账户层第二行：说明"能力"而不是"状态"，用更轻的字重，避免与状态混读 */
+.cdp-layer .cdp-sub {
+  margin-top: 2px;
+  font-size: 10.5px;
+  color: #94a3b8;
+  font-style: italic;
+}

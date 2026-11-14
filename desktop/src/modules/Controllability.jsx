@@ -34,7 +34,7 @@ const AXES = [
 
 /** 状态色沿用基线：GREEN=exact 绿 / YELLOW=strong 蓝 / RED=conflict 暖红 */
 const LEVEL_META = {
-  GREEN: { name: '可优先拦截', color: '#238a78' },
+  GREEN: { name: '优先核查出口', color: '#238a78' },
   YELLOW: { name: '持续监控', color: '#5576b8' },
   RED: { name: '暂不执行', color: '#c65e58' },
 };
@@ -261,7 +261,7 @@ export default function Controllability({ result, dataset, caseId, onPick, focus
               <span>个</span>
             </div>
             <div className="kpi">
-              <small>可优先拦截</small>
+              <small>优先核查出口</small>
               <b>{greenCount}</b>
               <span>个（GREEN）</span>
             </div>

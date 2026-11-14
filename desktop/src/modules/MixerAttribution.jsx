@@ -1,5 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Check, ChevronDown, ChevronRight, GitFork, Layers, List, Minus } from 'lucide-react';
+import { effectiveTierOf, identifiabilityLabel, identifiabilityNote, isConditional } from '../analysis.js';
+import {
+  stateInfoOf, identifiabilityCounts, STATE_ORDER, STATE_TONE, IDENTIFIABILITY_CN,
+  REASON_CODE_CN, missingFieldsOf,
+} from '../caseDecision.js';
 import './modules.css';
 import './MixerAttribution.css';
 
@@ -13,7 +18,7 @@ import './MixerAttribution.css';
  * - 分数是「断链归因候选」的匹配强度，不表示资金转移已确认。
  * - 矩阵里空格 = 该（入金, 出金）组合没有进入候选集，不是 0 分。
  * - 同一行内分数相同（差 < 0.005）的候选互称「同分并列」；并列时 rank 会重复，必须显式标出，
- *   否则三个 #1 会被读成排版错误。KPI 用 summary.distinct_rank1（唯一第一名的入金笔数）而不是 HIGH 条数，
+ *   否则三个 #1 会被读成排版错误。KPI 用 summary.distinct_rank1（首位无并列的入金笔数）而不是 HIGH 条数，
  *   因为 HIGH 计数会被并列虚高。
  * - 色阶 5 档与 parameters.attribution.tier 联动：LOW=灰 / MEDIUM=蓝（浅→深）/ HIGH=绿（浅→深），
  *   同一 tier 内只做明度分层，不跨色相（琥珀留给信号灯 YELLOW / 待复核）。
@@ -173,14 +178,15 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
   }, [pools]);
 
   const stats = useMemo(() => {
-    const tiers = { HIGH: [], MEDIUM: [], LOW: [] };
+    // v0.2.1：档位以可识别性判定为准，WITHHELD 单列一档（整改 F-01）
+    const tiers = { HIGH: [], MEDIUM: [], LOW: [], WITHHELD: [] };
     links.forEach((link) => {
-      const tier = link.tier || tierOf(link.score, bounds);
+      const tier = effectiveTierOf(link);
       (tiers[tier] || tiers.LOW).push(link);
     });
     const maxScore = links.reduce((acc, link) => Math.max(acc, Number(link.score) || 0), -Infinity);
     const maxDetect = pools.reduce((acc, pool) => Math.max(acc, Number(pool.detection_score) || 0), -Infinity);
-    // 入金笔数：全案各池入金边去重后的条数，作为「唯一第一名 x / y」的分母
+    // 入金笔数：全案各池入金边去重后的条数，作为「首位无并列 x / y」的分母
     const depositKeys = new Set();
     pools.forEach((pool) => (pool.deposit_edges || []).forEach((id) => depositKeys.add(`${pool.pool_id}|${id}`)));
     const depositCount = depositKeys.size;
@@ -375,7 +381,8 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
                         );
                       }
                       const tone = toneOf(link.score, bounds);
-                      const tier = link.tier || tierOf(link.score, bounds);
+                      const tier = effectiveTierOf(link);
+                      const state = stateInfoOf(link);
                       const on = selection?.kind === 'link' && selection.id === link.link_id;
                       const tieN = tieCountOf(link);
                       const tied = tieN > 1;
@@ -383,7 +390,7 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
                         <button
                           type="button"
                           key={`${row}-${col}`}
-                          className={`ma-cell ma-cell-btn ma-tone-${tone}${Number(link.rank) === 1 ? ' ma-cell-best' : ''}${tied ? ' ma-cell-tie' : ''}`}
+                          className={`ma-cell ma-cell-btn ma-tone-${tone}${Number(link.rank) === 1 ? ' ma-cell-best' : ''}${tied ? ' ma-cell-tie' : ''} ma-state-${state.tone}`}
                           aria-pressed={on}
                           aria-label={`入金 ${row} 与出金 ${col}：归因分 ${dec(link.score)}，${tier}，本行第 ${link.rank ?? '—'} 名${tied ? `，与同分候选并列（共 ${tieN} 条）` : ''}`}
                           title={
@@ -395,6 +402,12 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
                           <b>{dec(link.score)}</b>
                           <small aria-hidden="true">{link.rank != null ? `#${link.rank}` : ''}</small>
                           {tied && <i className="ma-cell-tie-tag">并列×{tieN}</i>}
+                          <i
+                            className={`ma-cell-tie-tag ma-state-tag ma-state-${state.tone}`}
+                            title={`${state.label}｜档位 ${tier}｜${REASON_CODE_CN[link.identifiability?.reason_code] || link.identifiability?.reason || ''}`}
+                          >
+                            {state.label}
+                          </i>
                         </button>
                       );
                     })}
@@ -440,18 +453,45 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
         </p>
 
         <div className="ma-legend" aria-label="归因分色阶与空白说明">
-          <span className="ma-lg-t">归因分色阶</span>
-          {bounds.steps.map((step) => (
-            <span className="ma-lg" key={step.key} title={step.hint}>
-              <i className={`ma-tone-${step.key}`} />
-              {step.label}
-            </span>
-          ))}
+          <span className="ma-lg-t">分数档位</span>
+          <span className="ma-lg" title="分数只表示候选匹配强度">
+            HIGH ≥ {clean(bounds.high)}
+          </span>
+          <span className="ma-lg" title="分数只表示候选匹配强度">
+            MEDIUM {clean(bounds.medium)}–{clean(bounds.high)}
+          </span>
+          <span className="ma-lg" title="分数只表示候选匹配强度">
+            LOW &lt; {clean(bounds.medium)}
+          </span>
+          <em className="ma-lg-note">格子颜色表示可识别性，不表示分数高低</em>
           <span className="ma-lg ma-lg-gap">
             <i className="ma-lg-hatch" />
             未进入候选集（不是 0 分）
           </span>
         </div>
+
+        {(() => {
+          const counts = identifiabilityCounts(links);
+          const total = STATE_ORDER.reduce((n, k) => n + (counts[k] || 0), 0);
+          if (!total) return null;
+          return (
+            <div className="ma-states" aria-label="逐笔可识别性六态汇总">
+              <span className="ma-lg-t">可识别性</span>
+              {STATE_ORDER.filter((k) => counts[k]).map((k) => (
+                <span
+                  className={`ma-state-chip ma-state-${STATE_TONE[k]}`}
+                  key={k}
+                  title={`${IDENTIFIABILITY_CN[k]}：${counts[k]} 条（合计 ${total} 条，与下方矩阵逐格一致）`}
+                >
+                  {IDENTIFIABILITY_CN[k]} <b>{counts[k]}</b>
+                </span>
+              ))}
+              <em className="ma-states-note">
+                六态与分数档位是两件事：分数高不等于能当唯一结论
+              </em>
+            </div>
+          );
+        })()}
 
         {pools.length ? (
           pools.map((pool) => renderPoolMatrix(pool))
@@ -481,6 +521,7 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
             <span>出金</span>
             <span className="ma-num">归因分</span>
             <span>档位</span>
+            <span>可识别性</span>
             <span className="ma-num">排名</span>
           </div>
           {links.map((link) => {
@@ -506,7 +547,12 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
                 <span className="ma-td-edge">{link.withdrawal_edge}</span>
                 <span className="ma-td-num">{dec(link.score)}</span>
                 <span className="ma-td-tier">
-                  <span className={`ma-badge ma-tone-${tone}`}>{tier}</span>
+                  <span className="ma-badge ma-tier-badge">{tier}</span>
+                </span>
+                <span className="ma-td-state">
+                  <span className={`ma-badge ma-state-${stateInfoOf(link).tone}`}>
+                    {stateInfoOf(link).label}
+                  </span>
                 </span>
                 <span className="ma-td-num ma-td-rank">
                   {link.rank != null ? `#${link.rank}` : '—'}
@@ -660,7 +706,7 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
           </div>
           <p className="ma-tie-note">
             HIGH {stats.high} 条中包含同分并列，<b>不代表 {stats.high} 份独立证据</b>；全案 {stats.depositCount} 笔入金里只有{' '}
-            {stats.distinctRank1 === null ? '—' : stats.distinctRank1} 笔存在唯一第一名。
+            {stats.distinctRank1 === null ? '—' : stats.distinctRank1} 笔在本行内首位无并列。
           </p>
         </div>
 
@@ -780,8 +826,8 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
           <div className="ma-score-line">
             <b className="ma-score">{dec(link.score)}</b>
             <div className="ma-score-meta">
-              <span className={`ma-badge ma-tone-${tone}`}>{tier}</span>
-              <span className="ma-rank">同行排名 #{link.rank ?? '—'}</span>
+              <span className="ma-badge ma-tier-badge">{tier}</span>
+              <span className="ma-rank">{link.rank == null ? '同行排名 —' : (tiedN > 1 ? `并列第 ${link.rank}` : `同行第 ${link.rank}`)}</span>
               {typeof link.ground_truth_hit === 'boolean' && (
                 <span
                   className="ma-gt"
@@ -801,6 +847,45 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
               本行有 <b>{tieCountOf(link)}</b> 条候选同分（差 &lt; {String(TIE_EPS)}），排名并列、不分先后；分数本身无法区分它们。
             </p>
           )}
+
+          {(() => {
+            const state = stateInfoOf(link);
+            const idb = link.identifiability || {};
+            const code = idb.reason_code;
+            const missing = missingFieldsOf(link);
+            const applied = idb.resolved_by_evidence || [];
+            const ignored = idb.evidence_ignored || [];
+            return (
+              <div className={`ma-state-block ma-state-${state.tone}`}>
+                <div className="ma-state-head">
+                  <span className="ma-state-label">{state.label}</span>
+                  <span className="ma-state-split">
+                    与档位分开：档位看分数高低，这里看能不能当唯一结论
+                  </span>
+                </div>
+                {code && (
+                  <p className="ma-state-why">
+                    <b>{code}</b>：{REASON_CODE_CN[code] || idb.reason || ''}
+                  </p>
+                )}
+                {missing.length > 0 && (
+                  <p className="ma-state-missing">
+                    缺关键字段：{missing.join('、')}（因此不给出归因分与名次）
+                  </p>
+                )}
+                {applied.length > 0 && (
+                  <p className="ma-state-ev">由下列已核验证据定下：{applied.join('、')}</p>
+                )}
+                {ignored.length > 0 && (
+                  <ul className="ma-state-ignored">
+                    {ignored.slice(0, 4).map((x, i) => (
+                      <li key={`ig${i}`}>{x.evidence_id}：{x.reason}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })()}
 
           <div className="ma-pair">
             <div className="ma-pair-side">
@@ -1045,8 +1130,8 @@ export default function MixerAttribution({ result, dataset, caseId, onPick, veri
           <b>{links.length}</b>
           <span>条</span>
         </div>
-        <div className="kpi ma-kpi-tied" title="每个入金在自身候选中有唯一第一名的笔数；其余入金存在同分并列，需下游证据收敛">
-          <small>唯一第一名</small>
+        <div className="kpi ma-kpi-tied" title="每个入金在本行候选里排名第 1 且没有并列的笔数；其余入金存在同分并列，需下游证据收敛。首位无并列不等于资金归属唯一确定">
+          <small>首位无并列</small>
           <b>
             {stats.distinctRank1 === null ? '—' : stats.distinctRank1} / {stats.depositCount}
           </b>
